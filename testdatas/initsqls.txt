@@ -1,0 +1,7 @@
+--数据库初始化sql语句
+--新建机房信息 test0001先删除，确保该名称没有被使用过
+delete from machine_rooms where machine_name='test0001'
+
+--新建用户 手机号18299998888先删除，确保该手机号没有被注册过
+delete from users where phone=18299998888
+
