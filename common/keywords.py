@@ -148,3 +148,4 @@ if __name__ == '__main__':
     kd.clear('name', 'wd')
     kd.wait(2)
     kd.close_browser()
+    print("aaaaaaaaaaaaaa")
