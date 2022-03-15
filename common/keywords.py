@@ -16,22 +16,35 @@ from selenium.webdriver.common.keys import Keys
 
 # 初始化浏览器，若传入的浏览器驱动存在，则启动对应的浏览器，否则默认启动谷歌浏览器
 
-def init_driver(driver_type):
-    try:
-        driver = getattr(webdriver, driver_type)()
-        return driver
-    except Exception as e:
-        print("输入的浏览器驱动不可用，正在为您启动Google浏览器", e)
-        driver = webdriver.Chrome()
-        return driver
+# def init_driver(driver_type):
+#     try:
+#         driver = getattr(webdriver, driver_type)()
+#         return driver
+#     except Exception as e:
+#         print("输入的浏览器驱动不可用，正在为您启动Google浏览器", e)
+#         driver = webdriver.Chrome()
+#         return driver
+# 手机号码输入框
+phone = ('xpath', "//input[@placeholder='请输入手机号']")
+# 密码输入框
+password = ('xpath', "//input[@placeholder='请输入密码']")
+# 验证码输入框
+code_input = ('xpath', "//input[@placeholder='请输入验证码']")
+# 发送验证码按钮
+send_button = ('xpath', "//button[@type='button']")
+# 登陆按钮
+login_button = ('xpath', "//button[@type='submit']")
 
 
 class KeyWords():
 
     def __init__(self, driver):
         self.driver = driver
+        self.driver.get("https://opstest.arsyun.com")
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
+        # self.login("18276762767", "aa123456")
+
 
     # 打开浏览器
     def open_browser(self, url):
@@ -127,6 +140,14 @@ class KeyWords():
     def get_text(self, locator_type, location):
         text = self.locator(locator_type, location)
         return text
+
+    def login(self, phone, password, verifycode=None):
+        # 输入手机号、密码、点击获取验证码、输入手机验证码、点击登陆
+        self.input_text('xpath', "//input[@placeholder='请输入手机号']", phone)
+        self.input_text('xpath', "//input[@placeholder='请输入密码']", password)
+        # self.click_element('xpath', "//button[@type='button']")
+        # self.input_text('xpath', "//input[@placeholder='请输入验证码']", content=verifycode)
+        self.click_element('xpath', "//button[@type='submit']")
 
     # 设置等待时间
     def wait(self, second):
