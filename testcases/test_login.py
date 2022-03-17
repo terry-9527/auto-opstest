@@ -15,6 +15,7 @@ class TestLogin(BasePage):
     #     cls.driver = webdriver.Chrome()
 
     def setUp(self):
+        self.kd.wait(3)
         self.driver.delete_all_cookies()
     case = readData().read_excel("login", "logincase.xlsx")
 
