@@ -2,18 +2,12 @@ import configparser
 import yaml, os
 from openpyxl import load_workbook
 
-
-def getpathInfo():
-    current_path = os.path.split(os.path.realpath(__file__))[0]
-    root_path = os.path.dirname(current_path)
-    return root_path
-
+ROOT_PATH = str(os.path.abspath(os.getcwd()).split('auto-opstest')[0]) + "auto-opstest"
 
 class readData():
     """
     封账读取数据的方法
     """
-
     def read_config(self, section, option, filename=None):
         """
         读取配置文件，返回对应的配置值
@@ -22,11 +16,10 @@ class readData():
         :param filename:
         :return:
         """
-        root_path = getpathInfo()
         if not filename:
-            config_path = os.path.join(root_path, 'config', 'config.ini')
+            config_path = os.path.join(ROOT_PATH, './config', 'config.ini')
         else:
-            config_path = os.path.join(root_path, 'config', filename)
+            config_path = os.path.join(ROOT_PATH, './config', filename)
         config = configparser.RawConfigParser()
         config.read(config_path, encoding='utf-8')
         result = config.get(section, option)
@@ -38,8 +31,7 @@ class readData():
         :param filename:
         :return:
         """
-        root_path = getpathInfo()
-        file_path = os.path.join(root_path, 'testdatas', filename)
+        file_path = os.path.join(ROOT_PATH, './testdatas', filename)
         with open(file_path, 'r', encoding='utf-8') as f:
             yaml_data = yaml.load(f, Loader=yaml.FullLoader)  # 读取yaml文件内容，返回dict数据
             case_data = []
@@ -48,15 +40,14 @@ class readData():
             f.close()
         return case_data
 
-    def read_excel(self, sheetname, file):
+    def read_excel(self, sheetname, filename):
         """
         读取Excel用例文件
         :param sheetname: 表名
         :param file: 文件名
         :return: 返回一个列表
         """
-        root_path = getpathInfo()
-        file_path = os.path.join(root_path, "testdatas", file)
+        file_path = os.path.join(ROOT_PATH, "./testdatas", filename)
         workbook = load_workbook(file_path)
         sheet = workbook[sheetname]  # 执行使用哪个工作表,根据传进来的表名称决定读取对应的数据
         rows = sheet.rows  # 取出所有行的数据
@@ -77,8 +68,7 @@ class readData():
 
     # Excel写入数据
     def write_excel(self, filename, case_id=None, testresult=None):
-        root_path = getpathInfo()
-        file_path = os.path.join(root_path, "testdatas", filename)
+        file_path = os.path.join(ROOT_PATH, "./testdatas", filename)
         workbook = load_workbook(file_path)
         sheetname = workbook.sheetnames  # 获取工作表名称
         sheet = workbook[sheetname[0]]  # 执行使用哪个工作表
@@ -97,11 +87,9 @@ class readData():
         workbook.save(file_path)
 
     def read_sqls(self, filename):
-
-        root_path = getpathInfo()
-        file = os.path.join(root_path, "testdatas", filename)
+        file_path = os.path.join(ROOT_PATH, "./testdatas", filename)
         sqls = []
-        with open(file, 'r', encoding='utf-8') as stream:
+        with open(file_path, 'r', encoding='utf-8') as stream:
             for line in stream.readlines():
                 if not len(line.strip()) or line.startswith('--'):
                     continue
@@ -111,9 +99,11 @@ class readData():
 
 if __name__ == '__main__':
     read = readData()
-    # sqls = data.read_sqls('initsqls.txt')
+    # sqls = read.read_sqls('systemsetting.txt')
     # print(sqls)
-    datas = read.read_excel("login", "logincase.xlsx")
-    print(datas)
-    # data = read.read_config("test_env", "phone")
+    # datas = read.read_excel("login", "logincase.xlsx")
+    # print(datas)
+    # data = read.read_config("publicCloud", "ssh_port", "config.ini")
     # print(data)
+    data = read.read_config("publicCloud", "host", filename="config12.ini")
+    print(data)
