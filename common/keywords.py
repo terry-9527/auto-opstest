@@ -25,6 +25,8 @@ from selenium.webdriver.common.keys import Keys
 #         driver = webdriver.Chrome()
 #         return driver
 # 手机号码输入框
+from utils.read_db import MysqlDb
+
 phone = ('xpath', "//input[@placeholder='请输入手机号']")
 # 密码输入框
 password = ('xpath', "//input[@placeholder='请输入密码']")
@@ -108,7 +110,7 @@ class KeyWords():
             elif locator_type.upper() == "XPATH":
                 elements = self.driver.find_elements(By.XPATH, location)
                 return elements
-            elif locator_type.upper() == "CSS_SELECTOR":
+            elif locator_type.upper() == "CSS_SELECTOR" or locator_type.upper() == "CSS":
                 elements = self.driver.find_elements(By.CSS_SELECTOR, location)
                 return elements
         except Exception as e:

@@ -1,0 +1,15 @@
+--数据库初始化sql语句
+--新建机房信息 test0001先删除，确保该名称没有被使用过
+delete from t_machine_room where name='test0001'
+delete from t_machine_room where name='test0002'
+delete from t_machine_room where name='test0003'
+delete from t_machine_room where name='test0004'
+delete from t_machine_room where name='test0006'
+delete from t_machine_room where name='rename-test0001'
+
+
+
+
+--新建用户 手机号18299998888先删除，确保该手机号没有被注册过
+delete from t_user where phone=18299998888
+

@@ -1,0 +1,4 @@
+--数据库初始化sql语句
+--新建集群信息 先删除，确保该名称没有被使用过
+delete from t_miner where miner='f01000'
+delete from t_miner where miner='f01001'

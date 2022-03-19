@@ -10,10 +10,6 @@ from utils.read_data import readData
 @ddt
 class TestLogin(BasePage):
 
-    # @classmethod
-    # def setUpClass(cls):
-    #     cls.driver = webdriver.Chrome()
-
     def setUp(self):
         self.kd.wait(3)
         self.driver.delete_all_cookies()
