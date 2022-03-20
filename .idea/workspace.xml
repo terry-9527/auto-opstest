@@ -3,20 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="2e0b46da-d777-4361-ac72-758e037bc42b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/base_page.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/keywords.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/keywords.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/machine_info/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/system_setting_page/machineroom_info/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/machine_info/machineroom_info_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/system_setting_page/machineroom_info/machineroom_info_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/machine_info/machineroominfo_lct.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/machine_info/machineroominfo_opt.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test001.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test02.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test_machineroominfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_machineroominfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdatas/initsqls.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testdatas/systemsetting.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/runmain.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/runmain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/login_page/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login_page/login_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_clusterinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_003_clusterinfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_001_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_machineroominfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_002_machineroominfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testdatas/clusterinfo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/testdatas/clusterinfo.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testdatas/machineroominfo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/testdatas/machineroominfo.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/read_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/read_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/read_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/read_db.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,23 +21,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+            <state relative-caret-position="846">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
               <folding>
-                <element signature="e#0#6#0" expanded="true" />
+                <element signature="e#0#30#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testcases/test_clusterinfo.py">
+        <entry file="file://$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="34" column="71" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testcases/test_003_clusterinfo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testcases/test_004_usermanagement.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -53,16 +69,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/read_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+            <state relative-caret-position="918">
+              <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <element signature="e#977#1410#0" />
-                <element signature="e#1464#1724#0" />
-                <element signature="e#1773#1942#0" />
-                <element signature="e#1980#2049#1" />
-                <element signature="e#2371#2454#0" />
-                <element signature="e#2381#2563#0" />
               </folding>
             </state>
           </provider>
@@ -71,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/read_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="1224">
               <caret line="70" column="56" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="56" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -83,7 +93,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/base_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
+            <state relative-caret-position="54">
               <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
@@ -92,13 +102,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/keywords.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="112" column="87" selection-start-line="112" selection-start-column="87" selection-end-line="112" selection-end-column="87" />
+            <state relative-caret-position="296">
+              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/runmain.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="810">
+              <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
               <folding>
-                <element signature="e#143#154#0" expanded="true" />
+                <element signature="e#16#25#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,7 +143,6 @@
         <option value="$PROJECT_DIR$/testcases/test02.py" />
         <option value="$PROJECT_DIR$/testcases/test001.py" />
         <option value="$PROJECT_DIR$/log/runmain.py" />
-        <option value="$PROJECT_DIR$/main/runmain.py" />
         <option value="$PROJECT_DIR$/pages/login_page/login.py" />
         <option value="$PROJECT_DIR$/testcases/test_login.py" />
         <option value="$PROJECT_DIR$/common/base_page.py" />
@@ -138,12 +156,18 @@
         <option value="$PROJECT_DIR$/config/config12.ini" />
         <option value="$PROJECT_DIR$/pages/system_setting_page/cluster_info/aaaa.py" />
         <option value="$PROJECT_DIR$/utils/read_data.py" />
-        <option value="$PROJECT_DIR$/common/keywords.py" />
+        <option value="$PROJECT_DIR$/main/runmain.py" />
+        <option value="$PROJECT_DIR$/pages/system_setting_page/user_management/user/UserPage.py" />
+        <option value="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_page.py" />
+        <option value="$PROJECT_DIR$/testcases/test_004_usermanagement.py" />
+        <option value="$PROJECT_DIR$/testcases/test_003_clusterinfo.py" />
         <option value="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" />
+        <option value="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py" />
+        <option value="$PROJECT_DIR$/common/keywords.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="211" />
     <option name="y" value="11" />
     <option name="width" value="1936" />
@@ -172,6 +196,11 @@
             <path>
               <item name="auto-opstest" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="auto-opstest" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -186,6 +215,21 @@
               <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="system_setting_page" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="cluster_info" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="auto-opstest" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="system_setting_page" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="user_management" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="auto-opstest" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="system_setting_page" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="user_management" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="user" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="auto-opstest" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -245,28 +289,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in test_clusterinfo.py">
-    <configuration name="aaaa" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="auto-opstest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pages/system_setting_page/cluster_info" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pages/system_setting_page/cluster_info/aaaa.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.cluster_info_page">
     <configuration name="cluster_info_page" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto-opstest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -288,7 +311,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="read_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="runmain" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto-opstest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -296,11 +319,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/read_data.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/runmain.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -309,7 +332,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="read_db (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="user_management_page" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto-opstest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -317,11 +340,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pages/system_setting_page/user_management/user" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/read_db.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -345,7 +368,7 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests in test_clusterinfo.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests in test_003_clusterinfo.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto-opstest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -356,25 +379,39 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_pattern" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/testcases/test_clusterinfo.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/testcases/test_003_clusterinfo.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_004_usermanagement.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="auto-opstest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcases" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/testcases/test_004_usermanagement.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.cluster_info_page" />
-      <item itemvalue="Python.read_db (1)" />
+      <item itemvalue="Python.runmain" />
+      <item itemvalue="Python.user_management_page" />
       <item itemvalue="Python tests.Unittests in runmain.py" />
-      <item itemvalue="Python tests.Unittests in test_clusterinfo.py" />
-      <item itemvalue="Python.aaaa" />
-      <item itemvalue="Python.read_data" />
+      <item itemvalue="Python tests.Unittests in test_003_clusterinfo.py" />
+      <item itemvalue="Python tests.Unittests in test_004_usermanagement.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests in test_clusterinfo.py" />
+        <item itemvalue="Python tests.Unittests in test_003_clusterinfo.py" />
+        <item itemvalue="Python tests.Unittests in test_004_usermanagement.py" />
+        <item itemvalue="Python.user_management_page" />
         <item itemvalue="Python.cluster_info_page" />
-        <item itemvalue="Python.aaaa" />
-        <item itemvalue="Python.read_data" />
-        <item itemvalue="Python.read_db (1)" />
+        <item itemvalue="Python.runmain" />
       </list>
     </recent_temporary>
   </component>
@@ -392,44 +429,44 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 26m 13s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 31m 52s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 29m 46s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 32m 36s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 30m 37s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 33m 05s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 32m 37s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 33m 29s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 33m 45s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 35m 13s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 39m 58s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 43m 28s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 42m 52s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 47m 01s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 43m 57s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_003_clusterinfo_py - 2022.03.19 at 23h 45m 39s.xml">
+      <configuration name="Unittests in test_003_clusterinfo.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 44m 37s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_003_clusterinfo_py - 2022.03.19 at 23h 51m 47s.xml">
+      <configuration name="Unittests in test_003_clusterinfo.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_clusterinfo_py - 2022.03.18 at 22h 45m 01s.xml">
-      <configuration name="Unittests in test_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_003_clusterinfo_py - 2022.03.19 at 23h 57m 08s.xml">
+      <configuration name="Unittests in test_003_clusterinfo.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49945828" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" sideWeight="0.5005417" side_tool="true" weight="0.24973656" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947312" visible="true" weight="0.39045554" />
@@ -440,35 +477,16 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50052685" side_tool="true" weight="0.39045554" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/unittest/__init__.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="249" column="23" selection-start-line="249" selection-start-column="23" selection-end-line="249" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testcases/test_machineroom_info.py" />
-    <entry file="file://$PROJECT_DIR$/testcases/test001.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcases/test02.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/testcases/test001.py" />
+    <entry file="file://$PROJECT_DIR$/testcases/test02.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -476,7 +494,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/login_page/login.py">
+    <entry file="file://$PROJECT_DIR$/pages/login_page/login_page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
@@ -486,10 +504,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/system_setting_page/machine_info/machineroominfo_opt.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcases/test_login.py">
+    <entry file="file://$PROJECT_DIR$/pages/system_setting_page/machine_info/machineroominfo_opt.py" />
+    <entry file="file://$PROJECT_DIR$/testcases/test_001_login.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
@@ -513,63 +529,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/system_setting_page/machineroom_info/machineroom_info_page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testdatas/systemsetting.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="3" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/runmain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#16#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcases/test_machineroominfo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testdatas/clusterinfo.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/base_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -599,32 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/read_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#977#1410#0" />
-            <element signature="e#1464#1724#0" />
-            <element signature="e#1773#1942#0" />
-            <element signature="e#1980#2049#1" />
-            <element signature="e#2371#2454#0" />
-            <element signature="e#2381#2563#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/read_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="70" column="56" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -658,33 +597,125 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/keywords.py">
+    <entry file="file://$PROJECT_DIR$/testcases/test_002_machineroominfo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="112" column="87" selection-start-line="112" selection-start-column="87" selection-end-line="112" selection-end-column="87" />
+        <state relative-caret-position="116">
+          <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
           <folding>
-            <element signature="e#143#154#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testcases/test_clusterinfo.py">
+    <entry file="file://$PROJECT_DIR$/testdatas/systemsetting.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="108">
+          <caret line="6" column="48" lean-forward="true" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/unittest/__init__.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1522">
+          <caret line="228" column="11" selection-start-line="228" selection-start-column="11" selection-end-line="228" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testdatas/clusterinfo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="40" lean-forward="true" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="846">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+        <state relative-caret-position="540">
+          <caret line="34" column="71" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcases/test_003_clusterinfo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
           <folding>
-            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcases/test_004_usermanagement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/read_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/read_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="70" column="56" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/base_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/runmain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+          <folding>
+            <element signature="e#16#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/keywords.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
         </state>
       </provider>
     </entry>
