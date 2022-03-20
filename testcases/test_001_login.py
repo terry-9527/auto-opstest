@@ -3,7 +3,7 @@ from selenium import webdriver
 from ddt import ddt, data, unpack
 
 from common.base_page import BasePage
-from pages.login_page.login import LoginPage
+from pages.login_page.login_page import LoginPage
 from utils.read_data import readData
 
 

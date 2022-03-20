@@ -13,7 +13,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-
 # 初始化浏览器，若传入的浏览器驱动存在，则启动对应的浏览器，否则默认启动谷歌浏览器
 
 # def init_driver(driver_type):
@@ -47,6 +46,44 @@ class KeyWords():
         self.driver.maximize_window()
         # self.login("18276762767", "aa123456")
 
+    def click_navigation_bar(self, name):
+        main_menu_navigation_bar = {
+            "首页": 0,
+            "工作台": 1,
+            "集群概览": 2,
+            "主机管理": 3,
+            "公共算力": 4,
+            "故障记录": 5,
+            "作业管理": 6,
+            "命令执行": 7,
+            "任务管理": 8,
+            "公共模板": 9,
+            "公共脚本": 10,
+            "系统设置": 11,
+            "机房信息": 12,
+            "集群信息": 13,
+            "客户信息": 14,
+            "用户管理": 15,
+            "用户": 16,
+            "角色": 17,
+            "安全策略": 18,
+            "审批流": 19
+        }
+        main_menu = ('css', '.ant-menu-title-content')
+        for key in main_menu_navigation_bar:
+            if key == name:
+                self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+
+    def div_selector(self, input_path, div_select, number=0):
+        """
+        div下拉框处理
+        :param input_path: 下拉输入框定位信息，('xpath', '定位信息')
+        :param div_select:  下拉选择项信息，('xpath', '定位信息')
+        :param number:  默认点击选择第一个，从0开始
+        :return:
+        """
+        self.click_element(*input_path)
+        self.click_elements(*div_select, list_number=number)
 
     # 打开浏览器
     def open_browser(self, url):
