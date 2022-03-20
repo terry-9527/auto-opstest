@@ -2,12 +2,14 @@ import configparser
 import yaml, os
 from openpyxl import load_workbook
 
-ROOT_PATH = str(os.path.abspath(os.getcwd()).split('auto-opstest')[0]) + "auto-opstest"
+ROOT_PATH = str(os.path.abspath(os.getcwd()).split('jieshou')[0]) + "jieshou"
+
 
 class readData():
     """
     封账读取数据的方法
     """
+
     def read_config(self, section, option, filename=None):
         """
         读取配置文件，返回对应的配置值
@@ -105,5 +107,5 @@ if __name__ == '__main__':
     # print(datas)
     # data = read.read_config("publicCloud", "ssh_port", "config.ini")
     # print(data)
-    data = read.read_config("publicCloud", "host", filename="config12.ini")
+    data = read.read_config("publicCloud", "host")
     print(data)

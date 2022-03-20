@@ -44,4 +44,4 @@ if __name__ == "__main__":
     # case = run.load_all_case(filename="test001.py")
     # suite = unittest.TestSuite(case)
     # runner = unittest.TextTestRunner()
-    run.run_all_case("test_machineroominfo.py")
+    run.run_all_case("test_custemorinfo.py")
