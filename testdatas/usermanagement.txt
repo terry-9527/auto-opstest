@@ -1,0 +1,12 @@
+--数据库初始化sql语句
+--新建用户信息 先删除，确保该名称没有被使用过
+delete from t_user where user_name='terry001-autotest' or phone='18288888888' or email='8888@qq.com'
+delete from t_user where user_name='terry002-autotest' or phone='18299999999' or email='999@qq.com'
+delete from t_user where user_name='terry003-autotest' or phone='18277777777' or email='7777@qq.com'
+delete from t_user where user_name='terry004-autotest' or phone='18488888888' or email='8889@qq.com'
+delete from t_user where user_name='terry001-modify' or phone='13288888888' or email='88888888@qq.com'
+
+--新建角色
+delete from t_role where name='test001'
+delete from t_role where name='test002'
+delete from t_role where name='test003'
