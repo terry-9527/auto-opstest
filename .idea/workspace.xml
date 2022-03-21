@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e0b46da-d777-4361-ac72-758e037bc42b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/keywords.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/keywords.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/runmain.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/runmain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login_page/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login_page/login_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test_clusterinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_003_clusterinfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_001_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/test_machineroominfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_002_machineroominfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdatas/clusterinfo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/testdatas/clusterinfo.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testdatas/machineroominfo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/testdatas/machineroominfo.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/base_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_004_usermanagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_004_usermanagement.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,41 +17,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="846">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="1106">
+              <caret line="109" column="20" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#3909#4405#0" />
+                <element signature="e#4481#4980#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="34" column="71" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testcases/test_003_clusterinfo.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testcases/test_004_usermanagement.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="-378">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -67,24 +40,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/read_db.py">
+        <entry file="file://$PROJECT_DIR$/testdatas/usermanagement.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="36">
+              <caret line="2" column="36" lean-forward="true" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/read_data.py">
+        <entry file="file://$PROJECT_DIR$/pages/system_setting_page/user_management/role/role_management_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="70" column="56" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="56" />
+            <state relative-caret-position="242">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testcases/test_004_rolemanagement.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/base_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            <state relative-caret-position="162">
+              <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -102,11 +81,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/keywords.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="246">
+              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+              <folding>
+                <element signature="e#1271#1743#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,7 +127,6 @@
         <option value="$PROJECT_DIR$/log/runmain.py" />
         <option value="$PROJECT_DIR$/pages/login_page/login.py" />
         <option value="$PROJECT_DIR$/testcases/test_login.py" />
-        <option value="$PROJECT_DIR$/common/base_page.py" />
         <option value="$PROJECT_DIR$/pages/system_setting_page/cluster_info/clusterinfo_page.py" />
         <option value="$PROJECT_DIR$/pages/system_setting_page/machineroom_info/machineroom_info_page.py" />
         <option value="$PROJECT_DIR$/testdatas/systemsetting.txt" />
@@ -159,15 +140,19 @@
         <option value="$PROJECT_DIR$/main/runmain.py" />
         <option value="$PROJECT_DIR$/pages/system_setting_page/user_management/user/UserPage.py" />
         <option value="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_page.py" />
-        <option value="$PROJECT_DIR$/testcases/test_004_usermanagement.py" />
         <option value="$PROJECT_DIR$/testcases/test_003_clusterinfo.py" />
         <option value="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" />
-        <option value="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py" />
         <option value="$PROJECT_DIR$/common/keywords.py" />
+        <option value="$PROJECT_DIR$/common/base_page.py" />
+        <option value="$PROJECT_DIR$/testcases/test_004_rolemanagement.py" />
+        <option value="$PROJECT_DIR$/pages/system_setting_page/user_management/role/role_management_page.py" />
+        <option value="$PROJECT_DIR$/testdatas/usermanagement.txt" />
+        <option value="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py" />
+        <option value="$PROJECT_DIR$/testcases/test_004_usermanagement.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="211" />
     <option name="y" value="11" />
     <option name="width" value="1936" />
@@ -229,6 +214,14 @@
               <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="system_setting_page" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="user_management" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="role" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="auto-opstest" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="pages" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="system_setting_page" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="user_management" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="user" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -266,15 +259,15 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\auto-opstest\main" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\auto-opstest\config" />
       <recent name="E:\auto-opstest\testdatas" />
+      <recent name="E:\auto-opstest\config" />
       <recent name="E:\auto-opstest\common" />
       <recent name="E:\auto-opstest\testcases" />
       <recent name="E:\auto-opstest\utils" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\auto-opstest\main" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -289,7 +282,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.cluster_info_page">
+  <component name="RunManager" selected="Python tests.Unittests in test_004_usermanagement.py">
     <configuration name="cluster_info_page" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="auto-opstest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -303,27 +296,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="runmain" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="auto-opstest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/runmain.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -383,6 +355,20 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests in test_004_rolemanagement.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="auto-opstest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcases" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/testcases/test_004_rolemanagement.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests in test_004_usermanagement.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="auto-opstest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -399,19 +385,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.cluster_info_page" />
-      <item itemvalue="Python.runmain" />
       <item itemvalue="Python.user_management_page" />
       <item itemvalue="Python tests.Unittests in runmain.py" />
       <item itemvalue="Python tests.Unittests in test_003_clusterinfo.py" />
       <item itemvalue="Python tests.Unittests in test_004_usermanagement.py" />
+      <item itemvalue="Python tests.Unittests in test_004_rolemanagement.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests in test_003_clusterinfo.py" />
         <item itemvalue="Python tests.Unittests in test_004_usermanagement.py" />
+        <item itemvalue="Python tests.Unittests in test_004_rolemanagement.py" />
+        <item itemvalue="Python tests.Unittests in test_003_clusterinfo.py" />
         <item itemvalue="Python.user_management_page" />
         <item itemvalue="Python.cluster_info_page" />
-        <item itemvalue="Python.runmain" />
       </list>
     </recent_temporary>
   </component>
@@ -429,35 +415,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 31m 52s.xml">
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 22h 49m 35s.xml">
       <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 32m 36s.xml">
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 22h 50m 43s.xml">
       <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 33m 05s.xml">
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 22h 51m 48s.xml">
       <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 33m 29s.xml">
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 22h 53m 44s.xml">
       <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 35m 13s.xml">
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 22h 55m 58s.xml">
       <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 43m 28s.xml">
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 23h 50m 35s.xml">
       <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.19 at 20h 47m 01s.xml">
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 23h 52m 24s.xml">
       <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_003_clusterinfo_py - 2022.03.19 at 23h 45m 39s.xml">
-      <configuration name="Unittests in test_003_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 23h 53m 07s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_003_clusterinfo_py - 2022.03.19 at 23h 51m 47s.xml">
-      <configuration name="Unittests in test_003_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 23h 57m 37s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_003_clusterinfo_py - 2022.03.19 at 23h 57m 08s.xml">
-      <configuration name="Unittests in test_003_clusterinfo.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_004_usermanagement_py - 2022.03.20 at 23h 58m 51s.xml">
+      <configuration name="Unittests in test_004_usermanagement.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -635,43 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="34" column="71" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcases/test_003_clusterinfo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcases/test_004_usermanagement.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/read_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
@@ -692,16 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/base_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/runmain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -714,8 +653,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/keywords.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="246">
+          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+          <folding>
+            <element signature="e#1271#1743#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/base_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcases/test_004_rolemanagement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcases/test_003_clusterinfo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="34" column="71" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/system_setting_page/user_management/role/role_management_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testdatas/usermanagement.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="36" lean-forward="true" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1106">
+          <caret line="109" column="20" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
+          <folding>
+            <element signature="e#3909#4405#0" />
+            <element signature="e#4481#4980#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcases/test_004_usermanagement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
