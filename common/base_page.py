@@ -1,7 +1,6 @@
 from selenium import webdriver
 import unittest
 from common.keywords import KeyWords
-from utils.read_db import MysqlDb
 
 
 class BasePage(unittest.TestCase):
@@ -10,8 +9,12 @@ class BasePage(unittest.TestCase):
     def setUpClass(cls):
         cls.driver = webdriver.Chrome()
         cls.kd = KeyWords(cls.driver)
+        cls.driver.get("https://opstest.arsyun.com")
+        cls.driver.maximize_window()
+        cls.driver.implicitly_wait(10)
         # cls.kd.login("18276762767", "aa123456")
-        cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxNSwidXNlcl9uYW1lIjoidGVycnkiLCJidWZmZXJfdGltZSI6ODY0MDAsImV4cCI6MTY0ODM0NTA4OCwiaXNzIjoiYXJzUHVibGljIiwibmJmIjoxNjQ3NzM5Mjg4fQ.btFnt3LjDrb7Fg03JFSMlZK9-bOXGL0HtsoMDPEQZjk"})
+        cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJ1c2VyX25hbWUiOiJGaWRlIiwiYnVmZmVyX3RpbWUiOjg2NDAwLCJleHAiOjE2NDg2MjM0NDYsImlzcyI6ImFyc1B1YmxpYyIsIm5iZiI6MTY0ODAxNzY0Nn0.HtJ8b5k0smpSe9pFVUKEsGD7Nkj9KYndR5AOkdi7I2g"})
+        # cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX25hbWUiOiJzdXBlciBhZG1pbmlzdGF0b3IiLCJidWZmZXJfdGltZSI6ODY0MDAsImV4cCI6MTY0ODYxMTU0OSwiaXNzIjoiYXJzUHVibGljIiwibmJmIjoxNjQ4MDA1NzQ5fQ.59uHhiuwnsffQzQvyjSVxf-AklCrYLeBpjaLKFnSomU"})
         cls.driver.get("https://opstest.arsyun.com")
 
     def setUp(self):

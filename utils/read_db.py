@@ -44,6 +44,7 @@ class MysqlDb:
         return conn
 
     def query(self, sql, state="all"):
+        # conn.cursor(cursor=pymysql.cursors.DictCursor) 返回字典，存放再list里面
         self.cursor.execute(sql)
         if state == "all":
             data = self.cursor.fetchall()

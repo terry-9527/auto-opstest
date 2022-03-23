@@ -1,3 +1,5 @@
+import random
+
 from common.keywords import KeyWords
 
 
@@ -35,13 +37,13 @@ class UserManagementPage(KeyWords):
     confirm_button = ('xpath', '//span[text()="确 定"]')
     # 查看编辑按钮 terry001-autotest用户
     check_button = (
-        'xpath', '//*[@class="ant-table-container"]//span[text()="terry001-autotest"]/../..//span[text()="查看"]')
-    # 关联角色
+        'xpath', '//*[@class="ant-table-container"]//span[contains(text(),"terry001")]/../..//span[text()="查看"]')
+    # 关联角色 //*[@class="ant-table-container"]//span[contains(text(),"terry001-")]
     bind_role_button = (
-        'xpath', '//*[@class="ant-table-container"]//span[text()="terry001-autotest"]/../..//span[text()="关联角色"]')
+        'xpath', '//*[@class="ant-table-container"]//span[contains(text(),"terry001")]/../..//span[text()="关联角色"]')
     # 关联集群
     bind_cluster_button = (
-        'xpath', '//*[@class="ant-table-container"]//span[text()="terry001-autotest"]/../..//span[text()="关联集群"]')
+        'xpath', '//*[@class="ant-table-container"]//span[contains(text(),"terry001")]/../..//span[text()="关联集群"]')
     # 关联角色 test 复选框
     one_role_checkbox = ('xpath', '//td[@title="test"]/..//input')
     # 角色全选框 checkbox
@@ -52,6 +54,14 @@ class UserManagementPage(KeyWords):
     all_miners_checkbox = ('xpath', '//th[@title="集群"]/..//input')
     # 编辑按钮
     edit_button = ('xpath', '//span[text()="编 辑"]')
+    # 输入用户名搜索框
+    search_input = ('xpath', '//label[@title="用户"]/../..//input')
+    # 搜索按钮 //form/div[2]/div[2]/div/div/span/span
+    search_button = ('xpath', '//form/div[2]/div[2]/div/div/span/span')
+    # 所属客户div 输入框
+    search_customer = ('xpath', '//form/div[1]//div[@class="ant-select-selector"]')
+    # 下拉div选项
+    div_select = ('css', 'div.ant-select-item-option-content')
 
     def add_user(self, username, chinesename, phone, email, is_leader="False", is_approve="False", is_enable="True"):
         self.click_navigation_bar("系统设置")
@@ -95,7 +105,6 @@ class UserManagementPage(KeyWords):
     # 编辑用户信息
     def edit_userinfo(self, username, chinesename, phone, email):
         self.check_userinfo()
-        self.wait(1)
         self.click_element(*self.edit_button)
         self.input_text(*self.username_input, username)
         self.input_text(*self.chinesename_input, chinesename)
@@ -146,3 +155,37 @@ class UserManagementPage(KeyWords):
             self.click_element(*self.confirm_button)
         else:
             self.click_element(*self.cancel_button)
+
+    # 输入用户名搜索用户，不支持模糊匹配
+    def search_by_username(self, name=None):
+        self.click_navigation_bar("系统设置")
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("用户")
+        self.input_text(*self.search_input, name)
+        self.click_element(*self.search_button)
+        self.wait(2)
+
+    def search_by_customer(self):
+        self.click_navigation_bar("系统设置")
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("用户")
+        self.click_element(*self.search_customer)
+        els = self.locators(*self.div_select)
+        self.click_elements(*self.div_select, random.randint(0, len(els) - 1))
+        self.wait()
+
+    def clear_input(self):
+        self.driver.refresh()
+        self.clear(*self.search_input)
+        self.click_element(*self.search_button)
+    def search(self,username=None, by_username=True, by_customer=True):
+        if by_username and not by_customer:
+            self.search_by_username(username)
+            self.wait()
+        elif by_customer and not by_username:
+            self.search_by_customer()
+            self.wait()
+        elif by_username and by_customer:
+            self.search_by_username(username)
+            self.search_by_customer()
+            self.wait()

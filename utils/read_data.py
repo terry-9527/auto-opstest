@@ -4,10 +4,12 @@ from openpyxl import load_workbook
 
 ROOT_PATH = str(os.path.abspath(os.getcwd()).split('auto-opstest')[0]) + "auto-opstest"
 
+
 class readData():
     """
     封账读取数据的方法
     """
+
     def read_config(self, section, option, filename=None):
         """
         读取配置文件，返回对应的配置值
@@ -66,8 +68,8 @@ class readData():
                 cases.append(list1)
         return cases
 
-    # Excel写入数据
-    def write_excel(self, filename, case_id=None, testresult=None):
+    # Excel写入数据 写入测试结果、写入失败的原因
+    def write_excel(self, filename, case_id=None, testresult=None, reason=None):
         file_path = os.path.join(ROOT_PATH, "./testdatas", filename)
         workbook = load_workbook(file_path)
         sheetname = workbook.sheetnames  # 获取工作表名称
@@ -83,7 +85,8 @@ class readData():
                 i += 1
                 break
             i += 1
-        sheet.cell(i, sheet.max_column).value = testresult
+        sheet.cell(i, sheet.max_column - 1).value = testresult  # 写入测试的结果
+        sheet.cell(i, sheet.max_column).value = reason  # 写入失败的原因
         workbook.save(file_path)
 
     def read_sqls(self, filename):

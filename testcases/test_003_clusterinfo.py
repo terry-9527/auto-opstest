@@ -9,7 +9,7 @@ from utils.read_db import MysqlDb
 @ddt
 class TestClusterInfo(BasePage):
     # 初始化数据数据
-    # MysqlDb().init_database("clusterinfo.txt")
+    MysqlDb().init_database("clusterinfo.txt")
 
     cases = readData().read_excel("新建集群信息", "clusterinfo.xlsx")
 
@@ -23,14 +23,14 @@ class TestClusterInfo(BasePage):
     cases = readData().read_excel("编辑集群信息", "clusterinfo.xlsx")
 
     @data(*cases)
-    @unittest.skip("跳过，进行调试")
+    # @unittest.skip("跳过，进行调试")
     def test_002_edit_cluster(self, args):
         page = ClusterInfoPage(self.driver)
         page.edit_clusterinfo(args[2]['miner_id'], args[2]['custemor'], args[2]['machineroom'], args[2]['domain'],
                               args[2]['size'], args[2]['comment'], args[2]['is_save'])
 
-    @unittest.skip("跳过，进行调试")
-    def test_bind_person_liabel(self):
+    # @unittest.skip("跳过，进行调试")
+    def test_003_bind_person_liabel(self):
         page = ClusterInfoPage(self.driver)
         page.bind_person_liabel()
         page.bind_person_liabel(state="all")
