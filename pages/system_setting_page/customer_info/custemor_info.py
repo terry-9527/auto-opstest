@@ -36,20 +36,26 @@ class CustemorPage(KeyWords):
 
 
     def new_custemorinfo(self, name, comment):
-        self.click_element(*self.system_setting)
-        self.click_element(*self.machineroom_info)
+        self.click_navigation_bar("系统设置")
+        self.click_navigation_bar("客户信息")
         self.click_element(*self.new_custemor)
         self.input_text(*self.name_input, name)
         self.input_text(*self.comment_input, comment)
         self.click_element(*self.confirm_button)
 
     def edit_custemor(self, name, comment):
-        self.click_element(*self.system_setting)
-        self.click_element(*self.machineroom_info)
+        self.click_navigation_bar("系统设置")
+        self.click_navigation_bar("客户信息")
         self.click_elements(*self.edit_operation,list_number=1)
         self.input_text(*self.edit_customer_info, name)
         self.input_text(*self.edit_notes, comment)
         self.click_element(*self.confirm1_button)
 
+    def delete_name(self):
+        self.click_navigation_bar("系统设置")
+        self.click_navigation_bar("客户信息")
+        self.click_elements(*self.delete_operation,list_number=1)
+        self.wait(1)
+        self.click_element(*self.confirm2_button)
 
 
