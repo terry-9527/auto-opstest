@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9b29f501-708f-40a9-9fb4-72b423777082" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/common/check_point.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/system_setting_page/approval_process/approval_process_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/system_setting_page/security_policy/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/system_setting_page/security_policy/security_setting_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/system_setting_page/user_management/role/role_management_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testcases/test_004_rolemanagement.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testcases/test_005_securitysetting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testcases/test_006_approvalprocess.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testdatas/approvalprocess.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testdatas/usermanagement.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testdatas/usermanagement.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/base_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/keywords.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/keywords.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/runmain.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/runmain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/system_setting_page/cluster_info/cluster_info_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/system_setting_page/user_management/user/user_management_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_001_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/_test_001_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_002_machineroominfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_002_machineroominfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_003_clusterinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_003_clusterinfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testcases/test_004_usermanagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_004_usermanagement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testdatas/clusterinfo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testdatas/clusterinfo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testdatas/clusterinfo.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/testdatas/clusterinfo.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testdatas/machineroominfo.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/read_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/read_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/read_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/read_db.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>

@@ -5,6 +5,7 @@ from openpyxl import load_workbook
 ROOT_PATH = str(os.path.abspath(os.getcwd()).split('jieshou')[0]) + "jieshou"
 
 
+
 class readData():
     """
     封账读取数据的方法
@@ -68,8 +69,8 @@ class readData():
                 cases.append(list1)
         return cases
 
-    # Excel写入数据
-    def write_excel(self, filename, case_id=None, testresult=None):
+    # Excel写入数据 写入测试结果、写入失败的原因
+    def write_excel(self, filename, case_id=None, testresult=None, reason=None):
         file_path = os.path.join(ROOT_PATH, "./testdatas", filename)
         workbook = load_workbook(file_path)
         sheetname = workbook.sheetnames  # 获取工作表名称
@@ -85,7 +86,8 @@ class readData():
                 i += 1
                 break
             i += 1
-        sheet.cell(i, sheet.max_column).value = testresult
+        sheet.cell(i, sheet.max_column - 1).value = testresult  # 写入测试的结果
+        sheet.cell(i, sheet.max_column).value = reason  # 写入失败的原因
         workbook.save(file_path)
 
     def read_sqls(self, filename):
@@ -107,5 +109,5 @@ if __name__ == '__main__':
     # print(datas)
     # data = read.read_config("publicCloud", "ssh_port", "config.ini")
     # print(data)
-    data = read.read_config("publicCloud", "host")
+    data = read.read_config("publicCloud", "host", filename="config12.ini")
     print(data)
