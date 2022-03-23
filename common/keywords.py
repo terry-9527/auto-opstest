@@ -12,7 +12,6 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-
 # 初始化浏览器，若传入的浏览器驱动存在，则启动对应的浏览器，否则默认启动谷歌浏览器
 
 # def init_driver(driver_type):
@@ -23,28 +22,15 @@ from selenium.webdriver.common.keys import Keys
 #         print("输入的浏览器驱动不可用，正在为您启动Google浏览器", e)
 #         driver = webdriver.Chrome()
 #         return driver
-# 手机号码输入框
-from utils.read_db import MysqlDb
-
-phone = ('xpath', "//input[@placeholder='请输入手机号']")
-# 密码输入框
-password = ('xpath', "//input[@placeholder='请输入密码']")
-# 验证码输入框
-code_input = ('xpath', "//input[@placeholder='请输入验证码']")
-# 发送验证码按钮
-send_button = ('xpath', "//button[@type='button']")
-# 登陆按钮
-login_button = ('xpath', "//button[@type='submit']")
 
 
 class KeyWords():
 
     def __init__(self, driver):
         self.driver = driver
-        self.driver.get("https://opstest.arsyun.com")
-        self.driver.implicitly_wait(10)
-        self.driver.maximize_window()
-        # self.login("18276762767", "aa123456")
+        # self.driver.get("https://opstest.arsyun.com")
+        # self.driver.implicitly_wait(10)
+        # self.driver.maximize_window()
 
     def click_navigation_bar(self, name):
         main_menu_navigation_bar = {
@@ -84,6 +70,10 @@ class KeyWords():
         """
         self.click_element(*input_path)
         self.click_elements(*div_select, list_number=number)
+
+    def click_span_button(self, text):
+        xpath = f"//span[text()=\'{text}\']"
+        self.click_element(By.XPATH, xpath)
 
     # 打开浏览器
     def open_browser(self, url):
@@ -154,9 +144,18 @@ class KeyWords():
             print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
 
     # 输入内容：input_text
-    def input_text(self, locator_type, location, content):
-        self.clear(locator_type, location)
-        self.locator(locator_type, location).send_keys(content)
+    def input_text(self, locator_type=None, location=None, content=None, text=None):
+        if not text:
+            self.clear(locator_type, location)
+            self.locator(locator_type, location).send_keys(content)
+        else:
+            xpath = f"//label[@title=\'{text}\']/../..//input"
+            self.clear(By.XPATH, xpath)
+            self.locator(By.XPATH, xpath).send_keys(content)
+
+    def click_delete_btn(self, locator_type, location, times=1):
+        for i in range(times):
+            self.locator(locator_type, location).send_keys(Keys.DELETE)
 
     # 清除输入框
     def clear(self, locator_type, location):
@@ -189,23 +188,39 @@ class KeyWords():
         self.click_element('xpath', "//button[@type='submit']")
 
     # 设置等待时间
-    def wait(self, second):
+    def wait(self, second=1):
         time.sleep(second)
 
     # 关闭浏览器
     def close_browser(self):
         self.driver.quit()
 
+    # 断言方法类
+    def text_assert_equal(self, expected, location=None):
+        # //span[text()="编辑集群成功"] 文本默认的定位方式
+        if not location:
+            try:
+                xpath = f"//span[text()=\'{expected}\']"
+                self.actual = self.locator(By.XPATH, xpath).text
+            except Exception as e:
+                print("获取实际结果失败：{0}".format(e))
+        else:
+            try:
+                self.actual = self.locator(*location).text
+            except Exception as e:
+                print("获取实际结果失败：{0}".format(e))
+        try:
+            if expected == self.actual:
+                print("结果对比相等====>>预期结果 == 实际结果 ===>> {0} == {1}".format(expected, self.actual))
+            else:
+
+                print("结果对比失败====>>预期结果 != 实际结果 ===>> {0} != {1}".format(expected, self.actual))
+                raise Exception("结果断言失败，用例执行不通过")
+        except Exception as e:
+            print("结果对比异常失败====>>{0}".format(e))
+
 
 if __name__ == '__main__':
     url = "https://www.baidu.com"
     driver = webdriver.Chrome()
     kd = KeyWords(driver)
-    kd.open_browser(url)
-    kd.input_text('name', 'wd', '倚天屠龙记')
-    kd.click_element('id', 'su')
-    kd.wait(2)
-    kd.clear('name', 'wd')
-    kd.wait(2)
-    kd.close_browser()
-    print("aaaaaaaaaaaaaa")

@@ -26,17 +26,17 @@ class TestUserManagement(BasePage):
         self.page = UserManagementPage(self.driver)
         self.page.add_user(username, chinesename, phone, email, is_leader, is_approve, is_enable)
 
-    @unittest.skip("跳过")
+    # @unittest.skip("跳过")
     def test_002_check_userino(self):
         self.page = UserManagementPage(self.driver)
         self.page.check_userinfo()
 
-    @unittest.skip("跳过")
+    # @unittest.skip("跳过")
     def test_003_bind_role(self):
         self.page = UserManagementPage(self.driver)
         self.page.bind_role()
 
-    @unittest.skip("跳过")
+    # @unittest.skip("跳过")
     def test_004_bind_miner(self):
         self.page = UserManagementPage(self.driver)
         # self.page.bind_miner()
@@ -45,6 +45,7 @@ class TestUserManagement(BasePage):
 
     cases = readData().read_excel("edituser", 'usermanagement.xlsx')
     @data(*cases)
+    # @unittest.skip("跳过")
     def test_005_edit_userinfo(self,args):
         username = args[2]['username']
         chinesename = args[2]['chinesename']
@@ -52,6 +53,19 @@ class TestUserManagement(BasePage):
         email = args[2]['email']
         self.page = UserManagementPage(self.driver)
         self.page.edit_userinfo(username, chinesename, phone, email)
+
+
+    def test_006_search_userinfo(self):
+        self.page = UserManagementPage(self.driver)
+        self.page.search("terry001-modify",by_username=True,by_customer=True)
+        self.page.clear_input()
+        self.page.search("terry001-modify",by_username=True,by_customer=False)
+        self.page.clear_input()
+        self.page.search("terry001-modify",by_username=False,by_customer=True)
+
+
+
+
 
 
 if __name__ == '__main__':

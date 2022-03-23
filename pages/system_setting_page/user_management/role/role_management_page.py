@@ -89,19 +89,17 @@ class RoleManagementPage(KeyWords):
         checkboxs = self.locators(*self.checkbox)
         # print(len(checkboxs))
         for i in range(len(checkboxs)-2):
-            if checkboxs[i].is_selected():
-                continue
-            checkboxs[i].click()
+            if not checkboxs[i].is_selected():
+                 checkboxs[i].click()
         # 拖动到页面最下端的元素
         target = self.locator(*self.last_name)
         self.driver.execute_script("arguments[0].scrollIntoView();", target)
         self.wait(1)
         checkboxs = self.locators(*self.checkbox)
         # print(len(checkboxs))
-        for i in range(17,25):
-            if checkboxs[i].is_selected():
-                continue
-            checkboxs[i].click()
+        for i in range(-8,0):
+            if not checkboxs[i].is_selected():
+                checkboxs[i].click()
         if is_save:
             self.click_element(*self.save_button)
             self.wait(1)
