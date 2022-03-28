@@ -13,8 +13,7 @@ class BasePage(unittest.TestCase):
         cls.driver.maximize_window()
         cls.driver.implicitly_wait(10)
         # cls.kd.login("18276762767", "aa123456")
-        cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJ1c2VyX25hbWUiOiJGaWRlIiwiYnVmZmVyX3RpbWUiOjg2NDAwLCJleHAiOjE2NDg2MjM0NDYsImlzcyI6ImFyc1B1YmxpYyIsIm5iZiI6MTY0ODAxNzY0Nn0.HtJ8b5k0smpSe9pFVUKEsGD7Nkj9KYndR5AOkdi7I2g"})
-        # cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX25hbWUiOiJzdXBlciBhZG1pbmlzdGF0b3IiLCJidWZmZXJfdGltZSI6ODY0MDAsImV4cCI6MTY0ODYxMTU0OSwiaXNzIjoiYXJzUHVibGljIiwibmJmIjoxNjQ4MDA1NzQ5fQ.59uHhiuwnsffQzQvyjSVxf-AklCrYLeBpjaLKFnSomU"})
+        cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJ1c2VyX25hbWUiOiJ0ZXJyeSIsImJ1ZmZlcl90aW1lIjo4NjQwMCwiZXhwIjoxNjQ5MDMzODkxLCJpc3MiOiJhcnNQdWJsaWMiLCJuYmYiOjE2NDg0MjgwOTF9.sOIhEcHMAVKacR6DRRzoQjfQizZoNWxjfuvozTpSsXI"})
         cls.driver.get("https://opstest.arsyun.com")
 
     def setUp(self):

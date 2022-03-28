@@ -41,7 +41,8 @@ class runTestCase:
 if __name__ == "__main__":
     run = runTestCase()
     # case = run.load_all_case()
-    # case = run.load_all_case(filename="test001.py")
+    case = run.load_all_case(filename="test_004_rolemanagement.py")
+    print(case)
     # suite = unittest.TestSuite(case)
     # runner = unittest.TextTestRunner()
-    run.run_all_case("test_004_rolemanagement.py")
+    # run.run_all_case("test_004_rolemanagement.py")
