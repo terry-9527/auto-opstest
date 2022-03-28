@@ -29,8 +29,6 @@ class TestRoleManagement(BasePage):
         self.page = RoleManagementPage(self.driver)
         self.page.setting_role()
 
-
-
     @unittest.skip("跳过")
     def test_004_delete_role(self):
         self.page = RoleManagementPage(self.driver)
@@ -47,13 +45,5 @@ class TestRoleManagement(BasePage):
         self.page.add_role(args[2]['name'], args[2]['comment'], args[2]['is_save'])
 
 
-
-
-
-
-
 if __name__ == '__main__':
-    suite = unittest.TestSuite()
-    unittest.TestLoader().loadTestsFromTestCase(TestRoleManagement)
-    runner = unittest.TextTestRunner()
-    runner.run(suite)
+    unittest.main()

@@ -32,6 +32,15 @@ class CustemorPage(KeyWords):
     # 开始执行
     start_execution = ('xpath', '//span[text()="开始执行"]')
 
+    # 工作台
+    workbench_info = ('xpatg', '//span[text()="工作台"]')
+    # 主机管理
+    host_info = ('xpath', '//span[text()="主机管理"]')
+    # 点击否
+    no_info = ('css_selector', '.edit-icon-btn')
+    # 点击
+    # jia_hao = ('xpath', '//button[@class="ant-btn ant-dropdown-trigger"]')
+    jia_hao = ('css_selector', '.ant-dropdown-trigger')
 
     def new_commandinfo(self):
         self.click_navigation_bar("作业管理")
@@ -77,5 +86,11 @@ class CustemorPage(KeyWords):
             self.click_elements(*self.click_host, random.randint(0, 7))
         # 开始执行
         self.click_element(*self.start_execution)
+
+
+    def host_management(self):
+        self.click_navigation_bar("工作台")
+        self.click_navigation_bar("主机管理")
+        self.click_elements(*self.jia_hao,list_number=1)
 
 
