@@ -7,9 +7,12 @@
 """
 import unittest
 
+from ddt import data,ddt
+
+from pages.system_setting_page.machineroom_info.machineroom_info_page import MachineRoomInfoPage
 from utils.read_data import readData
 
-
+@ddt
 class CheckPoint(unittest.TestCase):
 
     def __init__(self,  methodName='runTest'):

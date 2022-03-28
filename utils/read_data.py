@@ -1,5 +1,6 @@
 import configparser
-import yaml, os
+import yaml
+import os
 from openpyxl import load_workbook
 
 ROOT_PATH = str(os.path.abspath(os.getcwd()).split('auto-opstest')[0]) + "auto-opstest"

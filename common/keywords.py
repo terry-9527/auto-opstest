@@ -12,6 +12,9 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+
+
 # 初始化浏览器，若传入的浏览器驱动存在，则启动对应的浏览器，否则默认启动谷歌浏览器
 
 # def init_driver(driver_type):
@@ -60,7 +63,7 @@ class KeyWords():
             if key == name:
                 self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
 
-    def div_selector(self, input_path, div_select, number=0):
+    def div_selector(self, input_path, div_select, number=0, name=None):
         """
         div下拉框处理
         :param input_path: 下拉输入框定位信息，('xpath', '定位信息')
@@ -69,7 +72,15 @@ class KeyWords():
         :return:
         """
         self.click_element(*input_path)
-        self.click_elements(*div_select, list_number=number)
+        name_list = []
+        elements = self.locators(*div_select)
+        for el in elements:
+            name_list.append(el.text)
+        if name:
+            self.click_elements(*div_select, list_number=name_list.index(name))
+        else:
+            self.click_elements(*div_select, list_number=number)
+        return name_list
 
     def click_span_button(self, text):
         xpath = f"//span[text()=\'{text}\']"
@@ -173,6 +184,10 @@ class KeyWords():
 
     def click_elements(self, locator_type, location, list_number=1):
         self.locators(locator_type, location)[list_number].click()
+
+    def move(self, locator_type, location):
+        el = self.locator(locator_type, location)
+        ActionChains(self.driver).move_to_element(el).perform()
 
     # 获取元素的文本
     def get_text(self, locator_type, location):
