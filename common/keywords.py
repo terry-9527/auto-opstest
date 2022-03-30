@@ -46,7 +46,7 @@ class KeyWords():
             "作业管理": 6,
             "命令执行": 7,
             "任务管理": 8,
-            "公共模板": 9,
+            " 公共模板": 9,
             "公共脚本": 10,
             "系统设置": 11,
             "机房信息": 12,
@@ -63,7 +63,7 @@ class KeyWords():
             if key == name:
                 self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
 
-    def div_selector(self, input_path, div_select, number=0, name=None):
+    def div_selector(self, input_path, div_select=None, number=0, name=None):
         """
         div下拉框处理
         :param input_path: 下拉输入框定位信息，('xpath', '定位信息')
@@ -73,9 +73,13 @@ class KeyWords():
         """
         self.click_element(*input_path)
         name_list = []
+        if not div_select:
+            div_select = ("css", "div.ant-select-item-option-content")
         elements = self.locators(*div_select)
+        # print(elements)
         for el in elements:
-            name_list.append(el.text)
+            name_list.append(el.get_attribute('textContent'))
+        # print(name_list)
         if name:
             self.click_elements(*div_select, list_number=name_list.index(name))
         else:

@@ -1,0 +1,10 @@
+# 查看内存yaml脚本
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: "查询内存"
+      shell: free -h
+      register: check
+    - name: show
+      debug: var=check.stdout verbosity=0
