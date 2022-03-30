@@ -63,7 +63,7 @@ class KeyWords():
             if key == name:
                 self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
 
-    def div_selector(self, input_path, div_select, number=0, name=None):
+    def div_selector(self, input_path, div_select=None, number=0, name=None):
         """
         div下拉框处理
         :param input_path: 下拉输入框定位信息，('xpath', '定位信息')
@@ -73,9 +73,13 @@ class KeyWords():
         """
         self.click_element(*input_path)
         name_list = []
+        if not div_select:
+            div_select = ("css", "div.ant-select-item-option-content")
         elements = self.locators(*div_select)
+        # print(elements)
         for el in elements:
-            name_list.append(el.text)
+            name_list.append(el.get_attribute('textContent'))
+        # print(name_list)
         if name:
             self.click_elements(*div_select, list_number=name_list.index(name))
         else:
@@ -84,6 +88,7 @@ class KeyWords():
 
     def click_span_button(self, text):
         xpath = f"//span[text()=\'{text}\']"
+        # xpath = f"//span[text()=\'{text}\'/..]"
         self.click_element(By.XPATH, xpath)
 
     # 打开浏览器
@@ -155,13 +160,25 @@ class KeyWords():
             print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
 
     # 输入内容：input_text
-    def input_text(self, locator_type=None, location=None, content=None, text=None):
+    def input_text(self, locator_type=None, location=None, content=None, text=None, type="input"):
+        # 处理普通的输入框
         if not text:
             self.clear(locator_type, location)
             self.locator(locator_type, location).send_keys(content)
-        else:
+        # 处理有文字标题说明的input输入框
+        elif type == "input":
             xpath = f"//label[@title=\'{text}\']/../..//input"
             self.clear(By.XPATH, xpath)
+            self.locator(By.XPATH, xpath).send_keys(content)
+        # 处理属性是textarea文本输入框
+        elif type == "textarea":
+            xpath = f"//label[@title=\'{text}\']/../..//textarea"
+            self.clear(By.XPATH, xpath)
+            self.locator(By.XPATH, xpath).send_keys(content)
+        # 处理输入中有占位文字的
+        elif type == "placeholder":
+            xpath = f"//input[@placeholder='{text}']"
+            # self.clear(By.XPATH, xpath)
             self.locator(By.XPATH, xpath).send_keys(content)
 
     def click_delete_btn(self, locator_type, location, times=1):
