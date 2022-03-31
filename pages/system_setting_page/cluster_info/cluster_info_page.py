@@ -44,101 +44,55 @@ class ClusterInfoPage(KeyWords):
     #
 
 
-
-    def div_list(self):
-        self.custemors = MysqlDb().query("select count(*) from ars_public_cloud.t_client where deleted_at is NULL")[0][0]
-        self.machinerooms = MysqlDb().query("select count(*) from t_machine_room")[0][0]
-        self.total = self.custemors +self. machinerooms + 2
-        print(self.custemors, self.machinerooms, self.total)
-        return (self.custemors, self.machinerooms, self.total)
-
-    # div下拉菜单选择
-    # def div_selector(self, input_path, number=0):
-    #     self.click_element(*input_path)
-    #     self.click_elements(*self.div_select, number)
-
-    # 新建集群信息
-    # def (self, clusterid, domain=None, comment=None, is_save=True):
-    #     self.click_element(*self.system_setting)
-    #     self.click_element(*self.cluster_info)
-    #     self.click_element(*self.new_cluster_button)
-    #     self.wait(1)
-    #     self.input_text(*self.clusterid_input, clusterid)
-    #     # 选择所属客户下拉框
-    #     self.list_num = self.div_list()
-    #     self.wait(1)
-    #     self.div_selector(self.client_input, self.div_select, random.randint(0, self.list_num[0] - 1))
-    #     self.wait(1)
-    #     self.div_selector(self.machineroom_input, self.div_select, random.randint(self.list_num[0], self.list_num[2] - 3))
-    #     self.wait(1)
-    #     self.input_text(*self.domain_input, domain)
-    #     self.wait(1)
-    #     self.div_selector(self.sector_size_input, self.div_select, random.randint(self.list_num[2] - 2, self.list_num[2] - 1))
-    #     self.wait(1)
-    #     self.input_text(*self.comment_input, comment)
-    #     if is_save:
-    #         self.click_element(*self.confirm_button)
-    #     self.click_element(*self.cancel_button)
-
-
-    def new_clusterinfo(self, clusterid, custemor=None, machineroom=None, domain=None, size=None, comment=None, is_save=True):
+    def new_clusterinfo(self, clusterid, customer=None, machineroom=None, domain=None, size=None, comment=None, is_save=True):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("集群信息")
         self.click_element(*self.new_cluster_button)
         self.input_text(*self.clusterid_input, clusterid)
         # 选择所属客户下拉框
-        self.list_num = self.div_list()
-        self.wait(1)
-        if custemor:
-            self.div_selector(self.client_input, self.div_select, random.randint(0, self.list_num[0] - 1))
-            self.wait(1)
+        if customer:
+            self.div_selector(self.client_input, self.div_select, name=customer)
         else:
             self.click_element(*self.client_input)
         if machineroom:
-            self.div_selector(self.machineroom_input, self.div_select, random.randint(self.list_num[0], self.list_num[2] - 3))
-            self.wait(1)
+            self.div_selector(self.machineroom_input, self.div_select, name=machineroom)
         else:
             self.click_element(*self.machineroom_input)
         if size:
-            self.div_selector(self.sector_size_input, self.div_select, random.randint(self.list_num[2] - 2, self.list_num[2] - 1))
-            self.wait(1)
+            self.div_selector(self.sector_size_input, name=size)
         else:
             self.click_element(*self.sector_size_input)
         self.input_text(*self.domain_input, domain)
-        self.wait(1)
         self.input_text(*self.comment_input, comment)
         if is_save:
+            self.wait()
             self.click_element(*self.confirm_button)
         self.click_element(*self.cancel_button)
+
     # 编辑集群信息
-    def edit_clusterinfo(self, clusterid, custemor=None, machineroom=None, domain=None, size=None, comment=None, is_save=True):
+    def edit_clusterinfo(self, clusterid, customer=None, machineroom=None, domain=None, size=None, comment=None, is_save=True):
         self.click_element(*self.system_setting)
         self.click_element(*self.cluster_info)
         self.click_element(*self.edit_button)
         self.wait(1)
         self.input_text(*self.clusterid_input, clusterid)
         # 选择所属客户下拉框
-        self.list_num = self.div_list()
-        self.wait(1)
-        if custemor:
-            self.div_selector(self.client_input, self.div_select, random.randint(0, self.list_num[0] - 1))
-            self.wait(1)
+        if customer:
+            self.div_selector(self.client_input, self.div_select, name=customer)
         else:
             self.click_element(*self.client_input)
         if machineroom:
-            self.div_selector(self.machineroom_input, self.div_select, random.randint(self.list_num[0], self.list_num[2] - 3))
-            self.wait(1)
+            self.div_selector(self.machineroom_input, self.div_select, name=machineroom)
         else:
             self.click_element(*self.machineroom_input)
         if size:
-            self.div_selector(self.sector_size_input, self.div_select, random.randint(self.list_num[2] - 2, self.list_num[2] - 1))
-            self.wait(1)
+            self.div_selector(self.sector_size_input, name=size)
         else:
             self.click_element(*self.sector_size_input)
         self.input_text(*self.domain_input, domain)
-        self.wait(1)
         self.input_text(*self.comment_input, comment)
         if is_save:
+            self.wait()
             self.click_element(*self.confirm_button)
         self.click_element(*self.cancel_button)
 

@@ -55,26 +55,42 @@ class readData():
         sheet = workbook[sheetname]  # 执行使用哪个工作表,根据传进来的表名称决定读取对应的数据
         rows = sheet.rows  # 取出所有行的数据
         cases = []
+        num = 1
+
         # 遍历每一行的数据
         for row in rows:
             list1 = []
-            if row[len(row) - 2].value == "True":  # 判断该条用例是否需要执行,execute列的值为True则执行，进行数据读取
+            cycle_number = 1
+            # 取出第一行执行用例execute字段
+            if num == 1:
+                for i in range(len(row)):
+                    if row[i].value == "execute":
+                        self.index = i
+                        num += 1
+            # 读取需要执行的用例，execute列值为True的代表需要执行
+            if row[self.index].value == "True":  # 判断该条用例是否需要执行,execute列的值为True则执行，进行数据读取
                 for col in row:
                     if not col.value:  # 处理空单元格，直接添加None
                         list1.append(col.value)
                     elif col.value.startswith('{') and col.value.endswith('}'):
-                        list1.append(eval(col.value))  # 获取当前行每一个单元格，单元格的内容需要用value，把str类型转化为dict类型
+                        if cycle_number == 3:
+                            list1.append(tuple(eval(col.value).items()))
+                        elif cycle_number == 2:
+                            list1.append(tuple(eval(col.value).values()))
+                        else:
+                            cycle_number += 1
+                            list1.append(eval(col.value))  # 获取当前行每一个单元格，单元格的内容需要用value，把str类型转化为dict类型
                     else:
                         list1.append(col.value)
                 cases.append(list1)
         return cases
 
     # Excel写入数据 写入测试结果、写入失败的原因
-    def write_excel(self, filename, case_id=None, testresult=None, reason=None):
+    def write_excel(self, filename, sheetname, case_id=None, testresult=None, reason=None):
         file_path = os.path.join(ROOT_PATH, "./testdatas", filename)
         workbook = load_workbook(file_path)
-        sheetname = workbook.sheetnames  # 获取工作表名称
-        sheet = workbook[sheetname[0]]  # 执行使用哪个工作表
+        # sheets = workbook.sheetnames  # 获取所有工作表名称
+        sheet = workbook[sheetname]  # 执行使用哪个工作表
         cols = sheet.columns
         col = [col for col in cols]
         list1 = []
@@ -105,9 +121,9 @@ if __name__ == '__main__':
     read = readData()
     # sqls = read.read_sqls('systemsetting.txt')
     # print(sqls)
-    # datas = read.read_excel("login", "logincase.xlsx")
-    # print(datas)
-    # data = read.read_config("publicCloud", "ssh_port", "config.ini")
+    datas = read.read_excel("编辑集群信息", "clusterinfo.xlsx")
+    print(datas)
+    # # data = read.read_config("publicCloud", "ssh_port", "config.ini")
+    # # print(data)
+    # data = read.read_config("publicCloud", "host", filename="config12.ini")
     # print(data)
-    data = read.read_config("publicCloud", "host", filename="config12.ini")
-    print(data)

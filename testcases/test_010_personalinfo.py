@@ -17,7 +17,7 @@ class TestPersonalInfo(BasePage):
 
     def test_002_search_approval_process(self):
         self.page = MyApprovalPage(self.driver)
-        self.page.search_approval_process()
+        self.page.search_approval_process(text="f060975")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

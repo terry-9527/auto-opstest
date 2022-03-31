@@ -13,7 +13,7 @@ class BasePage(unittest.TestCase):
         cls.driver.maximize_window()
         cls.driver.implicitly_wait(10)
         # cls.kd.login("18276762767", "aa123456")
-        cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJ1c2VyX25hbWUiOiJ0ZXJyeSIsImJ1ZmZlcl90aW1lIjo4NjQwMCwiZXhwIjoxNjQ5MTM5NTE4LCJpc3MiOiJhcnNQdWJsaWMiLCJuYmYiOjE2NDg1MzM3MTh9.dw2XjXqCqQFCknOKejZUb45YDvr_8wL7klJqq6EPySk"})
+        cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJ1c2VyX25hbWUiOiJ0ZXJyeSIsImJ1ZmZlcl90aW1lIjo4NjQwMCwiZXhwIjoxNjQ5MjExMTE4LCJpc3MiOiJhcnNQdWJsaWMiLCJuYmYiOjE2NDg2MDUzMTh9.eDFhGkdzOwmKK5AZLoW0fVBROQPMVhvUlPd1TtCxAQI"})
         cls.driver.get("https://opstest.arsyun.com")
 
     def setUp(self):
