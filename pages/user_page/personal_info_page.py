@@ -1,4 +1,4 @@
-from selenium.webdriver import Keys
+from selenium.webdriver.common.keys import Keys
 
 from common.keywords import KeyWords
 

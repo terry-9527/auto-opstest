@@ -14,7 +14,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
-
 # 初始化浏览器，若传入的浏览器驱动存在，则启动对应的浏览器，否则默认启动谷歌浏览器
 
 # def init_driver(driver_type):
@@ -25,6 +24,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 #         print("输入的浏览器驱动不可用，正在为您启动Google浏览器", e)
 #         driver = webdriver.Chrome()
 #         return driver
+from utils.read_data import readData
 
 
 class KeyWords():
@@ -128,7 +128,8 @@ class KeyWords():
                 element = self.driver.find_element(By.CSS_SELECTOR, location)
                 return element
         except Exception as e:
-            print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
+            # print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
+            raise e
 
     def locators(self, locator_type, location):
         try:
@@ -157,8 +158,8 @@ class KeyWords():
                 elements = self.driver.find_elements(By.CSS_SELECTOR, location)
                 return elements
         except Exception as e:
-            print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
-
+            # print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
+            raise e
     # 输入内容：input_text
     def input_text(self, locator_type=None, location=None, content=None, text=None, type="input"):
         # 处理普通的输入框
@@ -227,29 +228,55 @@ class KeyWords():
     def close_browser(self):
         self.driver.quit()
 
-    # 断言方法类
-    def text_assert_equal(self, expected, location=None):
+    # 断言普通文本text方法
+    def text_assert_equal(self, filename, sheetname, case_id, expected_tuple, location=None):
         # //span[text()="编辑集群成功"] 文本默认的定位方式
         if not location:
             try:
-                xpath = f"//span[text()=\'{expected}\']"
-                self.actual = self.locator(By.XPATH, xpath).text
+                xpath = f"//span[text()=\'{expected_tuple[0]}\']"
+                self.actual = self.locator(By.XPATH, xpath).get_attribute('textContent')
             except Exception as e:
-                print("获取实际结果失败：{0}".format(e))
+                print(f"获取实际结果失败：{e}")
+                errmsg = f"获取实际结果失败：{e}"
+                readData().write_excel(filename, sheetname, case_id, testresult="FAILED", reason=errmsg)
+                return (False, errmsg)
         else:
             try:
-                self.actual = self.locator(*location).text
+                self.actual = self.locator(By.XPATH,location).get_attribute('textContent')
             except Exception as e:
-                print("获取实际结果失败：{0}".format(e))
-        try:
-            if expected == self.actual:
-                print("结果对比相等====>>预期结果 == 实际结果 ===>> {0} == {1}".format(expected, self.actual))
-            else:
+                print(f"获取实际结果失败：{e}")
+                errmsg = f"获取实际结果失败：{e}"
+                readData().write_excel(filename, sheetname, case_id, testresult="FAILED", reason=errmsg)
+                return (False,errmsg)
+        if expected_tuple == self.actual:
+            print(f"{case_id}用例执行通过")
+            readData().write_excel(filename, sheetname, case_id, testresult="PASS")
+            return (True,)
+        else:
+            print(f"{case_id}用例结果对比失败====>>预期结果 != 实际结果 ===>> {expected_tuple} != {self.actual}")
+            errmsg = f"结果对比失败：{expected_tuple} != {self.actual}"
+            readData().write_excel(filename, sheetname, case_id, testresult="FAILED", reason=errmsg)
+            return (False, errmsg)
 
-                print("结果对比失败====>>预期结果 != 实际结果 ===>> {0} != {1}".format(expected, self.actual))
-                raise Exception("结果断言失败，用例执行不通过")
-        except Exception as e:
-            print("结果对比异常失败====>>{0}".format(e))
+    def text_assert_many_equal(self, filename, sheetname, case_id, expected_tuple, location):
+        """
+        多个文本进行断言
+        :param filename: Excel表格文件名
+        :param sheetname: 执行表的表名称
+        :param case_id:    用例的ID
+        :param expected_tuple: 预期结果
+        :param location: 对应文本的定位方式，必须才用xpath定位方式
+        :return:
+        """
+        reason_list = []
+        test_result = "PASS"
+        for i in range(len(location)):
+            result = self.text_assert_equal(filename, sheetname, case_id, expected_tuple[i], location[i])
+            if not result[0]:
+                test_result = "FAIL"
+                reason_list.append(result[1])
+        readData().write_excel(filename, sheetname, case_id, testresult=test_result, reason=str(reason_list))
+
 
 
 if __name__ == '__main__':
