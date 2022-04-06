@@ -1,6 +1,5 @@
 from common.keywords import KeyWords
-from selenium import webdriver
-
+from common.my_logger import mylogger
 
 class MachineRoomInfoPage(KeyWords):
     '''
@@ -43,32 +42,56 @@ class MachineRoomInfoPage(KeyWords):
     # 权限分配按钮css定位信息
     assign_permission_button = ('css_selector', '.ant-table-tbody>tr:nth-child(5)>td:nth-child(5)>button:nth-child(1)')
 
-    # 新建机房信息
-    def new_machineroom(self, name, address, domain=None, comment=None, state=False):
-        self.click_element(*self.system_setting)
-        self.click_element(*self.machineroom_info)
+    # 新建机房弹窗处理
+    def handle_new_machineroom_alert(self, name, address, domain=None, comment=None, checkbox=False):
+        self.click_navigation_bar("系统设置")
+        self.click_navigation_bar(" 机房信息")
         self.click_element(*self.new_button)
+        mylogger.info(f"输入机房名称：{name}")
         self.input_text(*self.roomname, name)
+        mylogger.info(f"输入机房所在地址：{address}")
         self.input_text(*self.address, address)
+        mylogger.info(f"输入域名：{domain}")
         self.input_text(*self.domain, domain)
+        mylogger.info(f"输入备注：{comment}")
         self.input_text(*self.comment,comment)
-        if state:
-            self.click_element(*self.scheduling_checkbox)
-        self.click_element(*self.confirm_button)
+        if checkbox:
+            if not self.locator(*self.scheduling_checkbox).is_selected():
+                mylogger.info("算力机是否可调度复选框未勾选")
+                self.click_element(*self.scheduling_checkbox)
+                self.wait()
+    # 新建是否保存
+    def handle_new_save(self, is_save=True):
+        if is_save:
+            mylogger.info("点进确定按钮")
+            self.click_element(*self.confirm_button)
+            self.wait()
+        else:
+            mylogger.info("点进取消按钮")
+            self.click_element(*self.cancle_button)
+
 
     # 编辑机房信息
     def endit_machineroom(self, name=None, address=None, domain=None, comment=None, state=True):
-        self.click_element(*self.system_setting)
-        self.click_element(*self.machineroom_info)
-        self.click_element(*self.edit_button)
+        mylogger.info("点击菜单栏--->系统设置")
+        self.click_navigation_bar("系统设置")
+        mylogger.info("点击菜单栏--->机房信息")
+        self.click_navigation_bar(" 机房信息")
+        self.click_element(*self.new_button)
+        mylogger.info(f"输入机房名称：{name}")
         self.input_text(*self.roomname, name)
+        mylogger.info(f"输入机房所在地址：{address}")
         self.input_text(*self.address, address)
+        mylogger.info(f"输入域名：{domain}")
         self.input_text(*self.domain, domain)
+        mylogger.info(f"输入备注：{comment}")
         self.input_text(*self.comment,comment)
         if state:
-            self.wait(2)
+            mylogger.info("点进确定按钮")
             self.click_element(*self.scheduling_checkbox)
-        self.click_element(*self.confirm_button)
+        else:
+            mylogger.info("点进取消按钮")
+            self.click_element(*self.confirm_button)
 
 
 if __name__ == "__main__":

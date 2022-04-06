@@ -14,10 +14,15 @@ class TestPersonalInfo(BasePage):
         self.page = PersonalInfoPage(self.driver)
         self.page.check_personal_info(name="terry", email="terry.wei@arsyun.com")
 
-
+    @unittest.skip
     def test_002_search_approval_process(self):
         self.page = MyApprovalPage(self.driver)
-        self.page.search_approval_process(text="f060975")
+        self.page.search_approval_process(status="审核中")
+
+    def test_003_handle_process(self):
+        self.page = MyApprovalPage(self.driver)
+        self.page.handle_approval_process()
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -13,24 +13,9 @@ filename = "hostmanagement.xlsx"
 @ddt
 class TestHostManagement(BasePage):
 
-    @classmethod
-    def setUpClass(cls):
-        # 设置Chrome浏览器profile配置项 download.default_directory：设置下载路径 profile.default_content_settings.popups：设置为 0 禁止弹出窗口
-        cls.options = webdriver.ChromeOptions()
-        cls.prefs = {'profile.default_content_settings.popups': 0,
-                     'download.default_directory': 'E:\\auto-opstest\\download'}
-        cls.options.add_experimental_option('prefs', cls.prefs)
-        cls.driver = webdriver.Chrome(chrome_options=cls.options)
-        cls.kd = KeyWords(cls.driver)
-        cls.driver.get("https://opstest.arsyun.com")
-        cls.driver.maximize_window()
-        cls.driver.implicitly_wait(10)
-        cls.driver.add_cookie({"name": "public-jwt",
-                               "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJ1c2VyX25hbWUiOiJ0ZXJyeSIsImJ1ZmZlcl90aW1lIjo4NjQwMCwiZXhwIjoxNjQ5MDMzODkxLCJpc3MiOiJhcnNQdWJsaWMiLCJuYmYiOjE2NDg0MjgwOTF9.sOIhEcHMAVKacR6DRRzoQjfQizZoNWxjfuvozTpSsXI"})
-        cls.driver.get("https://opstest.arsyun.com")
 
     # 批量导入设备信息
-    @unittest.skip
+    # @unittest.skip
     def test_001_batch_import(self):
         self.page = HostManagementPage(self.driver)
         self.page.upload_deviceinfo(filepath=r"E:\auto-opstest\testdatas\f01234.csv", import_type="批量导入",
@@ -78,7 +63,7 @@ class TestHostManagement(BasePage):
 
 
     cases = readData().read_excel("搜索", filename)
-    # @unittest.skip
+    @unittest.skip
     @data(*cases)
     def test_006_search(self, args):
         self.page = HostManagementPage(self.driver)

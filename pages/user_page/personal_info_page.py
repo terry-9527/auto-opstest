@@ -1,3 +1,5 @@
+import random
+
 from selenium.webdriver.common.keys import Keys
 
 from common.keywords import KeyWords
@@ -60,7 +62,7 @@ class MyApprovalPage(KeyWords):
         self.click_navigation_bar("首页")
         self.div_selector(user_button, div_option, name="我的审批")
         if status:
-            self.div_selector(self.status_input, self.div_select,name="审核失败")
+            self.div_selector(self.status_input, self.div_select,name=status)
         if start_time and end_time:
             self.input_text(content="2022-03-27 13:00:53", text="开始日期", type="placeholder")
             self.input_text(content="2022-03-28 13:00:53", text="结束日期", type="placeholder")
@@ -69,4 +71,30 @@ class MyApprovalPage(KeyWords):
             self.input_text(content=text, text="输入关键字进行搜索", type="placeholder")
             self.click_element(*self.search_button)
             self.wait()
+    # 去审核按钮 //span[text()="去审核"]
+    approval_button = ('xpath', '//span[text()="去审核"]')
+    # 评论输入框
+    textarea = ('xpath', '//textarea')
+
+    def handle_approval_process(self):
+        self.click_navigation_bar("首页")
+        self.div_selector(user_button, div_option, name="我的审批")
+        self.wait()
+
+        self.click_elements(*self.approval_button, 0)
+
+        self.input_text(*self.textarea,content="同意请求")
+        self.click_span_button("批 准")
+
+
+
+
+
+
+
+class MyMessagePage(KeyWords):
+    """
+    页面元素定位信息
+    """
+    pass
 

@@ -1,11 +1,11 @@
 --数据库初始化sql语句
---新建机房信息 test0001先删除，确保该名称没有被使用过
-delete from t_machine_room where name='test0001'
-delete from t_machine_room where name='test0002'
-delete from t_machine_room where name='test0003'
-delete from t_machine_room where name='test0004'
-delete from t_machine_room where name='test0006'
-delete from t_machine_room where name='rename-test0001'
+--新建机房信息 machineroom0001先删除，确保该名称没有被使用过
+delete from t_machine_room where name='machineroom0001'
+delete from t_machine_room where name='machineroom0002'
+delete from t_machine_room where name='machineroom0003'
+delete from t_machine_room where name='machineroom0004'
+delete from t_machine_room where name='machineroom0006'
+delete from t_machine_room where name='rename-machineroom0001'
 
 
 
