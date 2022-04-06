@@ -1,5 +1,9 @@
 from common.keywords import KeyWords
 from selenium import webdriver
+import requests
+
+
+
 
 
 class LoginPage(KeyWords):
@@ -18,11 +22,18 @@ class LoginPage(KeyWords):
         # 输入手机号、密码、点击获取验证码、输入手机验证码、点击登陆
         self.input_text(*self.phone, content=phone)
         self.input_text(*self.password, content=password)
-        # self.click_element(*self.send_button)
-        # self.input_text(*self.code_input, content=verifycode)
+        self.click_element(*self.send_button)
+        code = self.get_verifycode(phone)
+        self.input_text(*self.code_input, content=code)
         self.click_element(*self.login_button)
+        self.wait(8)
+
 
 if __name__ == "__main__":
     driver = webdriver.Chrome()
+    driver.get("https://opstest.arsyun.com/")
+    driver.maximize_window()
     lg = LoginPage(driver)
-    # lg.login("18276762767", "aa123456", "888888")
+    lg.login("18222223333", "ars@12345678")
+    lg.wait(8)
+    lg.close_browser()
