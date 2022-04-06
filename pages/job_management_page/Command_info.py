@@ -24,7 +24,7 @@ class CustemorPage(KeyWords):
     # 选择模板
     choice_info = ('xpath', '//span[text()="+ 选择模板"]')
     # 点击模板
-    check_model = ('css_selector', 'input.ant-radio-input')
+    check_model = (' ', 'input.ant-radio-input')
     # 确认模板
     confirm_model = ('xpath', '//span[text()="确 认"]')
     # 点击取消
@@ -87,10 +87,5 @@ class CustemorPage(KeyWords):
         # 开始执行
         self.click_element(*self.start_execution)
 
-
-    def host_management(self):
-        self.click_navigation_bar("工作台")
-        self.click_navigation_bar("主机管理")
-        self.click_elements(*self.jia_hao,list_number=1)
 
 

@@ -3,7 +3,7 @@ import yaml
 import os
 from openpyxl import load_workbook
 
-ROOT_PATH = str(os.path.abspath(os.getcwd()).split('jieshou')[0]) + "jieshou"
+ROOT_PATH = str(os.path.abspath(os.getcwd()).split('yunweixitong')[0]) + "yunweixitong"
 
 
 

@@ -21,7 +21,7 @@ class TestCustemorInfo(BasePage):
 
     file = readData().read_excel("编辑客户信息","custemorinfo.xlsx")
     @data(*file)
-    #@unittest.skip('忽略')
+    # @unittest.skip('忽略')
     def test_002_edit_custemorinfo(self,args):
         print("用例id:{0},用例标题:{1},输入参数:{2}".format(args[0], args[1], args[2]))
         page = CustemorPage(self.driver)

@@ -1,5 +1,3 @@
 --数据库初始化sql语句
 --新建客户信息 先删除，确保该名称没有被使用过
-delete from t_client where name='test001'
-delete from t_client where name='test002'
-delete from t_client where name='test0003'
+delete from t_public_template_type where name='测试'

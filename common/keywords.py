@@ -45,9 +45,9 @@ class KeyWords():
             "故障记录": 5,
             "作业管理": 6,
             "命令执行": 7,
-            "任务管理": 8,
+            " 任务管理": 8,
             " 公共模板": 9,
-            "公共脚本": 10,
+            " 公共脚本": 10,
             "系统设置": 11,
             "机房信息": 12,
             "集群信息": 13,
@@ -88,6 +88,7 @@ class KeyWords():
 
     def click_span_button(self, text):
         xpath = f"//span[text()=\'{text}\']"
+        # xpath = f"//span[text()=\'{text}\'/..]"
         self.click_element(By.XPATH, xpath)
 
     # 打开浏览器
@@ -159,13 +160,25 @@ class KeyWords():
             print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
 
     # 输入内容：input_text
-    def input_text(self, locator_type=None, location=None, content=None, text=None):
+    def input_text(self, locator_type=None, location=None, content=None, text=None, type="input"):
+        # 处理普通的输入框
         if not text:
             self.clear(locator_type, location)
             self.locator(locator_type, location).send_keys(content)
-        else:
+        # 处理有文字标题说明的input输入框
+        elif type == "input":
             xpath = f"//label[@title=\'{text}\']/../..//input"
             self.clear(By.XPATH, xpath)
+            self.locator(By.XPATH, xpath).send_keys(content)
+        # 处理属性是textarea文本输入框
+        elif type == "textarea":
+            xpath = f"//label[@title=\'{text}\']/../..//textarea"
+            self.clear(By.XPATH, xpath)
+            self.locator(By.XPATH, xpath).send_keys(content)
+        # 处理输入中有占位文字的
+        elif type == "placeholder":
+            xpath = f"//input[@placeholder='{text}']"
+            # self.clear(By.XPATH, xpath)
             self.locator(By.XPATH, xpath).send_keys(content)
 
     def click_delete_btn(self, locator_type, location, times=1):

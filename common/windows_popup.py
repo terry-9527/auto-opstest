@@ -30,5 +30,5 @@ class WinAuto:
 
 if __name__ == '__main__':
 	window = WinAuto("#32770","打开")
-	window.file_input("ttttt_test")
+	window.file_input(r"C:\Users\Administrator\Desktop\text.yaml")
 	window.open_button_click()
