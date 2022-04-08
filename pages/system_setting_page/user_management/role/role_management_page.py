@@ -1,4 +1,5 @@
 from common.keywords import KeyWords
+from common.my_logger import mylogger
 
 
 class RoleManagementPage(KeyWords):
@@ -12,94 +13,111 @@ class RoleManagementPage(KeyWords):
     # 备注输入框
     comment_input = ('xpath', '//label[@title="备注"]/../..//input')
     # 所属客户div下拉输入框
-    customer_input = ('xpath', '//label[@title="所属客户"]/../..//input')
-    # div 下拉框
-    div_select = ('css', 'div.ant-select-item-option-content')
-    # 确定按钮
-    confirm_button = ('xpath', '//span[text()="确 定"]')
-    # 取消按钮
-    cancel_button = ('xpath', '//span[text()="取 消"]')
-    # 编辑按钮 test001角色
-    edit_button = ('xpath', '//*[@class="ant-table-container"]//span[text()="test001"]/../..//span[text()="编辑"]')
-    # 删除按钮 test001
-    delete_button = ('xpath', '//*[@class="ant-table-container"]//span[text()="test001"]/../..//span[text()="删除"]')
-    # 删除弹窗确定按钮
-    confirm_delete_button = ('xpath', '//div[@class="ant-modal-confirm-btns"]//span[text()="确 定"]')
-    # 删除弹窗取消按钮
-    cancel_delete_button = ('xpath', '//div[@class="ant-modal-confirm-btns"]//span[text()="取 消"]')
+    customer_input = ('xpath', '//form/div[3]/div[2]/div[1]/div/div/div')
+    # 编辑按钮 role001角色
+    edit_button = ('xpath', '//span[contains(text(),"role001")]/../../td[6]//button[1]')
+    # 删除按钮 role003
+    # delete_button = ('xpath', '//span[contains(text(),"role003")]/../../td[6]//button[2]')
+
+
     # 设置角色权限按钮
-    role_setting_button = ('xpath', '//*[@class="ant-table-container"]//span[text()="test001"]/../..//a[text()="设置"]')
+    # role_setting_button = ('xpath', '//span[contains(text(),"role001")]/../../td[3]//a')
     # 复选框
-    checkbox = ('xpath', '//main/div[3]//span[@class="ant-tree-checkbox-inner"]')
+    # checkbox = ('xpath', '//main/div[3]//span[@class="ant-tree-checkbox-inner"]')
+    checkbox = ('css', 'span.ant-tree-title')
     # 保存按钮
     save_button = ('xpath', '//span[text()="保 存"]')
     # 最后一个权限名称 下单设置(页面)
     last_name = ('xpath', '//*[@id="app"]/div/main/div[3]/div/div/div/div[3]/div[1]/div/div/div[17]/span[4]/span')
 
-
-
-    def add_role(self, role_name, comment, is_save=True):
+    def handle_add_role_alert(self, name, comment, customer):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("角色")
-        self.click_element(*self.new_role_button)
-        self.input_text(*self.role_input, role_name)
-        self.input_text(*self.comment_input, comment)
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("系统设置")
+        self.click_span_button("新建角色")
+        if name:
+            self.input_text(*self.role_input, name)
+            self.wait()
+        if comment:
+            self.input_text(*self.comment_input, comment)
+            self.wait()
+        if customer:
+            self.div_selector(self.customer_input, name=customer)
+            self.wait()
+
+    # 处理是否保存
+    def handle_save(self, is_save=True):
         if is_save:
-            self.click_element(*self.confirm_button)
-            self.wait(1)
+            mylogger.info("点进确定按钮")
+            self.click_span_button("确 定")
+            self.wait()
         else:
-            self.click_element(*self.cancel_button)
-            self.wait(1)
+            mylogger.info("点进取消按钮")
+            self.wait(0.5)
+            self.click_span_button("取 消")
 
-
-    def edit_role(self, role_name, comment, is_save=True):
+    def handle_edit_role_alert(self, name, comment, customer):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("角色")
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("系统设置")
         self.click_element(*self.edit_button)
-        self.input_text(*self.role_input, role_name)
+        self.input_text(*self.role_input, name)
+        self.wait(0.5)
         self.input_text(*self.comment_input, comment)
-        if is_save:
-            self.click_element(*self.confirm_button)
-            self.wait(1)
-        else:
-            self.click_element(*self.cancel_button)
-            self.wait(1)
+        self.wait(0.5)
+        if customer:
+            self.div_selector(self.customer_input, name=customer)
+            self.wait(0.5)
 
-    def delete_role(self,is_delete=True):
+
+
+    def delete_role(self, is_delete=True, rolename="role003"):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("角色")
-        self.click_element(*self.delete_button)
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("系统设置")
+        mylogger.info(f"点击{rolename}角色删除按钮")
+        # 删除按钮 role003
+        delete_button = ('xpath', f'//span[contains(text(),"{rolename}")]/../../td[6]//button[2]')
+        self.click_element(*delete_button)
         if is_delete:
-            self.click_element(*self.confirm_delete_button)
+            mylogger.info("确定删除角色")
+            self.click_span_button("确 定")
             self.wait(1)
         else:
-            self.click_element(*self.cancel_delete_button)
+            mylogger.info("取消删除角色")
+            self.click_span_button("取 消")
             self.wait(1)
 
-
-    def setting_role(self, is_save=True):
+    def setting_role_privilege(self, is_save=True, rolename="role001"):
+        """目前只考虑设置所有的权限"""
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("角色")
-        self.click_element(*self.role_setting_button)
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("系统设置")
+        mylogger.info(f"开始为角色{rolename}设置权限")
+        role_setting_button = ('xpath', f'//span[contains(text(),"{rolename}")]/../../td[3]//a')
+        self.click_element(*role_setting_button)
         self.wait(1)
-        checkboxs = self.locators(*self.checkbox)
-        # print(len(checkboxs))
-        for i in range(len(checkboxs)-2):
-            if not checkboxs[i].is_selected():
-                 checkboxs[i].click()
-        # 拖动到页面最下端的元素
+        checkboxs1 = self.locators(*self.checkbox)
+        menu_list1 = []
+        for name in checkboxs1:
+            menu_list1.append(name.get_attribute("textContent"))
+            self.double_click(name)
+        # 滚动到底部进行勾选
         target = self.locator(*self.last_name)
         self.driver.execute_script("arguments[0].scrollIntoView();", target)
         self.wait(1)
-        checkboxs = self.locators(*self.checkbox)
-        # print(len(checkboxs))
-        for i in range(-8,0):
-            if not checkboxs[i].is_selected():
-                checkboxs[i].click()
+        checkboxs2 = self.locators(*self.checkbox)
+        for name in checkboxs2:
+            self.double_click(name)
         if is_save:
             self.click_element(*self.save_button)
+            mylogger.info("权限设置成功")
             self.wait(1)

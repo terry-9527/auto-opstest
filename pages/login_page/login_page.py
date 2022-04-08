@@ -26,7 +26,7 @@ class LoginPage(KeyWords):
         code = self.get_verifycode(phone)
         self.input_text(*self.code_input, content=code)
         self.click_element(*self.login_button)
-        self.wait(8)
+        self.wait(6)
 
 
 if __name__ == "__main__":

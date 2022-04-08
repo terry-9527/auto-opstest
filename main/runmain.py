@@ -4,6 +4,7 @@
 import os
 import unittest
 from unittestreport import TestRunner
+from BeautifulReport import BeautifulReport
 from datetime import datetime
 from utils.handle_path import report_dir,testdata_dir,testcase_dir
 
@@ -35,8 +36,16 @@ class runTestCase:
     def run_all_cases(self, filename=None):
         case_suits = run.load_all_case(filename)
         now = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        filename = now + "-report.html"
+        filename = now + "-report"
         if case_suits:
+            # 方式一
+            # BeautifulReport(case_suits).report(
+            #                                     description="运维系统web自动化测试报告",
+            #                                     report_dir=report_dir,
+            #                                     filename=filename,
+            #                                     theme="theme_candy"
+            #                                    )
+            # 方式二
             runner = TestRunner(case_suits,
                                 filename=filename,
                                 report_dir=report_dir,
@@ -49,6 +58,5 @@ class runTestCase:
 
 if __name__ == "__main__":
     run = runTestCase()
-    run.run_all_cases(filename="test_002_machineroominfo.py")
-    # cases = run.load_all_case("test_002_machineroominfo.py")
-    # print(cases)
+    run.run_all_cases(filename="test_004_usermanagement.py")
+

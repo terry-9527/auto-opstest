@@ -1,0 +1,5 @@
+--数据库初始化sql语句
+--新建角色 和编辑角色
+delete from t_role where name='role001' or name='role001-111'
+delete from t_role where name='role002'
+delete from t_role where name='role003'

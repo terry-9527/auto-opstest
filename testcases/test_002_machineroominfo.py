@@ -16,33 +16,47 @@ class TestMachineRoomInfo(BasePage):
     cases1 = readData().read_excel("新建机房信息", filename)
 
     @data(*cases1)
+    # @unittest.skip
     def test_01_new_machineroom_info(self, args):
         self.page = MachineRoomInfoPage(self.driver)
         mylogger.info("--------------------测试用例开始执行--------------------")
         mylogger.info(f"用例{args[0]}:{args[1]}--->>测试数据：{args[2]}")
         self.page.handle_new_machineroom_alert(args[2]['machineroom_name'], args[2]['address'], args[2]['domain'],
                                   args[2]['comment'], args[2]['check'])
-        self.page.handle_new_save()
+        self.page.handle_save()
         if args[0] not in ["add-machineroom-004","add-machineroom-005","add-machineroom-006","add-machineroom-007"]:
-            self.page.text_assert_equal(args[0], args[3]['msg'], args[4]['xpath'])
+            actual = self.page.get_text(args[4]['xpath'])
+            self.checkAssertEqual(args[3]['msg'], actual)
         elif args[0] == "add-machineroom-006":
-            self.page.text_assert_equal(args[0], args[3]['msg1'], args[4]['xpath1'])
-            self.page.text_assert_equal(args[0], args[3]['msg2'], args[4]['xpath2'])
-            self.page.handle_new_save(is_save=False)
+            actual1 = self.page.get_text(args[4]['xpath1'])
+            actual2 = self.page.get_text(args[4]['xpath2'])
+            self.checkAssertEqual(args[3]['msg1'], actual1)
+            self.checkAssertEqual(args[3]['msg2'], actual2)
+            self.page.handle_save(is_save=False)
         else:
-            self.page.text_assert_equal(args[0], args[3]['msg'], args[4]['xpath'])
-            self.page.handle_new_save(is_save=False)
+            actual = self.page.get_text(args[4]['xpath'])
+            self.checkAssertEqual(args[3]['msg'], actual)
+            self.page.handle_save(is_save=False)
         mylogger.info("--------------------测试用例执行完毕--------------------")
 
     cases2 = readData().read_excel("编辑机房信息", filename)
 
     @data(*cases2)
-    @unittest.skip
+    # @unittest.skip
     def test_02_edit_machineroom_info(self, args):
         self.page = MachineRoomInfoPage(self.driver)
-        self.page.endit_machineroom(args[2]['machineroom_name'], args[2]['address'], args[2]['domain'],
+        self.page.handle_edit_machineroom_alert(args[2]['machineroom_name'], args[2]['address'], args[2]['domain'],
                                     args[2]['comment'], args[2]['check'])
+        self.page.handle_save()
+        if args[0] not in ["edit-machineroom-007","edit-machineroom-008"]:
+            actual = self.page.get_text(args[4]['xpath'])
+            self.checkAssertEqual(args[3]['msg'], actual)
+        else:
+            actual = self.page.get_text(args[4]['xpath'])
+            self.checkAssertEqual(args[3]['msg'], actual)
+            self.page.handle_save(is_save=False)
 
+        mylogger.info("--------------------测试用例执行完毕--------------------")
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
