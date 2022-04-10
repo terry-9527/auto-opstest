@@ -1,5 +1,3 @@
-import random
-
 from common.keywords import KeyWords
 from common.my_logger import mylogger
 
@@ -36,24 +34,22 @@ class UserManagementPage(KeyWords):
     # 取消按钮
     cancel_button = ('xpath', '//span[text()="取 消"]')
     # 确定按钮
-    confirm_button = ('xpath', '//span[text()="确 定"]')
+    confirm_button = ('xpath', '//span[text()="确 定"]/..')
     # 查看编辑按钮 terry001-autotest用户
     check_button = (
         'xpath', '//*[@class="ant-table-container"]//span[contains(text(),"terry0001")]/../..//span[text()="查看"]')
     # 关联角色 //*[@class="ant-table-container"]//span[contains(text(),"terry001-")]
     bind_role_button = (
-        'xpath', '//*[@class="ant-table-container"]//span[contains(text(),"terry001")]/../..//span[text()="关联角色"]')
+        'xpath', '//*[@class="ant-table-container"]//span[contains(text(),"terry0001")]/../..//span[text()="关联角色"]')
     # 关联集群
     bind_cluster_button = (
-        'xpath', '//*[@class="ant-table-container"]//span[contains(text(),"terry001")]/../..//span[text()="关联集群"]')
-    # 关联角色 test 复选框
-    one_role_checkbox = ('xpath', '//td[@title="test"]/..//input')
+        'xpath', '//*[@class="ant-table-container"]//span[contains(text(),"terry0001")]/../..//span[text()="关联集群"]')
     # 角色全选框 checkbox
     all_roles_checkbox = ('xpath', '//th[@title="角色名"]/..//input')
     # 单个集群 f01000 checkbox
     one_miner_checkbox = ('xpath', '//td[@title="f01000"]/..//input')
     # 集群全选框 checkbox
-    all_miners_checkbox = ('xpath', '//th[@title="集群"]/..//input')
+    all_miners_checkbox = ('xpath', '//th[@title="集群"]/..//span//input')
     # 编辑按钮 terry001-autotest
     edit_button = ('xpath', '//span[text()="编 辑"]')
     # 输入用户名搜索框
@@ -165,7 +161,7 @@ class UserManagementPage(KeyWords):
 
 
     # 用户关联角色
-    def bind_role(self, state="one", is_save=True):
+    def bind_role(self, rolename, state="one", is_save=True):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("用户")
@@ -175,63 +171,100 @@ class UserManagementPage(KeyWords):
             if not self.locator(*self.all_roles_checkbox).is_selected():
                 self.click_element(*self.all_roles_checkbox)
         elif state == "one":
-            if not self.locator(*self.one_role_checkbox).is_selected():
-                self.click_element(*self.one_role_checkbox)
+            one_role_checkbox = ('xpath', f'//td[@title="{rolename}"]/../td[1]/label')
+            if not self.locator(*one_role_checkbox).is_selected():
+                self.click_element(*one_role_checkbox)
         if is_save:
-            self.wait(1.5)
-            self.click_element(*self.confirm_button)
+            self.wait()
+            # self.click_element(*self.confirm_button)
+            self.click_span_button("确 定",type="button")
+            self.click_navigation_bar("用户管理")
+            self.click_navigation_bar("系统设置")
+            self.click_navigation_bar("首页")
         else:
             self.click_element(*self.cancel_button)
 
     # 用户关联集群
-    def bind_miner(self, state="one", is_save=True):
+    def bind_miner(self, minerid_list=None, is_select=True, select_all=False, is_save=True):
+        """
+        用户绑定集群
+        :param minerid_list: 集群id列表
+        :param is_select: 绑定还是去除绑定
+        :param state: 是否全选
+        :param is_save:
+        :return:
+        """
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("用户")
         self.click_element(*self.bind_cluster_button)
-        self.wait(1)
-        if state == "all":
-            if not self.locator(*self.all_miners_checkbox).is_selected():
-                self.click_element(*self.all_miners_checkbox)
-        elif state == "one":
-            if not self.locator(*self.one_miner_checkbox).is_selected():
-                self.click_element(*self.one_miner_checkbox)
+        self.wait()
+        # 判断是否是全选操作
+        if select_all:
+            all_miners_checkbox = ('xpath', '//th[@title="集群"]/../th[1]/div/label/span')
+            state = self.locator(*all_miners_checkbox).get_attribute("class")
+            mylogger.info(state)
+            if state != "ant-checkbox ant-checkbox-checked":
+                self.click_element(*all_miners_checkbox)
+        # 根据输入的minerid列表进行处理
+        if minerid_list:
+            for minerid in minerid_list:
+                xpath = ('xpath', f'//td[text()="{minerid}"]/../td[1]/label/span')
+                classname = self.locator(*xpath).get_attribute("class")
+                if is_select:
+                    if classname == "ant-checkbox":
+                        self.click_element(*xpath)
+                else:
+                    if classname == "ant-checkbox ant-checkbox-checked":
+                        self.click_element(*xpath)
         if is_save:
-            self.wait(1.5)
+            self.wait()
             self.click_element(*self.confirm_button)
+            self.wait(0.5)
+            self.click_navigation_bar("用户管理")
+            self.click_navigation_bar("系统设置")
         else:
             self.click_element(*self.cancel_button)
 
     # 输入用户名搜索用户，不支持模糊匹配
-    def search_by_username(self, name=None):
+    def _search_by_username(self, username=None):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("用户")
-        self.input_text(*self.search_input, name)
+        if username:
+            self.input_text(content=username, text="用户")
         self.click_element(*self.search_button)
-        self.wait(2)
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("系统设置")
 
-    def search_by_customer(self):
+
+    def _search_by_customer(self, customername=None):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("用户")
-        self.click_element(*self.search_customer)
-        els = self.locators(*self.div_select)
-        self.click_elements(*self.div_select, random.randint(0, len(els) - 1))
-        self.wait()
+        if customername:
+            self.div_selector(self.search_customer, name=customername)
+            self.click_navigation_bar("用户管理")
+            self.click_navigation_bar("系统设置")
+
 
     def clear_input(self):
         self.driver.refresh()
-        self.clear(*self.search_input)
-        self.click_element(*self.search_button)
-    def search(self,username=None, by_username=True, by_customer=True):
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("系统设置")
+        self.wait()
+
+    def search(self,username=None, customername=None, by_username=True, by_customer=True):
         if by_username and not by_customer:
-            self.search_by_username(username)
+            mylogger.info(f"输入{username}进行搜索")
+            self._search_by_username(username)
             self.wait()
         elif by_customer and not by_username:
-            self.search_by_customer()
+            mylogger.info(f"按所属客户{customername}进行搜索")
+            self._search_by_customer()
             self.wait()
         elif by_username and by_customer:
-            self.search_by_username(username)
-            self.search_by_customer()
+            mylogger.info(f"输入{username}和按所属客户{customername}进行搜索")
+            self._search_by_username(username)
+            self._search_by_customer(customername)
             self.wait()

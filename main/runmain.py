@@ -52,11 +52,13 @@ class runTestCase:
                                 title="运维系统web自动化测试报告",
                                 templates=1,
                                 tester="Terry",
-                                desc="运维系统项目web自动化测试生成的报告")
+                                desc="运维系统项目web自动化测试报告")
             runner.run()
 
 
 if __name__ == "__main__":
     run = runTestCase()
-    run.run_all_cases(filename="test_004_usermanagement.py")
+    run.run_all_cases(filename="test_007_approvalprocess.py")
+    s = "sfsdfsdfsdf"
+
 

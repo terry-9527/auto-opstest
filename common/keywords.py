@@ -8,6 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+from utils.handle_common import get_index
 from utils.read_data import readData
 from common.my_logger import mylogger
 
@@ -257,7 +258,7 @@ class KeyWords():
                 self.wait(0.5)
                 self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
 
-    def div_selector(self, input_path, div_select=None, number=0, name=None):
+    def div_selector(self, input_path, div_select=None, number=0, name=None, which_index=1):
         """
         div下拉框处理
         :param input_path: 下拉输入框定位信息，('xpath', '定位信息')
@@ -271,13 +272,13 @@ class KeyWords():
         name_list = []
         if not div_select:
             div_select = ("css", "div.ant-select-item-option-content")
+        # 获取选项中所有名称列表
         elements = self.locators(*div_select)
-        # print(elements)
         for el in elements:
             name_list.append(el.get_attribute('textContent'))
-        # print(name_list)
         if name:
-            self.click_elements(*div_select, list_number=name_list.index(name))
+            index = get_index(name_list, name, which_index)
+            self.click_elements(*div_select, list_number=index)
         else:
             self.click_elements(*div_select, list_number=number)
         return name_list
