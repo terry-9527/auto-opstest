@@ -5,7 +5,7 @@ delete from t_machine_room where name='machineroom0002'
 delete from t_machine_room where name='machineroom0003'
 delete from t_machine_room where name='machineroom0004'
 delete from t_machine_room where name='machineroom0006'
-delete from t_machine_room where name='rename-machineroom0001'
+delete from t_machine_room where name='modify-machineroom0001'
 
 
 

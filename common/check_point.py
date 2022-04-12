@@ -7,31 +7,32 @@
 """
 import unittest
 
-from ddt import data,ddt
+from common.keywords import KeyWords
 
-from pages.system_setting_page.machineroom_info.machineroom_info_page import MachineRoomInfoPage
-from utils.read_data import readData
+from common.my_logger import mylogger
 
-@ddt
+
 class CheckPoint(unittest.TestCase):
 
-    def __init__(self,  methodName='runTest'):
+    def __init__(self, methodName='runTest'):
         super(CheckPoint, self).__init__(methodName)
         self._testMethodName = methodName
         self.flag = 0
         self.msg = []
 
     # 基本的布尔断言：要么正确，要么错误的验证
-    def checkAssertEqual(self, arg1, arg2, msg=None, filename=None, caseid=None):
+    def checkAssertEqual(self, excepted, actual, msg=None):
         """    验证arg1=arg2，不等则fail"""
+        mylogger.info("开始进行断言------------>>")
         try:
-            self.assertEqual(arg1, arg2, msg)
-            readData().write_excel(filename, caseid, testresult="PASS")
+            mylogger.info(f"预期结果：{excepted} <<=====>> 实际结果：{actual}")
+            self.assertEqual(excepted, actual, msg)
+            mylogger.info("---------------断言通过，结束断言---------------")
         except Exception as e:
             self.flag += 1
             self.msg.append("\n{}".format(msg))
-            readData().write_excel(filename, caseid, testresult="FAILED", reason=e)
-            print(e)
+            mylogger.info("---------------断言失败，结束断言---------------")
+            raise e
 
     def checkAssertNotEqual(self, arg1, arg2, msg=None):
         """    验证arg1 != arg2, 相等则fail"""

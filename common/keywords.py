@@ -8,6 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+from utils.handle_common import get_index
 from utils.read_data import readData
 from common.my_logger import mylogger
 
@@ -153,6 +154,9 @@ class KeyWords():
         elements[list_number].click()
         mylogger.info("-----元素点击成功-----")
 
+    def double_click(self, element):
+     ActionChains(self.driver).double_click(element).perform()
+
     # 清除输入框
     def clear(self, locator_type, location):
         mylogger.info("开始清除输入框内容--->>")
@@ -213,10 +217,10 @@ class KeyWords():
             raise e
 
     # 获取元素的文本
-    def get_text(self, locator_type, location):
+    def get_text(self, location, locator_type="xpath"):
         mylogger.info("获取元素文本开始--->>")
         try:
-            text = self.locator(locator_type, location).get_attribte("textContent")
+            text = self.locator(locator_type, location).get_attribute("textContent")
             mylogger.info("-----获取元素文本属性值成功，文本内容：{}".format(text))
             return text
         except Exception as e:
@@ -239,7 +243,7 @@ class KeyWords():
             "系统设置": 11,
             " 机房信息": 12,
             "集群信息": 13,
-            "客户信息": 14,
+            " 客户信息": 14,
             "用户管理": 15,
             "用户": 16,
             "角色": 17,
@@ -249,10 +253,11 @@ class KeyWords():
         main_menu = ('css', '.ant-menu-title-content')
         for key in main_menu_navigation_bar:
             if key == name:
-                mylogger.info(f"点击导航栏{name}")
+                mylogger.info(f"点击导航栏：{name}")
+                self.wait(0.5)
                 self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
 
-    def div_selector(self, input_path, div_select=None, number=0, name=None):
+    def div_selector(self, input_path, div_select=None, number=0, name=None, which_index=1):
         """
         div下拉框处理
         :param input_path: 下拉输入框定位信息，('xpath', '定位信息')
@@ -266,25 +271,24 @@ class KeyWords():
         name_list = []
         if not div_select:
             div_select = ("css", "div.ant-select-item-option-content")
+        # 获取选项中所有名称列表
         elements = self.locators(*div_select)
-        # print(elements)
         for el in elements:
             name_list.append(el.get_attribute('textContent'))
-        # print(name_list)
         if name:
-            self.click_elements(*div_select, list_number=name_list.index(name))
+            index = get_index(name_list, name, which_index)
+            self.click_elements(*div_select, list_number=index)
         else:
             self.click_elements(*div_select, list_number=number)
         return name_list
 
-
-
-
-    def click_span_button(self, text):
-        xpath = f"//span[text()=\'{text}\']"
-        mylogger.info(f"点击span文本为：{text} 按钮--->>")
-        self.click_element(By.XPATH, xpath)
-
+    def click_span_button(self, text, type="button"):
+        if type == "span":
+            self.xpath = f"//span[text()=\'{text}\']"
+        elif type == "button":
+            self.xpath = f"//span[text()=\'{text}\']/.."
+        mylogger.info(f"点击按钮为：{text} 按钮--->>")
+        self.click_element(By.XPATH, self.xpath)
 
     def input_host(self,select_device, host):
         self.click_element(*select_device)
