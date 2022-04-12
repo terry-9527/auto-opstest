@@ -33,7 +33,7 @@ deactivate () {
     # be called to get it to forget past commands.  Without forgetting
     # past commands the $PATH changes we made may not be respected
     if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
-        hash -r 2> /dev/null
+        hash -r
     fi
 >>>>>>> 7aaf73da561c22a5d14a5433c6dea26c960bd8ad
 
@@ -53,10 +53,14 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV='D:\jieshou\venv'
 if ([ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "msys" ]) && $(command -v cygpath &> /dev/null) ; then
     VIRTUAL_ENV=$(cygpath -u "$VIRTUAL_ENV")
 fi
+=======
+VIRTUAL_ENV="F:\auto-opstest\venv"
+>>>>>>> c607195eca07e67b569f07fbf25a045d7cd96d33
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -94,7 +98,17 @@ hash -r 2>/dev/null
 =======
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
-    PS1="(venv) ${PS1:-}"
+    if [ "x(venv) " != x ] ; then
+	PS1="(venv) ${PS1:-}"
+    else
+    if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
+        # special case for Aspen magic directories
+        # see http://www.zetadev.com/software/aspen/
+        PS1="[`basename \`dirname \"$VIRTUAL_ENV\"\``] $PS1"
+    else
+        PS1="(`basename \"$VIRTUAL_ENV\"`)$PS1"
+    fi
+    fi
     export PS1
 fi
 
@@ -102,6 +116,6 @@ fi
 # be called to get it to forget past commands.  Without forgetting
 # past commands the $PATH changes we made may not be respected
 if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
-    hash -r 2> /dev/null
+    hash -r
 fi
 >>>>>>> 7aaf73da561c22a5d14a5433c6dea26c960bd8ad

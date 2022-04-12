@@ -20,10 +20,14 @@ if not defined VIRTUAL_ENV_DISABLE_PROMPT (
     )
 )
 
+<<<<<<< HEAD
 REM Don't use () to avoid problems with them in %PATH%
 if defined _OLD_VIRTUAL_PYTHONHOME goto ENDIFVHOME
     set "_OLD_VIRTUAL_PYTHONHOME=%PYTHONHOME%"
 :ENDIFVHOME
+=======
+set VIRTUAL_ENV=F:\auto-opstest\venv
+>>>>>>> c607195eca07e67b569f07fbf25a045d7cd96d33
 
 set PYTHONHOME=
 

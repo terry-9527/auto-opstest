@@ -1,3 +1,54 @@
-# IDEA files
+##ignore this file##
+/target/
+/.idea/
+/.settings/
+/.vscode/
+/bin/
+auto-opstest/venv/
+
+.classpath
+.project
+.settings
 .idea
+<<<<<<< HEAD
 D:\jieshou\venv
+=======
+ ##filter databfile、sln file##
+*.mdb
+*.ldb
+*.sln
+##class file##
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+# compression file
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.via
+*.tmp
+*.err
+*.log
+*.iml
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+.factorypath
+/.mvn/
+/mvnw.cmd
+/mvnw
+>>>>>>> c607195eca07e67b569f07fbf25a045d7cd96d33

@@ -1,18 +1,15 @@
-'''
-定义一个关键字类，封装公用的关键字函数：
-打开浏览器： open_browser
-定位元素: locator
-输入内容：input_text
-点击元素: click_element
-等待时间：wait
-退出浏览器： close_browser
-清除输入框： clear
-'''
+import datetime
 import time
+import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
+from utils.read_data import readData
+from common.my_logger import mylogger
 
 
 # 初始化浏览器，若传入的浏览器驱动存在，则启动对应的浏览器，否则默认启动谷歌浏览器
@@ -31,9 +28,200 @@ class KeyWords():
 
     def __init__(self, driver):
         self.driver = driver
+        self.wait_element = WebDriverWait(self.driver, 10)
         # self.driver.get("https://opstest.arsyun.com")
         # self.driver.implicitly_wait(10)
         # self.driver.maximize_window()
+
+
+    # 等待元素出现
+    def __wait_until(self, locator_type, location, many=False):
+        mylogger.info("开始等待元素出现--->>")
+        if many:
+            try:
+                element = self.wait_element.until(EC.visibility_of_any_elements_located((locator_type, location)))
+                mylogger.info("-----元素已出现-----")
+                return element
+            except Exception as e:
+                mylogger.error("-----等待时间内，元素未出现-----")
+                raise e
+        else:
+            try:
+                element = self.wait_element.until(EC.visibility_of_element_located((locator_type, location)))
+                mylogger.info("-----元素已出现-----")
+                return element
+            except Exception as e:
+                mylogger.error("-----等待时间内，元素未出现-----")
+                raise e
+
+    def locator(self, locator_type, location):
+        """
+        定位元素
+        :param locator_type: 元素定位方式
+        :param location: 定位信息
+        :return: 返回元素对象
+        """
+        mylogger.info("元素定位开始--->>")
+        mylogger.info("定位方式：{0},定位信息：{1}".format(locator_type, location))
+        try:
+            if locator_type.upper() == "ID":
+                element = self.__wait_until(By.ID, location)
+                mylogger.info("-----元素定位成功-----")
+                return element
+            elif locator_type.upper() == "NAME":
+                element = self.__wait_until(By.NAME, location)
+                mylogger.info("-----元素定位成功-----")
+                return element
+            elif locator_type.upper() == "CLASS_NAME":
+                element = self.__wait_until(By.CLASS_NAME, location)
+                mylogger.info("-----元素定位成功-----")
+                return element
+            elif locator_type.upper() == "TAG_NAME":
+                element = self.__wait_until(By.TAG_NAME, location)
+                mylogger.info("-----元素定位成功-----")
+                return element
+            elif locator_type.upper() == "LINK_TEXT":
+                element = self.__wait_until(By.LINK_TEXT, location)
+                mylogger.info("-----元素定位成功-----")
+                return element
+            elif locator_type.upper() == "PARTIAL_LINK_TEXT":
+                element = self.__wait_until(By.PARTIAL_LINK_TEXT, location)
+                mylogger.info("-----元素定位成功-----")
+                return element
+            elif locator_type.upper() == "XPATH":
+                element = self.__wait_until(By.XPATH, location)
+                mylogger.info("-----元素定位成功-----")
+                return element
+            elif locator_type.upper() == "CSS_SELECTOR":
+                element = self.__wait_until(By.CSS_SELECTOR, location)
+                mylogger.info("-----元素定位成功-----")
+                return element
+        except Exception as e:
+            mylogger.exception("-----元素定位失败-----")
+            raise e
+
+    def locators(self, locator_type, location):
+        mylogger.info("多元素定位开始--->>")
+        mylogger.info("定位方式：{0},定位信息：{1}".format(locator_type, location))
+        try:
+            if locator_type.upper() == "ID":
+                elements = self.driver.find_elements(By.ID, location)
+                mylogger.info("-----多元素定位成功-----")
+                return elements
+            elif locator_type.upper() == "NAME":
+                elements = self.driver.find_elements(By.NAME, location)
+                mylogger.info("-----多元素定位成功-----")
+                return elements
+            elif locator_type.upper() == "CLASS_NAME":
+                elements = self.driver.find_elements(By.CLASS_NAME, location)
+                mylogger.info("-----多元素定位成功-----")
+                return elements
+            elif locator_type.upper() == "TAG_NAME":
+                elements = self.driver.find_elements(By.TAG_NAME, location)
+                mylogger.info("-----多元素定位成功-----")
+                return elements
+            elif locator_type.upper() == "LINK_TEXT":
+                elements = self.driver.find_elements(By.LINK_TEXT, location)
+                mylogger.info("-----多元素定位成功-----")
+                return elements
+            elif locator_type.upper() == "PARTIAL_LINK_TEXT":
+                elements = self.driver.find_elements(By.PARTIAL_LINK_TEXT, location)
+                mylogger.info("-----多元素定位成功-----")
+                return elements
+            elif locator_type.upper() == "XPATH":
+                elements = self.driver.find_elements(By.XPATH, location)
+                mylogger.info("-----多元素定位成功-----")
+                return elements
+            elif locator_type.upper() == "CSS_SELECTOR" or locator_type.upper() == "CSS":
+                elements = self.driver.find_elements(By.CSS_SELECTOR, location)
+                mylogger.info("-----多元素定位成功-----")
+                return elements
+        except Exception as e:
+            mylogger.exception("-----多元素定位失败-----")
+            raise e
+
+    # 点击元素: click_element
+    def click_element(self, locator_type, location):
+        mylogger.info("开始点击元素--->>")
+        self.locator(locator_type, location).click()
+        mylogger.info("-----元素点击成功-----")
+
+    def click_elements(self, locator_type, location, list_number=1):
+        mylogger.info("点击多元素开始--->>")
+        elements = self.locators(locator_type, location)
+        mylogger.info("点击第{}个元素:".format(list_number + 1))
+        elements[list_number].click()
+        mylogger.info("-----元素点击成功-----")
+
+    # 清除输入框
+    def clear(self, locator_type, location):
+        mylogger.info("开始清除输入框内容--->>")
+        try:
+            self.locator(locator_type, location).clear()
+            mylogger.info("-----输入框清除成功-----")
+        except Exception as e:
+            mylogger.error("-----清除输入框失败-----")
+            raise e
+
+    # 当clear()方法无法清空输入框内容时:
+    def force_clear(self, locator_type, location):
+        mylogger.info("开始强制清除输入框内容--->>")
+        try:
+            element = self.locator(locator_type, location)
+            element.send_keys(Keys.CONTROL, 'a')
+            element.send_keys(Keys.DELETE)
+            mylogger.info("-----输入框清除成功-----")
+        except Exception as e:
+            mylogger.error("-----清除输入框失败-----")
+            raise e
+
+    def input_text(self, locator_type=None, location=None, content=None, text=None, type="input"):
+        mylogger.info("文本框开始输入文本--->>")
+        try:
+            # 处理普通的输入框
+            if not text:
+                self.clear(locator_type, location)
+                self.locator(locator_type, location).send_keys(content)
+            # 处理有文字标题说明的input输入框
+            elif type == "input":
+                xpath = f"//label[@title=\'{text}\']/../..//input"
+                self.clear(By.XPATH, xpath)
+                self.locator(By.XPATH, xpath).send_keys(content)
+            # 处理属性是textarea文本输入框
+            elif type == "textarea":
+                xpath = f"//label[@title=\'{text}\']/../..//textarea"
+                self.clear(By.XPATH, xpath)
+                self.locator(By.XPATH, xpath).send_keys(content)
+            # 处理输入中有占位文字的
+            elif type == "placeholder":
+                xpath = f"//input[@placeholder='{text}']"
+                # self.clear(By.XPATH, xpath)
+                self.locator(By.XPATH, xpath).send_keys(content)
+            mylogger.info("-----文本输入成功，文本内容为：{}".format(content))
+        except Exception as e:
+            mylogger.info("-----文本输入失败-----")
+            raise e
+
+    def move(self, locator_type, location):
+        mylogger.info("移动鼠标到指定元素开始--->>")
+        try:
+            el = self.locator(locator_type, location)
+            ActionChains(self.driver).move_to_element(el).perform()
+            mylogger.info("-----移动鼠标到指定元素成功-----")
+        except Exception as e:
+            mylogger.error("-----移动鼠标到指定元素失败-----")
+            raise e
+
+    # 获取元素的文本
+    def get_text(self, locator_type, location):
+        mylogger.info("获取元素文本开始--->>")
+        try:
+            text = self.locator(locator_type, location).get_attribte("textContent")
+            mylogger.info("-----获取元素文本属性值成功，文本内容：{}".format(text))
+            return text
+        except Exception as e:
+            mylogger.error("-----获取元素文本属性值失败-----")
+            raise e
 
     def click_navigation_bar(self, name):
         main_menu_navigation_bar = {
@@ -47,9 +235,9 @@ class KeyWords():
             "命令执行": 7,
             " 任务管理": 8,
             " 公共模板": 9,
-            " 公共脚本": 10,
+            "公共脚本": 10,
             "系统设置": 11,
-            "机房信息": 12,
+            " 机房信息": 12,
             "集群信息": 13,
             "客户信息": 14,
             "用户管理": 15,
@@ -61,6 +249,7 @@ class KeyWords():
         main_menu = ('css', '.ant-menu-title-content')
         for key in main_menu_navigation_bar:
             if key == name:
+                mylogger.info(f"点击导航栏{name}")
                 self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
 
     def div_selector(self, input_path, div_select=None, number=0, name=None):
@@ -71,7 +260,9 @@ class KeyWords():
         :param number:  默认点击选择第一个，从0开始
         :return:
         """
+        mylogger.info("开始处理div下拉选择框--->>")
         self.click_element(*input_path)
+        self.wait(1)
         name_list = []
         if not div_select:
             div_select = ("css", "div.ant-select-item-option-content")
@@ -86,170 +277,106 @@ class KeyWords():
             self.click_elements(*div_select, list_number=number)
         return name_list
 
+
+
+
     def click_span_button(self, text):
         xpath = f"//span[text()=\'{text}\']"
-        # xpath = f"//span[text()=\'{text}\'/..]"
+        mylogger.info(f"点击span文本为：{text} 按钮--->>")
+        self.click_element(By.XPATH, xpath)
+
+
+    def input_host(self,select_device, host):
+        self.click_element(*select_device)
+        self.wait(1)
+        xpath = f"//*[text()=\'{host}\']/../../tr[2]/td/label/span"
+        mylogger.info(f"点击主机为：{host} 按钮--->>")
         self.click_element(By.XPATH, xpath)
 
     # 打开浏览器
     def open_browser(self, url):
+        mylogger.info("打开浏览器")
         self.driver.get(url)
-
-    def locator(self, locator_type, location):
-        """
-        定位元素
-        :param locator_type: 元素定位方式
-        :param location: 定位信息
-        :return: 返回元素对象
-        """
-        try:
-            if locator_type.upper() == "ID":
-                element = self.driver.find_element(By.ID, location)
-                return element
-            elif locator_type.upper() == "NAME":
-                element = self.driver.find_element(By.NAME, location)
-                return element
-            elif locator_type.upper() == "CLASS_NAME":
-                element = self.driver.find_element(By.CLASS_NAME, location)
-                return element
-            elif locator_type.upper() == "TAG_NAME":
-                element = self.driver.find_element(By.TAG_NAME, location)
-                return element
-            elif locator_type.upper() == "LINK_TEXT":
-                element = self.driver.find_element(By.LINK_TEXT, location)
-                return element
-            elif locator_type.upper() == "PARTIAL_LINK_TEXT":
-                element = self.driver.find_element(By.PARTIAL_LINK_TEXT, location)
-                return element
-            elif locator_type.upper() == "XPATH":
-                element = self.driver.find_element(By.XPATH, location)
-                return element
-            elif locator_type.upper() == "CSS_SELECTOR":
-                element = self.driver.find_element(By.CSS_SELECTOR, location)
-                return element
-        except Exception as e:
-            print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
-
-    def locators(self, locator_type, location):
-        try:
-            if locator_type.upper() == "ID":
-                elements = self.driver.find_elements(By.ID, location)
-                return elements
-            elif locator_type.upper() == "NAME":
-                elements = self.driver.find_elements(By.NAME, location)
-                return elements
-            elif locator_type.upper() == "CLASS_NAME":
-                elements = self.driver.find_elements(By.CLASS_NAME, location)
-                return elements
-            elif locator_type.upper() == "TAG_NAME":
-                elements = self.driver.find_elements(By.TAG_NAME, location)
-                return elements
-            elif locator_type.upper() == "LINK_TEXT":
-                elements = self.driver.find_elements(By.LINK_TEXT, location)
-                return elements
-            elif locator_type.upper() == "PARTIAL_LINK_TEXT":
-                elements = self.driver.find_elements(By.PARTIAL_LINK_TEXT, location)
-                return elements
-            elif locator_type.upper() == "XPATH":
-                elements = self.driver.find_elements(By.XPATH, location)
-                return elements
-            elif locator_type.upper() == "CSS_SELECTOR" or locator_type.upper() == "CSS":
-                elements = self.driver.find_elements(By.CSS_SELECTOR, location)
-                return elements
-        except Exception as e:
-            print("定位元素失败,定位方式{0},定位信息{1},失败原因:{2}".format(locator_type, location, e))
-
-    # 输入内容：input_text
-    def input_text(self, locator_type=None, location=None, content=None, text=None, type="input"):
-        # 处理普通的输入框
-        if not text:
-            self.clear(locator_type, location)
-            self.locator(locator_type, location).send_keys(content)
-        # 处理有文字标题说明的input输入框
-        elif type == "input":
-            xpath = f"//label[@title=\'{text}\']/../..//input"
-            self.clear(By.XPATH, xpath)
-            self.locator(By.XPATH, xpath).send_keys(content)
-        # 处理属性是textarea文本输入框
-        elif type == "textarea":
-            xpath = f"//label[@title=\'{text}\']/../..//textarea"
-            self.clear(By.XPATH, xpath)
-            self.locator(By.XPATH, xpath).send_keys(content)
-        # 处理输入中有占位文字的
-        elif type == "placeholder":
-            xpath = f"//input[@placeholder='{text}']"
-            # self.clear(By.XPATH, xpath)
-            self.locator(By.XPATH, xpath).send_keys(content)
-
-    def click_delete_btn(self, locator_type, location, times=1):
-        for i in range(times):
-            self.locator(locator_type, location).send_keys(Keys.DELETE)
-
-    # 清除输入框
-    def clear(self, locator_type, location):
-        self.locator(locator_type, location).clear()
-
-    # 当clear()方法无法清空输入框内容时:
-    def force_clear(self, locator_type, location):
-        element = self.locator(locator_type, location)
-        element.send_keys(Keys.CONTROL, 'a')
-        element.send_keys(Keys.DELETE)
-
-    # 点击元素: click_element
-    def click_element(self, locator_type, location):
-        self.locator(locator_type, location).click()
-
-    def click_elements(self, locator_type, location, list_number=1):
-        self.locators(locator_type, location)[list_number].click()
-
-    def move(self, locator_type, location):
-        el = self.locator(locator_type, location)
-        ActionChains(self.driver).move_to_element(el).perform()
-
-    # 获取元素的文本
-    def get_text(self, locator_type, location):
-        text = self.locator(locator_type, location)
-        return text
-
-    def login(self, phone, password, verifycode=None):
-        # 输入手机号、密码、点击获取验证码、输入手机验证码、点击登陆
-        self.input_text('xpath', "//input[@placeholder='请输入手机号']", phone)
-        self.input_text('xpath', "//input[@placeholder='请输入密码']", password)
-        # self.click_element('xpath', "//button[@type='button']")
-        # self.input_text('xpath', "//input[@placeholder='请输入验证码']", content=verifycode)
-        self.click_element('xpath', "//button[@type='submit']")
 
     # 设置等待时间
     def wait(self, second=1):
+        mylogger.info("开始等待{}秒".format(second))
         time.sleep(second)
 
     # 关闭浏览器
     def close_browser(self):
+        mylogger.info("关闭浏览器")
         self.driver.quit()
 
-    # 断言方法类
-    def text_assert_equal(self, expected, location=None):
+    # 断言普通文本text方法
+    def text_assert_equal(self, case_id, expected, location=None):
         # //span[text()="编辑集群成功"] 文本默认的定位方式
+        mylogger.info("开始进行断言--->>")
         if not location:
             try:
                 xpath = f"//span[text()=\'{expected}\']"
-                self.actual = self.locator(By.XPATH, xpath).text
+                mylogger.info(f"文本xpath定位信息{xpath}")
+                self.actual = self.locator(By.XPATH, xpath).get_attribute('textContent')
+                mylogger.info(f"获取的实际结果为：{self.actual}")
             except Exception as e:
-                print("获取实际结果失败：{0}".format(e))
+                mylogger.info(f"获取实际结果失败：{e}")
+                raise e
         else:
             try:
-                self.actual = self.locator(*location).text
+                mylogger.info(f"文本xpath定位信息{location}")
+                self.actual = self.locator(By.XPATH, location).get_attribute('textContent')
+                mylogger.info(f"获取的实际结果为：{self.actual}")
             except Exception as e:
-                print("获取实际结果失败：{0}".format(e))
-        try:
-            if expected == self.actual:
-                print("结果对比相等====>>预期结果 == 实际结果 ===>> {0} == {1}".format(expected, self.actual))
-            else:
+                mylogger.info(f"获取实际结果失败：{e}")
+                raise e
+        mylogger.info(f"预期结果为：{expected}")
+        if expected == self.actual:
+            mylogger.info(f"{case_id}断言通过")
 
-                print("结果对比失败====>>预期结果 != 实际结果 ===>> {0} != {1}".format(expected, self.actual))
-                raise Exception("结果断言失败，用例执行不通过")
-        except Exception as e:
-            print("结果对比异常失败====>>{0}".format(e))
+        else:
+            mylogger.error(f"{case_id}用例执行断言失败====>>预期结果 != 实际结果 ===>> {expected} != {self.actual}")
+            raise AssertionError
+        mylogger.info("-----断言结束-----")
+
+
+    # def text_assert_many_equal(self, case_id, expected_tuple, location):
+    #     """
+    #     多个文本进行断言
+    #     :param filename: Excel表格文件名
+    #     :param sheetname: 执行表的表名称
+    #     :param case_id:    用例的ID
+    #     :param expected_tuple: 预期结果
+    #     :param location: 对应文本的定位方式，必须才用xpath定位方式
+    #     :return:
+    #     """
+    #     reason_list = []
+    #     test_result = "PASS"
+    #     for i in range(len(location)):
+    #         result = self.text_assert_equal(case_id, expected_tuple[i], location[i])
+    #         if not result[0]:
+    #             test_result = "FAIL"
+    #             reason_list.append(result[1])
+    #             raise AssertionError
+
+    def get_verifycode(self, phone, type="login"):
+        url = "https://opstest.arsyun.com/api/v5/public/sms/get"
+        if type == "login":
+            mylogger.info(f"获取{type}验证码")
+            self.data = {
+                "phone": f"{phone}",
+                "sms_type": "login"
+            }
+        else:
+            mylogger.info(f"获取{type}验证码")
+            self.data = {
+                "phone": f"{phone}",
+                "sms_type": f"{type}"
+            }
+        res = requests.post(url, json=self.data)
+        verify_code = res.json()['data']['sms_code']
+        mylogger.info(f"成功获取验证码：{verify_code}")
+        readData().write_config("verify_code", "code", value=verify_code)
+        return verify_code
 
 
 if __name__ == '__main__':

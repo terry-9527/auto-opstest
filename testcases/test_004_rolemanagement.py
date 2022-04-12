@@ -38,16 +38,12 @@ class TestRoleManagement(BasePage):
         self.page = RoleManagementPage(self.driver)
         self.page.delete_role()
 
-<<<<<<< HEAD
+
     @unittest.skip("跳过")
     def test_006_add_role(self, args):
         self.page = RoleManagementPage(self.driver)
         self.page.add_role(args[2]['name'], args[2]['comment'], args[2]['is_save'])
 
-
-if __name__ == '__main__':
-    unittest.main()
-=======
 
 
 
@@ -58,4 +54,4 @@ if __name__ == '__main__':
     suite.addTest(cases)
     runner = unittest.TextTestRunner()
     runner.run(suite)
->>>>>>> 7aaf73da561c22a5d14a5433c6dea26c960bd8ad
+
