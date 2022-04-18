@@ -16,12 +16,12 @@ class BasePage(CheckPoint):
         cls.driver.get("https://opstest.arsyun.com")
         cls.driver.maximize_window()
         cls.driver.implicitly_wait(10)
-        # cls.login = LoginPage(cls.driver)
-        # cls.phone = readData().read_config("test_account", "phone2")
-        # cls.password = readData().read_config("test_account", "password2")
-        # cls.login.login(cls.phone, cls.password)
-        cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJ1c2VyX25hbWUiOiJ0ZXJyeTAwMiIsImJ1ZmZlcl90aW1lIjo4NjQwMCwiZXhwIjoxNjUwMDExNDIwLCJpc3MiOiJhcnNQdWJsaWMiLCJuYmYiOjE2NDk0MDU2MjB9.8M0Jr1MGTE_VT09aVl5rkEr1A53e4mad-DOuJJIrzw4"})
-        cls.driver.get("https://opstest.arsyun.com")
+        cls.login = LoginPage(cls.driver)
+        cls.phone = readData().read_config("test_account", "phone2")
+        cls.password = readData().read_config("test_account", "password2")
+        cls.login.login(cls.phone, cls.password)
+        # cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJ1c2VyX25hbWUiOiJ0ZXJyeTAwMiIsImJ1ZmZlcl90aW1lIjo4NjQwMCwiZXhwIjoxNjUwNTMwNDU1LCJpc3MiOiJhcnNQdWJsaWMiLCJuYmYiOjE2NDk5MjQ2NTV9.phqsgRr3GrqCH7VVid4WVS7uVA33e-ndE2QTI8kbyOs"})
+        # cls.driver.get("https://opstest.arsyun.com")
 
     def setUp(self):
         pass

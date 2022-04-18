@@ -1,0 +1,6 @@
+--数据库初始化sql语句
+--新建模板审批流 先删除，确保该名称没有被使用过
+--DELETE FROM t_approval_flow_template WHERE title="process001" or title="process002" or title="process003"
+DELETE t_approval_flow_template,t_approval_flow_template_funcapis FROM t_approval_flow_template LEFT JOIN t_approval_flow_template_funcapis ON (t_approval_flow_template.`id`=t_approval_flow_template_funcapis.t_approval_flow_template_id) WHERE t_approval_flow_template.`title`="process001";
+DELETE t_approval_flow_template,t_approval_flow_template_funcapis FROM t_approval_flow_template LEFT JOIN t_approval_flow_template_funcapis ON (t_approval_flow_template.`id`=t_approval_flow_template_funcapis.t_approval_flow_template_id) WHERE t_approval_flow_template.`title`="process002";
+DELETE t_approval_flow_template,t_approval_flow_template_funcapis FROM t_approval_flow_template LEFT JOIN t_approval_flow_template_funcapis ON (t_approval_flow_template.`id`=t_approval_flow_template_funcapis.t_approval_flow_template_id) WHERE t_approval_flow_template.`title`="process003";

@@ -1,5 +1,4 @@
 from pywinauto.application import Application
-
 class WinAuto:
 
 	def __init__(self,class_name,title_re):

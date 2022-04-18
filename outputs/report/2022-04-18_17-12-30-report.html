@@ -154,15 +154,15 @@
             </li>
             <li class="list-group-item">
                 <button type="button" class="btn btn-success">开始时间</button>
-                <span class="text-dark">2022-04-09 20:13:43</span>
+                <span class="text-dark">2022-04-18 17:12:30</span>
             </li>
             <li class="list-group-item">
                 <button type="button" class="btn btn-success">执行时间</button>
-                <span class="text-dark">7.97 S</span>
+                <span class="text-dark">0.00 S</span>
             </li>
             <li class="list-group-item">
                 <button type="button" class="btn btn-success">用例总数</button>
-                <span class="text-dark">5</span>
+                <span class="text-dark">1</span>
             </li>
 
 
@@ -185,7 +185,7 @@
             </li>
             <li class="list-group-item">
                 <button type="button" class="btn btn-secondary">跳过用例</button>
-                <span class="text-secondary">4</span>
+                <span class="text-secondary">0</span>
             </li>
         </ul>
     </div>
@@ -223,7 +223,7 @@
                     <select id="testClass">
                         <option>所有</option>
                         
-                            <option>TestApprovalProcess</option>
+                            <option>_FailedTest</option>
                         
                     </select>
 
@@ -251,10 +251,10 @@
             
                 <tr>
                     <td>1</td>
-                    <td class="TestApprovalProcess">TestApprovalProcess</td>
-                    <td>test_001_add_process</td>
+                    <td class="_FailedTest">_FailedTest</td>
+                    <td>test_002_machineroominfo</td>
                     <td>None</td>
-                    <td>2.62s</td>
+                    <td>0.003s</td>
                     
                         <td class="text-danger">错误</td>
                     
@@ -272,184 +272,51 @@
 </pre>
                         
 
-                            <pre>  File "D:\Program Files\Python3.9.5\lib\unittest\case.py", line 59, in testPartExecutor
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
     yield
 </pre>
                         
 
-                            <pre>  File "D:\Program Files\Python3.9.5\lib\unittest\case.py", line 593, in run
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
     self._callTestMethod(testMethod)
 </pre>
                         
 
-                            <pre>  File "D:\Program Files\Python3.9.5\lib\unittest\case.py", line 550, in _callTestMethod
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
     method()
 </pre>
                         
 
-                            <pre>  File "E:\auto-opstest\testcases\test_007_approvalprocess.py", line 14, in test_001_add_process
-    self.page.add_process("自定义审批流001", approve1="Jacky", approve2="terry0003-autotest", approve3="Hugo",
+                            <pre>  File "D:\Python3.8.9\lib\unittest\loader.py", line 34, in testFailure
+    raise self._exception
 </pre>
                         
 
-                            <pre>  File "E:\auto-opstest\pages\system_setting_page\approval_process\approval_process_page.py", line 56, in add_process
-    self.locator(*self.first_approval_input).send_keys(Keys.ARROW_DOWN)
-</pre>
-                        
-
-                            <pre>  File "E:\auto-opstest\env\lib\site-packages\selenium\webdriver\remote\webelement.py", line 540, in send_keys
-    self._execute(Command.SEND_KEYS_TO_ELEMENT,
-</pre>
-                        
-
-                            <pre>  File "E:\auto-opstest\env\lib\site-packages\selenium\webdriver\remote\webelement.py", line 710, in _execute
-    return self._parent.execute(command, params)
-</pre>
-                        
-
-                            <pre>  File "E:\auto-opstest\env\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 425, in execute
-    self.error_handler.check_response(response)
-</pre>
-                        
-
-                            <pre>  File "E:\auto-opstest\env\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
-    raise exception_class(message, screen, stacktrace)
-</pre>
-                        
-
-                            <pre>selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
-  (Session info: chrome=98.0.4758.102)
-Stacktrace:
-Backtrace:
-	Ordinal0 [0x012169A3+2582947]
-	Ordinal0 [0x011AA6D1+2139857]
-	Ordinal0 [0x010A3960+1063264]
-	Ordinal0 [0x010CB493+1225875]
-	Ordinal0 [0x010CABDC+1223644]
-	Ordinal0 [0x010E854C+1344844]
-	Ordinal0 [0x010C6524+1205540]
-	Ordinal0 [0x010E86A4+1345188]
-	Ordinal0 [0x010F834A+1409866]
-	Ordinal0 [0x010E8366+1344358]
-	Ordinal0 [0x010C5176+1200502]
-	Ordinal0 [0x010C6066+1204326]
-	GetHandleVerifier [0x013BBE02+1675858]
-	GetHandleVerifier [0x0147036C+2414524]
-	GetHandleVerifier [0x012ABB01+560977]
-	GetHandleVerifier [0x012AA8D3+556323]
-	Ordinal0 [0x011B020E+2163214]
-	Ordinal0 [0x011B5078+2183288]
-	Ordinal0 [0x011B51C0+2183616]
-	Ordinal0 [0x011BEE1C+2223644]
-	BaseThreadInitThunk [0x7739FA29+25]
-	RtlGetAppContainerNamedObjectPath [0x77EA7A7E+286]
-	RtlGetAppContainerNamedObjectPath [0x77EA7A4E+238]
+                            <pre>ImportError: Failed to import test module: test_002_machineroominfo
+Traceback (most recent call last):
+  File "D:\Python3.8.9\lib\unittest\loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\Python3.8.9\lib\unittest\loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "F:\auto-opstest\testcases\test_002_machineroominfo.py", line 13, in <module>
+    class TestMachineRoomInfo(BasePage):
+  File "F:\auto-opstest\testcases\test_002_machineroominfo.py", line 15, in TestMachineRoomInfo
+    MysqlDb().init_database("systemsetting.txt")
+  File "F:\auto-opstest\utils\read_db.py", line 20, in __init__
+    self.conn = self.login_database()
+  File "F:\auto-opstest\utils\read_db.py", line 84, in login_database
+    self.sshtunnel.start()
+  File "F:\auto-opstest\venv\lib\site-packages\sshtunnel.py", line 1331, in start
+    self._raise(BaseSSHTunnelForwarderError,
+  File "F:\auto-opstest\venv\lib\site-packages\sshtunnel.py", line 1174, in _raise
+    raise exception(reason)
+sshtunnel.BaseSSHTunnelForwarderError: Could not establish session to SSH gateway
 
 </pre>
                         
 
-                            <pre>test_001_add_process (test_007_approvalprocess.TestApprovalProcess)执行——>【错误Error】
+                            <pre>test_002_machineroominfo (unittest.loader._FailedTest)执行——>【错误Error】
 </pre>
-                        
-                        
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td>2</td>
-                    <td class="TestApprovalProcess">TestApprovalProcess</td>
-                    <td>test_002_check_process</td>
-                    <td>None</td>
-                    <td>0.0s</td>
-                    
-                        <td class="text-info">跳过</td>
-                    
-                    <td>
-                        <button type="button" class="btn btn-success btn_info">查看详情</button>
-                    </td>
-                </tr>
-
-                <tr class="test_log">
-
-                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
-                        
-
-                            <pre></pre>
-                        
-                        
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td>3</td>
-                    <td class="TestApprovalProcess">TestApprovalProcess</td>
-                    <td>test_003_edit_process</td>
-                    <td>None</td>
-                    <td>0.0s</td>
-                    
-                        <td class="text-info">跳过</td>
-                    
-                    <td>
-                        <button type="button" class="btn btn-success btn_info">查看详情</button>
-                    </td>
-                </tr>
-
-                <tr class="test_log">
-
-                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
-                        
-
-                            <pre></pre>
-                        
-                        
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td>4</td>
-                    <td class="TestApprovalProcess">TestApprovalProcess</td>
-                    <td>test_004_bind_action</td>
-                    <td>None</td>
-                    <td>0.0s</td>
-                    
-                        <td class="text-info">跳过</td>
-                    
-                    <td>
-                        <button type="button" class="btn btn-success btn_info">查看详情</button>
-                    </td>
-                </tr>
-
-                <tr class="test_log">
-
-                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
-                        
-
-                            <pre></pre>
-                        
-                        
-                    </td>
-                </tr>
-            
-                <tr>
-                    <td>5</td>
-                    <td class="TestApprovalProcess">TestApprovalProcess</td>
-                    <td>test_005_delete_process</td>
-                    <td>None</td>
-                    <td>0.0s</td>
-                    
-                        <td class="text-info">跳过</td>
-                    
-                    <td>
-                        <button type="button" class="btn btn-success btn_info">查看详情</button>
-                    </td>
-                </tr>
-
-                <tr class="test_log">
-
-                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
-                        
-
-                            <pre></pre>
                         
                         
                     </td>
@@ -587,7 +454,7 @@ Backtrace:
                     {value: 0, name: '通过'},
                     {value: 0, name: '失败'},
                     {value: 1, name: '错误'},
-                    {value: 4, name: '跳过'}
+                    {value: 0, name: '跳过'}
                 ]
             }
         ]

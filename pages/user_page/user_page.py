@@ -80,11 +80,11 @@ class MyApprovalPage(KeyWords):
         self.click_navigation_bar("首页")
         self.div_selector(user_button, div_option, name="我的审批")
         self.wait()
-
         self.click_elements(*self.approval_button, 0)
-
         self.input_text(*self.textarea,content="同意请求")
+        self.wait()
         self.click_span_button("批 准")
+        self.wait()
 
 
 

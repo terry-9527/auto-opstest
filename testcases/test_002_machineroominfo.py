@@ -1,5 +1,5 @@
 import unittest
-from ddt import ddt, data
+from ddt import ddt,data
 
 from common.base_page import BasePage
 from utils.read_data import readData
@@ -37,6 +37,7 @@ class TestMachineRoomInfo(BasePage):
             actual = self.page.get_text(args[4]['xpath'])
             self.checkAssertEqual(args[3]['msg'], actual)
             self.page.handle_save(is_save=False)
+        self.page.click_navigation_bar("首页")
         mylogger.info("--------------------测试用例执行完毕--------------------")
 
     cases2 = readData().read_excel("编辑机房信息", filename)
@@ -55,7 +56,7 @@ class TestMachineRoomInfo(BasePage):
             actual = self.page.get_text(args[4]['xpath'])
             self.checkAssertEqual(args[3]['msg'], actual)
             self.page.handle_save(is_save=False)
-
+        self.page.click_navigation_bar("首页")
         mylogger.info("--------------------测试用例执行完毕--------------------")
 
 if __name__ == "__main__":

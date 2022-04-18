@@ -23,8 +23,8 @@ class MyLogger(logging.Logger):
 
 # now = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
 # log_file = log_dir + "-" + now + ".log"
-mylogger = MyLogger("ARS", file=r"E:\auto-opstest\outputs\log\my_log.log")
+mylogger = MyLogger("ARS", file=r"F:\auto-opstest\outputs\log\my_log.log")
 
 if __name__ == '__main__':
-    mylogger = MyLogger("ARS", file = r"E:\auto-opstest\outputs\log\my_log.log")
+    mylogger = MyLogger("ARS", file = r"F:\auto-opstest\outputs\log\my_log.log")
     mylogger.info("this is a test by terry")

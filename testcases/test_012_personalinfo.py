@@ -1,5 +1,5 @@
 from common.base_page import BasePage
-from pages.user_page.personal_info_page import PersonalInfoPage,MyApprovalPage
+from pages.user_page.user_page import PersonalInfoPage,MyApprovalPage
 import unittest
 from utils.read_data import readData
 from ddt import ddt, data

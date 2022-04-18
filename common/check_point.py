@@ -32,7 +32,7 @@ class CheckPoint(unittest.TestCase):
             self.flag += 1
             self.msg.append("\n{}".format(msg))
             mylogger.info("---------------断言失败，结束断言---------------")
-            raise e
+            # raise e
 
     def checkAssertNotEqual(self, arg1, arg2, msg=None):
         """    验证arg1 != arg2, 相等则fail"""
@@ -45,12 +45,17 @@ class CheckPoint(unittest.TestCase):
 
     def checkAssertTrue(self, expr, msg=None):
         """验证expr是true，如果为false，则fail"""
+        mylogger.info("开始进行断言------------>>")
         try:
+            mylogger.info(f"---------------实际状态：{expr}---------------")
             self.assertTrue(expr, msg)
+            mylogger.info("---------------断言通过，结束断言---------------")
         except Exception as e:
             self.flag += 1
             self.msg.append("\n{}".format(msg))
             print(e)
+            mylogger.info("---------------断言失败，结束断言---------------")
+            raise e
 
     def checkAssertFalse(self, expr, msg=None):
         """    验证expr是false，如果为true，则fail"""
