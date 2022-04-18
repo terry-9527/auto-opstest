@@ -8,6 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+from utils.handle_common import get_index
 from utils.read_data import readData
 from common.my_logger import mylogger
 
@@ -154,6 +155,9 @@ class KeyWords():
         elements[list_number].click()
         mylogger.info("-----元素点击成功-----")
 
+    def double_click(self, element):
+     ActionChains(self.driver).double_click(element).perform()
+
     # 清除输入框
     def clear(self, locator_type, location):
         mylogger.info("开始清除输入框内容--->>")
@@ -214,10 +218,10 @@ class KeyWords():
             raise e
 
     # 获取元素的文本
-    def get_text(self, locator_type, location):
+    def get_text(self, location, locator_type="xpath"):
         mylogger.info("获取元素文本开始--->>")
         try:
-            text = self.locator(locator_type, location).get_attribte("textContent")
+            text = self.locator(locator_type, location).get_attribute("textContent")
             mylogger.info("-----获取元素文本属性值成功，文本内容：{}".format(text))
             return text
         except Exception as e:
@@ -240,7 +244,7 @@ class KeyWords():
             "系统设置": 11,
             " 机房信息": 12,
             "集群信息": 13,
-            "客户信息": 14,
+            " 客户信息": 14,
             "用户管理": 15,
             "用户": 16,
             "角色": 17,
@@ -250,10 +254,11 @@ class KeyWords():
         main_menu = ('css', '.ant-menu-title-content')
         for key in main_menu_navigation_bar:
             if key == name:
-                mylogger.info(f"点击导航栏{name}")
+                mylogger.info(f"点击导航栏：{name}")
+                self.wait(0.5)
                 self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
 
-    def div_selector(self, input_path, div_select=None, number=0, name=None):
+    def div_selector(self, input_path, div_select=None, number=0, name=None, which_index=1):
         """
         div下拉框处理
         :param input_path: 下拉输入框定位信息，('xpath', '定位信息')
@@ -263,24 +268,35 @@ class KeyWords():
         """
         mylogger.info("开始处理div下拉选择框--->>")
         self.click_element(*input_path)
+        self.wait(0.5)
         name_list = []
         if not div_select:
             div_select = ("css", "div.ant-select-item-option-content")
+        # 获取选项中所有名称列表
         elements = self.locators(*div_select)
-        # print(elements)
         for el in elements:
             name_list.append(el.get_attribute('textContent'))
-        # print(name_list)
         if name:
-            self.click_elements(*div_select, list_number=name_list.index(name))
+            index = get_index(name_list, name, which_index)
+            mylogger.info(index)
+            self.click_elements(*div_select, list_number=index)
         else:
             self.click_elements(*div_select, list_number=number)
+        mylogger.info(name_list)
         return name_list
 
-    def click_span_button(self, text):
-        xpath = f"//span[text()=\'{text}\']"
-        mylogger.info(f"点击span文本为：{text} 按钮--->>")
-        self.click_element(By.XPATH, xpath)
+    def click_span_button(self, text, type="button"):
+        if type == "span":
+            self.xpath = f"//span[text()=\'{text}\']"
+        elif type == "button":
+            self.xpath = f"//span[text()=\'{text}\']/.."
+        elif type == "alert":
+            if text == "确 定":
+                self.xpath = f"//div[@class='ant-modal-confirm-btns']/button[2]"
+            else:
+                self.xpath = f"//div[@class='ant-modal-confirm-btns']/button[1]"
+        mylogger.info(f"点击按钮为：{text} 按钮--->>")
+        self.click_element(By.XPATH, self.xpath)
 
     # 打开浏览器
     def open_browser(self, url):
@@ -296,55 +312,6 @@ class KeyWords():
     def close_browser(self):
         mylogger.info("关闭浏览器")
         self.driver.quit()
-
-    # 断言普通文本text方法
-    def text_assert_equal(self, case_id, expected, location=None):
-        # //span[text()="编辑集群成功"] 文本默认的定位方式
-        mylogger.info("开始进行断言--->>")
-        if not location:
-            try:
-                xpath = f"//span[text()=\'{expected}\']"
-                mylogger.info(f"文本xpath定位信息{xpath}")
-                self.actual = self.locator(By.XPATH, xpath).get_attribute('textContent')
-                mylogger.info(f"获取的实际结果为：{self.actual}")
-            except Exception as e:
-                mylogger.info(f"获取实际结果失败：{e}")
-                raise e
-        else:
-            try:
-                mylogger.info(f"文本xpath定位信息{location}")
-                self.actual = self.locator(By.XPATH, location).get_attribute('textContent')
-                mylogger.info(f"获取的实际结果为：{self.actual}")
-            except Exception as e:
-                mylogger.info(f"获取实际结果失败：{e}")
-                raise e
-        mylogger.info(f"预期结果为：{expected}")
-        if expected == self.actual:
-            mylogger.info(f"{case_id}断言通过")
-        else:
-            mylogger.error(f"{case_id}用例执行断言失败====>>预期结果 != 实际结果 ===>> {expected} != {self.actual}")
-            raise AssertionError
-        mylogger.info("-----断言结束-----")
-
-
-    # def text_assert_many_equal(self, case_id, expected_tuple, location):
-    #     """
-    #     多个文本进行断言
-    #     :param filename: Excel表格文件名
-    #     :param sheetname: 执行表的表名称
-    #     :param case_id:    用例的ID
-    #     :param expected_tuple: 预期结果
-    #     :param location: 对应文本的定位方式，必须才用xpath定位方式
-    #     :return:
-    #     """
-    #     reason_list = []
-    #     test_result = "PASS"
-    #     for i in range(len(location)):
-    #         result = self.text_assert_equal(case_id, expected_tuple[i], location[i])
-    #         if not result[0]:
-    #             test_result = "FAIL"
-    #             reason_list.append(result[1])
-    #             raise AssertionError
 
     def get_verifycode(self, phone, type="login"):
         url = "https://opstest.arsyun.com/api/v5/public/sms/get"

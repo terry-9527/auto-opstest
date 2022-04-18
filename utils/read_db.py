@@ -1,5 +1,6 @@
 import pymysql
 from sshtunnel import SSHTunnelForwarder
+
 from utils.read_data import readData
 
 
@@ -104,5 +105,5 @@ if __name__ == "__main__":
     # print(cur.fetchone())
     # db.logout_database()
     # db.init_database("systemsetting.txt")
-    rows = db.query("select count(*) from `t_machine_room`")
+    rows = db.query("SELECT COUNT(*) FROM t_client WHERE NAME='test002' AND deleted_at IS NULL")
     print(rows[0][0])

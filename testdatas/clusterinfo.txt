@@ -1,5 +1,5 @@
 --数据库初始化sql语句
 --新建集群信息 先删除，确保该名称没有被使用过
-delete from t_miner where miner='f01000'
-delete from t_miner where miner='f01001'
-delete from t_miner where miner='f02000' or miner='f03000' or miner='f04000'
+delete from t_miner where miner='f010000'
+delete from t_miner where miner='f01000011'
+delete from t_miner where miner='f020000' or miner='f030000' or miner='f040000' or miner='f050000'
