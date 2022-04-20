@@ -74,20 +74,23 @@ class TestHostManagement(BasePage):
         mylogger.info("--------------------测试用例执行结束--------------------")
 
     cases = readData().read_excel("搜索", filename)
-    @unittest.skip
+    # @unittest.skip
     @data(*cases)
-    def test_006_search(self, args):
+    def test_004_search(self, args):
         self.page.search_deviceinfo(minerid=args[2]['minerid'], sn=args[2]['sn'], ip=args[2]['ip'], role=args[2]['role'],
                                     machine_status=args[2]['machine_status'], work_status=args[2]['work_status'])
 
+
+    # @unittest.skip
+    def test_005_deviceinfo(self):
+        self.page.deviceinfo_detail(minerid="f060975", sn="KJ2020100610004")
+
     # 下载导入模板
-    @unittest.skip
-    def test_004_down_template(self):
+    # @unittest.skip
+    def test_006_down_template(self):
         self.page.download_template()
 
-    @unittest.skip
-    def test_005_deviceinfo(self):
-        self.page.deviceinfo_detail(minerid="f060975", sn="KJ21011310004")
+
 
 
 if __name__ == '__main__':

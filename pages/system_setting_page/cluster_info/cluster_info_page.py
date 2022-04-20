@@ -60,6 +60,8 @@ class ClusterInfoPage(KeyWords):
         self.input_text(*self.domain_input, domain)
         self.input_text(*self.comment_input, comment)
         self.wait()
+        mylogger.info("点进确定按钮")
+        self.click_span_button("确 定")
 
     # 新建是否保存
     def handle_save(self, is_save=True):
@@ -90,6 +92,8 @@ class ClusterInfoPage(KeyWords):
         self.input_text(*self.domain_input, domain)
         self.input_text(*self.comment_input, comment)
         self.wait()
+        mylogger.info("点进确定按钮")
+        self.click_span_button("确 定")
 
     # 添加集群负责人
     def bind_person_liabel(self, minerid, name=None, state="one"):

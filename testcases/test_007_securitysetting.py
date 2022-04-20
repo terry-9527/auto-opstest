@@ -15,3 +15,4 @@ class TestSecurityPolicy(BasePage):
         actual = self.page.get_text("//span[text()='修改密码策略成功']")
         self.checkAssertEqual(excepted, actual)
         mylogger.info("--------------------测试用例执行结束--------------------")
+

@@ -3,7 +3,7 @@
 """
 import os
 import unittest
-from unittestreport import TestRunner
+# from unittestreport import TestRunner
 from BeautifulReport import BeautifulReport
 from datetime import datetime
 from utils.handle_path import report_dir,testdata_dir,testcase_dir
@@ -43,26 +43,28 @@ class runTestCase:
         filename = now + "-report"
         if case_suits:
             # 方式一
-            # BeautifulReport(case_suits).report(
-            #                                     description="运维系统web自动化测试报告",
-            #                                     report_dir=report_dir,
-            #                                     filename=filename,
-            #                                     theme="theme_candy"
-            #                                    )
+            BeautifulReport(case_suits).report(
+                                                description="运维系统web自动化测试报告",
+                                                report_dir=report_dir,
+                                                filename=filename,
+                                                theme="theme_candy"
+                                               )
             # 方式二
-            runner = TestRunner(case_suits,
-                                filename=filename,
-                                report_dir=report_dir,
-                                title="运维系统web自动化测试报告",
-                                templates=1,
-                                tester="Terry",
-                                desc="运维系统项目web自动化测试报告")
+            # runner = TestRunner(case_suits,
+            #                     filename=filename,
+            #                     report_dir=report_dir,
+            #                     title="运维系统web自动化测试报告",
+            #                     templates=1,
+            #                     tester="Terry",
+            #                     desc="运维系统项目web自动化测试报告")
             runner.run()
 
 
 if __name__ == "__main__":
     run = runTestCase()
-    run.run_all_cases(filename=["test_002_machineroominfo.py"])
-    # run.run_all_cases()
+    # run.run_all_cases(filename=["test_004_rolemanagement.py","test_005_usermanagement.py","test_006_clusterinfo.py"])
+    # run.run_all_cases(filename=["test_002_machineroominfo.py","test_003_customerinfo.py","test_004_rolemanagement.py","test_005_usermanagement.py"])
+    # run.run_all_cases(filename=["test_011_brokenrecord.py"])
+    run.run_all_cases()
 
 

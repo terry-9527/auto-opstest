@@ -33,25 +33,31 @@ class MachineRoomInfoPage(KeyWords):
     edit_button = ('xpath', '//span[contains(text(),"machineroom0001")]/../..//td[5]//span')
     # 权限分配按钮css定位信息
     assign_permission_button = ('css_selector', '.ant-table-tbody>tr:nth-child(5)>td:nth-child(5)>button:nth-child(1)')
-
     # 新建机房弹窗处理
     def handle_new_machineroom_alert(self, name, address, domain=None, comment=None, checkbox="False"):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar(" 机房信息")
         self.click_element(*self.new_button)
         mylogger.info(f"输入机房名称：{name}")
-        self.input_text(*self.roomname, name)
+        if name:
+            self.input_text(*self.roomname, name)
         mylogger.info(f"输入机房所在地址：{address}")
-        self.input_text(*self.address, address)
+        if address:
+            self.input_text(*self.address, address)
         mylogger.info(f"输入域名：{domain}")
-        self.input_text(*self.domain, domain)
+        if domain:
+            self.input_text(*self.domain, domain)
         mylogger.info(f"输入备注：{comment}")
-        self.input_text(*self.comment,comment)
+        if comment:
+            self.input_text(*self.comment,comment)
         if checkbox == "True":
             if not self.locator(*self.scheduling_checkbox).is_selected():
                 mylogger.info("算力机是否可调度复选框未勾选")
                 self.click_element(*self.scheduling_checkbox)
                 self.wait()
+        mylogger.info("点进确定按钮")
+        self.click_element(*self.confirm_button)
+
     # 新建是否保存
     def handle_save(self, is_save=True):
         if is_save:
@@ -62,25 +68,38 @@ class MachineRoomInfoPage(KeyWords):
             mylogger.info("点进取消按钮")
             self.click_element(*self.cancle_button)
 
-
     # 编辑机房信息
     def handle_edit_machineroom_alert(self, name, address, domain=None, comment=None, checkbox="False"):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar(" 机房信息")
         self.click_element(*self.edit_button)
         mylogger.info(f"输入机房名称：{name}")
-        self.input_text(*self.roomname, name)
+        if name:
+            self.input_text(*self.roomname, name)
+        else:
+            self.clear(*self.roomname)
         mylogger.info(f"输入机房所在地址：{address}")
-        self.input_text(*self.address, address)
+        if address:
+            self.input_text(*self.address, address)
+        else:
+            self.clear(*self.address)
         mylogger.info(f"输入域名：{domain}")
-        self.input_text(*self.domain, domain)
+        if domain:
+            self.input_text(*self.domain, domain)
+        else:
+            self.clear(*self.domain)
         mylogger.info(f"输入备注：{comment}")
-        self.input_text(*self.comment,comment)
+        if comment:
+            self.input_text(*self.comment,comment)
+        else:
+            self.clear(*self.comment)
         if checkbox == "True":
             if not self.locator(*self.scheduling_checkbox).is_selected():
                 mylogger.info("算力机是否可调度复选框未勾选")
                 self.click_element(*self.scheduling_checkbox)
                 self.wait()
+        mylogger.info("点进确定按钮")
+        self.click_element(*self.confirm_button)
 
 
 

@@ -206,6 +206,8 @@ class KeyWords():
         except Exception as e:
             mylogger.info("-----文本输入失败-----")
             raise e
+        finally:
+            self.wait(0.5)
 
     def move(self, locator_type, location):
         mylogger.info("移动鼠标到指定元素开始--->>")
