@@ -1,13 +1,16 @@
 """
 执行用例总入口
 """
+import sys
 import os
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
 import unittest
-# from unittestreport import TestRunner
+from unittestreport import TestRunner
 from BeautifulReport import BeautifulReport
 from datetime import datetime
 from utils.handle_path import report_dir,testdata_dir,testcase_dir
-
 
 class runTestCase:
 
@@ -43,20 +46,20 @@ class runTestCase:
         filename = now + "-report"
         if case_suits:
             # 方式一
-            BeautifulReport(case_suits).report(
-                                                description="运维系统web自动化测试报告",
-                                                report_dir=report_dir,
-                                                filename=filename,
-                                                theme="theme_candy"
-                                               )
+            # BeautifulReport(case_suits).report(
+            #                                     description="运维系统web自动化测试报告",
+            #                                     report_dir=report_dir,
+            #                                     filename=filename,
+            #                                     theme="theme_candy"
+            #                                    )
             # 方式二
-            # runner = TestRunner(case_suits,
-            #                     filename=filename,
-            #                     report_dir=report_dir,
-            #                     title="运维系统web自动化测试报告",
-            #                     templates=1,
-            #                     tester="Terry",
-            #                     desc="运维系统项目web自动化测试报告")
+            runner = TestRunner(case_suits,
+                                filename=filename,
+                                report_dir=report_dir,
+                                title="运维系统web自动化测试报告",
+                                templates=1,
+                                tester="Terry",
+                                desc="运维系统项目web自动化测试报告")
             runner.run()
 
 
