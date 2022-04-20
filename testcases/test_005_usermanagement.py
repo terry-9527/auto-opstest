@@ -14,6 +14,11 @@ class TestUserManagement(BasePage):
 
     def setUp(self):
         self.page = UserManagementPage(self.driver)
+    def tearDown(self):
+        self.page.wait()
+        self.page.click_navigation_bar("用户管理")
+        self.page.click_navigation_bar("系统设置")
+        self.page.click_navigation_bar("首页")
 
     # 初始化数据库
     MysqlDb().init_database("usermanagement.txt")
@@ -33,14 +38,13 @@ class TestUserManagement(BasePage):
         is_approve = args[2]['is_approve']
         is_enable = args[2]['is_enable']
         self.page.add_user(username, chinesename, phone, email, is_leader, is_approve, is_enable)
-        self.page.handle_save()
-        if args[0] not in ["add-user-001", "add-user-002", "add-user-003", "add-user-004"]:
+        if args[0] in ["add-user-01", "add-user-02", "add-user-03", "add-user-04"]:
             actual = self.page.get_text(args[4]['xpath'])
             self.checkAssertEqual(args[3]['msg'], actual)
         else:
             actual = self.page.get_text(args[4]['xpath'])
             self.checkAssertEqual(args[3]['msg'], actual)
-            self.page.handle_save(is_save=False)
+            self.page.click_span_button("取 消")
         mylogger.info("--------------------测试用例执行结束--------------------")
 
     # @unittest.skip("跳过")
@@ -62,7 +66,6 @@ class TestUserManagement(BasePage):
         is_approve = args[2]['is_approve']
         is_enable = args[2]['is_enable']
         self.page.edit_userinfo(username, chinesename, phone, email, is_leader, is_approve, is_enable)
-        self.page.handle_save()
         actual = self.page.get_text(args[4]['xpath'])
         self.checkAssertEqual(args[3]['msg'], actual)
         mylogger.info("--------------------测试用例执行结束--------------------")
@@ -76,28 +79,34 @@ class TestUserManagement(BasePage):
         self.checkAssertEqual(excepted, actual)
         mylogger.info("--------------------测试用例执行结束--------------------")
 
-    # @unittest.skip("跳过")
+    @unittest.skip("跳过")
     def test_005_bind_miner(self):
         mylogger.info("--------------------测试用例开始执行--------------------")
+        # 绑定执行的集群
         minerid_list = ["f020000", "f030000"]
         self.page.bind_miner(minerid_list, is_select=True)
         excepted = "关联集群成功"
         actual = self.page.get_text("//span[text()='关联集群成功']")
         self.checkAssertEqual(excepted, actual)
+        self.page.wait()
+        self.page.click_navigation_bar("用户管理")
+        self.page.click_navigation_bar("系统设置")
+        self.page.click_navigation_bar("首页")
+        # 绑定所有的集群
         self.page.bind_miner(select_all=True)
         excepted = "关联集群成功"
         actual = self.page.get_text("//span[text()='关联集群成功']")
         self.checkAssertEqual(excepted, actual)
         mylogger.info("--------------------测试用例执行结束--------------------")
 
-    # @unittest.skip
-    def test_006_search_userinfo(self):
+    cases3 = readData().read_excel("searchuser", filename)
+
+    @data(*cases3)
+    # @unittest.skip("跳过")
+    def test_006_search_userinfo(self, args):
         mylogger.info("--------------------测试用例开始执行--------------------")
-        self.page.search("terry", customername="内部", by_username=True, by_customer=True)
-        self.page.clear_input()
-        self.page.search("autotest", by_username=True, by_customer=False)
-        self.page.clear_input()
-        self.page.search(customername="内部",by_username=False, by_customer=True)
+        mylogger.info(f"用例{args[0]}:{args[1]}--->>测试数据：{args[2]}")
+        self.page.search(username=args[2]["username"], customername=args[2]["customername"])
         mylogger.info("--------------------测试用例执行结束--------------------")
 
 

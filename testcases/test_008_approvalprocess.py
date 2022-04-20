@@ -37,14 +37,15 @@ class TestApprovalProcess(BasePage):
     def test_002_check_process(self):
         self.page.check_process()
 
-    @unittest.skip
-    def test_003_edit_process(self):
-        self.page.edit_process("test003", approve1="Nick", approve2="terry003-autotest", approve3="Hugo",
-                          notifiers=["Nick", "lemontree", "Hunter", "Morgan"])
+    # @unittest.skip
+    # def test_003_edit_process(self):
+    #     self.page.edit_process("test003", approve1="Nick", approve2="terry003-autotest", approve3="Hugo",
+    #                       notifiers=["Nick", "lemontree", "Hunter", "Morgan"])
 
     # @unittest.skip
     def test_004_bind_action(self):
-        self.page.bind_action(all_select=True)
+        self.page.bind_action(process_name="模板启用/停用", all_select=False)
+        self.page.bind_action(process_name="process001",all_select=True)
         excepted = "关联操作成功"
         actual = self.page.get_text("//span[text()='关联操作成功']")
         self.checkAssertEqual(excepted, actual)

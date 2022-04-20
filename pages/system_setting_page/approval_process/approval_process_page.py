@@ -132,5 +132,5 @@ class ApprovalProcessPage(KeyWords):
                 all_checkbox.click()
                 self.wait()
         self.click_span_button("确 定")
-        self.click_navigation_bar("系统设置")
         self.wait()
+        self.click_navigation_bar("系统设置")

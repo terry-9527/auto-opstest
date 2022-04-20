@@ -55,9 +55,9 @@ class TestCustomerInfo(BasePage):
         excepted = "删除客户成功"
         actual = self.page.get_text("//span[text()='删除客户成功']")
         self.checkAssertEqual(excepted, actual)
-        sql = "SELECT COUNT(*) FROM `t_client` WHERE `NAME`='test002' AND `deleted_at` IS NULL"
-        num = MysqlDb().query(sql)
-        self.checkAssertEqual(0, num[0][0])
+        # sql = "SELECT COUNT(*) FROM `t_client` WHERE `NAME`='test002' AND `deleted_at` IS NULL"
+        # num = MysqlDb().query(sql)
+        # self.checkAssertEqual(0, num[0][0])
         mylogger.info("--------------------测试用例执行结束--------------------")
 
 

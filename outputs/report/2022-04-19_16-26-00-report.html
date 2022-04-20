@@ -1,0 +1,4701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试报告</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--    页面样式-->
+    <style type="text/css">
+        /*标题样式*/
+        .title {
+            width: auto;
+            height: 60px;
+            text-align: center;
+            font: bolder 38px/60px "Microsoft YaHei UI";
+        }
+
+        /*汇总信息样式*/
+        .summary {
+            width: 90%;
+            position: absolute;
+            top: 120px;
+            margin-left: 5%;
+
+        }
+
+        .text-left {
+            font: bolder 20px/30px "Microsoft YaHei UI";
+        }
+
+        .left {
+            width: 50%;
+            float: left;
+
+        }
+
+        .right {
+            width: 50%;
+            float: right;
+
+        }
+
+        .desc {
+            float: left;
+            width: 100%;
+        }
+
+        .list-group-item span {
+            font: normal 16px/38px "Microsoft YaHei UI";
+            padding: 30px;
+
+        }
+
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: .4rem 1.25rem;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, .125);
+        }
+
+        /* 执行信息样式   */
+        .test_info {
+            width: 90%;
+            position: absolute;
+            top: 900px;
+            margin-left: 5%;
+
+            color: #28a745 !important;
+        }
+
+        .table td, th {
+            border: solid 2px rgba(9, 122, 51, 0.11) !important;
+            padding: 0;
+            line-height: 40px;
+            text-align: center;
+
+        }
+
+
+        select {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            height: 2em;
+            width: 8em;
+            margin-left: 2em;
+        }
+
+        option {
+            text-align: center;
+            height: 36px;
+            font: none 18px/36px "Microsoft YaHei UI";
+            color: #28a745 !important;
+        }
+
+        .test_log {
+            background: rgba(163, 171, 189, 0.15);
+            width: 100%;
+            height: 50px;
+            border-top: none;
+            border-bottom: none;
+            display: none;
+            text-align: left;
+        }
+
+        .test_log td {
+            text-align: left;
+            height: 30px;
+            margin: 0;
+            padding-left: 3em;
+            padding-right:3em;
+            font: none 18px/24px "Microsoft YaHei UI";
+            color: #9e141a;
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+            line-height: 22px;
+            font-size: 14px
+        }
+
+        /*    测试图表显示*/
+        .char {
+            width: 90%;
+            position: absolute;
+            top: 450px;
+            margin-left: 5%;
+            color: #28a745 !important;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!--报告标题-->
+<div class="title text-success">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">运维系统web自动化测试报告</div>
+</div>
+
+<!--汇总信息-->
+<div class="summary">
+    <p class="text-left text-success">测试结果汇总</p>
+    <div class="left">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">测试人员</button>
+                <span class="text-dark">Terry</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">开始时间</button>
+                <span class="text-dark">2022-04-19 16:26:00</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">执行时间</button>
+                <span class="text-dark">1013.75 S</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">用例总数</button>
+                <span class="text-dark">138</span>
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="right">
+        <ul class="list-group">
+
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">成功用例</button>
+                <span class="text-success">103</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-warning">失败用例</button>
+                <span class="text-warning">0</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-danger">错误用例</button>
+                <span class="text-danger">10</span>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-secondary">跳过用例</button>
+                <span class="text-secondary">25</span>
+            </li>
+        </ul>
+    </div>
+    <div class="desc">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <button type="button" class="btn btn-success">描述信息</button>
+                <span class="text-secondary">运维系统项目web自动化测试报告</span>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<!--测试图表-->
+<div class="char">
+    <p class="text-left text-success">图表展示</p>
+    <div id="char2" style="width: 49%;height: 400px;float: left"></div>
+    <div id="char" style="width: 49%;height: 400px ;float: left"></div>
+</div>
+
+<!--详细信息-->
+<div class="test_info">
+
+    <p class="text-left text-success">详细信息</p>
+    <div class="table_data">
+
+        <table class="table">
+            <thead class="bg-success text-light">
+            <tr>
+                <th scope="col" style="width: 5%;padding: 0">编号</th>
+                <th scope="col" style="width: 20%;padding: 0">
+                    <span>测试类</span>
+                    <select id="testClass">
+                        <option>所有</option>
+                        
+                            <option>TestHostManagement</option>
+                        
+                            <option>TestUserManagement</option>
+                        
+                            <option>TestApprovalProcess</option>
+                        
+                            <option>TestRoleManagement</option>
+                        
+                            <option>TestPersonalInfo</option>
+                        
+                            <option>TestCustomerInfo</option>
+                        
+                            <option>TestSecurityPolicy</option>
+                        
+                            <option>TestMachineRoomInfo</option>
+                        
+                            <option>TestClusterInfo</option>
+                        
+                    </select>
+
+                </th>
+
+                <th scope="col" style="width: 15%;padding: 0">测试方法</th>
+                <th scope="col" style="width: 20%;padding: 0">用例描述</th>
+                <th scope="col" style="width: 15%;padding: 0">执行时间</th>
+                <th scope="col" style="width: 20%;padding: 0">
+
+                    <span>执行结果</span>
+                    <select id="testResult">
+                        <option>所有</option>
+                        <option class="text-success">成功</option>
+                        <option class="text-warning">失败</option>
+                        <option class="text-danger">错误</option>
+                        <option class="text-info">跳过</option>
+                    </select>
+
+                </th>
+                <th scope="col" style="width: 10%;padding: 0">详细信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td>1</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_1</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>2</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_2</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>3</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_3</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>4</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_4</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>5</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_5</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>6</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_6</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>7</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_7</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>8</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_8</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>9</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_01_new_machineroom_info_9</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>10</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_01</td>
+                    <td>None</td>
+                    <td>6.64s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_01 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>11</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_02</td>
+                    <td>None</td>
+                    <td>6.6s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_02 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>12</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_03</td>
+                    <td>None</td>
+                    <td>7.63s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_03 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>13</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_04</td>
+                    <td>None</td>
+                    <td>7.61s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_04 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>14</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_05</td>
+                    <td>None</td>
+                    <td>6.53s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_05 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>15</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_06</td>
+                    <td>None</td>
+                    <td>5.96s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_06 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>16</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_07</td>
+                    <td>None</td>
+                    <td>4.68s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_07 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>17</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_08</td>
+                    <td>None</td>
+                    <td>5.21s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_08 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>18</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_09</td>
+                    <td>None</td>
+                    <td>5.44s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_09 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>19</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_10</td>
+                    <td>None</td>
+                    <td>5.26s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_10 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>20</td>
+                    <td class="TestMachineRoomInfo">TestMachineRoomInfo</td>
+                    <td>test_02_edit_machineroom_info_11</td>
+                    <td>None</td>
+                    <td>4.16s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_02_edit_machineroom_info_11 (test_002_machineroominfo.TestMachineRoomInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>21</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_001_new_custemorinfo_1</td>
+                    <td>None</td>
+                    <td>4.34s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_custemorinfo_1 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>22</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_001_new_custemorinfo_2</td>
+                    <td>None</td>
+                    <td>3.58s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_custemorinfo_2 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>23</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_001_new_custemorinfo_3</td>
+                    <td>None</td>
+                    <td>4.69s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_custemorinfo_3 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>24</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_001_new_custemorinfo_4</td>
+                    <td>None</td>
+                    <td>4.62s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_custemorinfo_4 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>25</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_001_new_custemorinfo_5</td>
+                    <td>None</td>
+                    <td>4.67s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_custemorinfo_5 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>26</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_002_edit_custemorinfo_1</td>
+                    <td>None</td>
+                    <td>5.12s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_custemorinfo_1 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>27</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_002_edit_custemorinfo_2</td>
+                    <td>None</td>
+                    <td>5.49s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_custemorinfo_2 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>28</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_002_edit_custemorinfo_3</td>
+                    <td>None</td>
+                    <td>3.94s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_custemorinfo_3 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>29</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_002_edit_custemorinfo_4</td>
+                    <td>None</td>
+                    <td>5.49s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_custemorinfo_4 (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>30</td>
+                    <td class="TestCustomerInfo">TestCustomerInfo</td>
+                    <td>test_003_delete_custemorinfo</td>
+                    <td>None</td>
+                    <td>4.24s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_003_delete_custemorinfo (test_003_customerinfo.TestCustomerInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>31</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_001_add_role_1</td>
+                    <td>None</td>
+                    <td>10.1s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_role_1 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>32</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_001_add_role_2</td>
+                    <td>None</td>
+                    <td>8.33s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_role_2 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>33</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_001_add_role_3</td>
+                    <td>None</td>
+                    <td>11.1s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_role_3 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>34</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_001_add_role_4</td>
+                    <td>None</td>
+                    <td>10.0s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_role_4 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>35</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_001_add_role_5</td>
+                    <td>None</td>
+                    <td>8.81s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_role_5 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>36</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_002_edit_role_1</td>
+                    <td>None</td>
+                    <td>8.42s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_role_1 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>37</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_002_edit_role_2</td>
+                    <td>None</td>
+                    <td>9.36s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_role_2 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>38</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_002_edit_role_3</td>
+                    <td>None</td>
+                    <td>8.3s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_role_3 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>39</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_002_edit_role_4</td>
+                    <td>None</td>
+                    <td>8.28s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_role_4 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>40</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_002_edit_role_5</td>
+                    <td>None</td>
+                    <td>8.44s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_role_5 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>41</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_002_edit_role_6</td>
+                    <td>None</td>
+                    <td>8.45s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_role_6 (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>42</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_003_setting_role</td>
+                    <td>None</td>
+                    <td>24.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_003_setting_role (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>43</td>
+                    <td class="TestRoleManagement">TestRoleManagement</td>
+                    <td>test_004_delete_role</td>
+                    <td>None</td>
+                    <td>6.24s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_delete_role (test_004_rolemanagement.TestRoleManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>44</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_01</td>
+                    <td>None</td>
+                    <td>8.91s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_01 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>45</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_02</td>
+                    <td>None</td>
+                    <td>8.89s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_02 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>46</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_03</td>
+                    <td>None</td>
+                    <td>8.81s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_03 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>47</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_04</td>
+                    <td>None</td>
+                    <td>8.65s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_04 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>48</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_05</td>
+                    <td>None</td>
+                    <td>8.92s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_05 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>49</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_06</td>
+                    <td>None</td>
+                    <td>8.97s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_06 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>50</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_07</td>
+                    <td>None</td>
+                    <td>8.78s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_07 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>51</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_08</td>
+                    <td>None</td>
+                    <td>8.68s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_08 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>52</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_09</td>
+                    <td>None</td>
+                    <td>8.81s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_09 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>53</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_10</td>
+                    <td>None</td>
+                    <td>8.85s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_10 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>54</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_001_add_user_11</td>
+                    <td>None</td>
+                    <td>8.83s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_user_11 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>55</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_002_check_userino</td>
+                    <td>None</td>
+                    <td>4.75s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_check_userino (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>56</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_003_edit_userinfo_1</td>
+                    <td>None</td>
+                    <td>7.55s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_003_edit_userinfo_1 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>57</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_003_edit_userinfo_2</td>
+                    <td>None</td>
+                    <td>7.59s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_003_edit_userinfo_2 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>58</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_003_edit_userinfo_3</td>
+                    <td>None</td>
+                    <td>7.6s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_003_edit_userinfo_3 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>59</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_003_edit_userinfo_4</td>
+                    <td>None</td>
+                    <td>7.58s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_003_edit_userinfo_4 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>60</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_004_bind_role</td>
+                    <td>None</td>
+                    <td>7.15s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_bind_role (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>61</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_005_bind_miner</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>跳过</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>62</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_006_search_userinfo_1</td>
+                    <td>None</td>
+                    <td>6.08s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_006_search_userinfo_1 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>63</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_006_search_userinfo_2</td>
+                    <td>None</td>
+                    <td>5.3s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_006_search_userinfo_2 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>64</td>
+                    <td class="TestUserManagement">TestUserManagement</td>
+                    <td>test_006_search_userinfo_3</td>
+                    <td>None</td>
+                    <td>5.41s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_006_search_userinfo_3 (test_005_usermanagement.TestUserManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>65</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_001_new_cluster_1</td>
+                    <td>None</td>
+                    <td>12.6s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_cluster_1 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>66</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_001_new_cluster_2</td>
+                    <td>None</td>
+                    <td>12.5s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_cluster_2 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>67</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_001_new_cluster_3</td>
+                    <td>None</td>
+                    <td>12.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_cluster_3 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>68</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_001_new_cluster_4</td>
+                    <td>None</td>
+                    <td>12.7s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_cluster_4 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>69</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_001_new_cluster_5</td>
+                    <td>None</td>
+                    <td>11.9s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_cluster_5 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>70</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_001_new_cluster_6</td>
+                    <td>None</td>
+                    <td>12.4s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_cluster_6 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>71</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_001_new_cluster_7</td>
+                    <td>None</td>
+                    <td>11.8s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_new_cluster_7 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>72</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_002_edit_cluster_1</td>
+                    <td>None</td>
+                    <td>12.9s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_cluster_1 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>73</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_002_edit_cluster_2</td>
+                    <td>None</td>
+                    <td>12.6s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_cluster_2 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>74</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_002_edit_cluster_3</td>
+                    <td>None</td>
+                    <td>13.0s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_cluster_3 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>75</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_002_edit_cluster_4</td>
+                    <td>None</td>
+                    <td>12.5s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_cluster_4 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>76</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_002_edit_cluster_5</td>
+                    <td>None</td>
+                    <td>12.7s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_cluster_5 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>77</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_002_edit_cluster_6</td>
+                    <td>None</td>
+                    <td>13.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_cluster_6 (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>78</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_003_bind_person_liabel</td>
+                    <td>None</td>
+                    <td>13.9s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_003_bind_person_liabel (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>79</td>
+                    <td class="TestClusterInfo">TestClusterInfo</td>
+                    <td>test_004_bind_miner</td>
+                    <td>None</td>
+                    <td>14.0s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_bind_miner (test_006_clusterinfo.TestClusterInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>80</td>
+                    <td class="TestSecurityPolicy">TestSecurityPolicy</td>
+                    <td>test_setting_security_policy</td>
+                    <td>None</td>
+                    <td>6.64s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_setting_security_policy (test_007_securitysetting.TestSecurityPolicy)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>81</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_1</td>
+                    <td>None</td>
+                    <td>4.47s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_1 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>82</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_2</td>
+                    <td>None</td>
+                    <td>6.09s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_2 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>83</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_3</td>
+                    <td>None</td>
+                    <td>7.98s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_3 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>84</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_4</td>
+                    <td>None</td>
+                    <td>7.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_4 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>85</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_5</td>
+                    <td>None</td>
+                    <td>5.16s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_5 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>86</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_6</td>
+                    <td>None</td>
+                    <td>6.22s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_6 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>87</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_7</td>
+                    <td>None</td>
+                    <td>3.35s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_7 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>88</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_8</td>
+                    <td>None</td>
+                    <td>4.38s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_8 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>89</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_001_add_process_9</td>
+                    <td>None</td>
+                    <td>5.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_process_9 (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>90</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_002_check_process</td>
+                    <td>None</td>
+                    <td>2.75s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_check_process (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>91</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_004_bind_action</td>
+                    <td>None</td>
+                    <td>9.11s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>ant-tree-checkbox
+test_004_bind_action (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>92</td>
+                    <td class="TestApprovalProcess">TestApprovalProcess</td>
+                    <td>test_005_delete_process</td>
+                    <td>None</td>
+                    <td>15.5s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>ant-tree-checkbox
+test_005_delete_process (test_008_approvalprocess.TestApprovalProcess)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>93</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_001_batch_import</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>94</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_upload_1</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>95</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_upload_2</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>96</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_upload_3</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>97</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_upload_4</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>98</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_upload_5</td>
+                    <td>None</td>
+                    <td>0.001s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>99</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_lotus_operation_1</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>100</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_lotus_operation_2</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>101</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_lotus_operation_3</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>102</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_lotus_operation_4</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>103</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_lotus_operation_5</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>104</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_lotus_operation_6</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>105</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_lotus_operation_7</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>106</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_1</td>
+                    <td>None</td>
+                    <td>5.62s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_1 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>107</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_2</td>
+                    <td>None</td>
+                    <td>5.3s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_2 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>108</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_3</td>
+                    <td>None</td>
+                    <td>7.78s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_3 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>109</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_4</td>
+                    <td>None</td>
+                    <td>7.85s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_4 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>110</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_5</td>
+                    <td>None</td>
+                    <td>7.77s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_5 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>111</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_6</td>
+                    <td>None</td>
+                    <td>8.61s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_6 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>112</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_7</td>
+                    <td>None</td>
+                    <td>8.56s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_7 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>113</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_8</td>
+                    <td>None</td>
+                    <td>9.08s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_8 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>114</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_search_9</td>
+                    <td>None</td>
+                    <td>10.7s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_004_search_9 (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>115</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_005_deviceinfo</td>
+                    <td>None</td>
+                    <td>3.76s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_005_deviceinfo (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>116</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_006_down_template</td>
+                    <td>None</td>
+                    <td>3.36s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_006_down_template (test_010_hostmanagement.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>117</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_001_add_record_1</td>
+                    <td>None</td>
+                    <td>10.3s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_record_1 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>118</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_001_add_record_2</td>
+                    <td>None</td>
+                    <td>10.5s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_record_2 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>119</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_001_add_record_3</td>
+                    <td>None</td>
+                    <td>10.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_record_3 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>120</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_001_add_record_4</td>
+                    <td>None</td>
+                    <td>10.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_record_4 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>121</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_001_add_record_5</td>
+                    <td>None</td>
+                    <td>10.3s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_record_5 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>122</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_001_add_record_6</td>
+                    <td>None</td>
+                    <td>10.4s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_record_6 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>123</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_001_add_record_7</td>
+                    <td>None</td>
+                    <td>9.67s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_001_add_record_7 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>124</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_edit_record_1</td>
+                    <td>None</td>
+                    <td>11.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_record_1 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>125</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_edit_record_2</td>
+                    <td>None</td>
+                    <td>11.2s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_002_edit_record_2 (test_011_brokenrecord.TestHostManagement)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>126</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_edit_record_3</td>
+                    <td>None</td>
+                    <td>1.55s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 46, in test_002_edit_record
+    self.page.edit_record(minerid=args[2]['minerid'], description=args[2]['description'], reason=args[2]['reason'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 61, in edit_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_002_edit_record_3 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>127</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_edit_record_4</td>
+                    <td>None</td>
+                    <td>1.6s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 46, in test_002_edit_record
+    self.page.edit_record(minerid=args[2]['minerid'], description=args[2]['description'], reason=args[2]['reason'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 61, in edit_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_002_edit_record_4 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>128</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_002_edit_record_5</td>
+                    <td>None</td>
+                    <td>1.63s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 46, in test_002_edit_record
+    self.page.edit_record(minerid=args[2]['minerid'], description=args[2]['description'], reason=args[2]['reason'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 61, in edit_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_002_edit_record_5 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>129</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_search_1</td>
+                    <td>None</td>
+                    <td>1.58s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 61, in test_003_search
+    self.page.search_record(type=args[2]['type'], level=args[2]['level'], status=args[2]['status'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 106, in search_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_003_search_1 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>130</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_search_2</td>
+                    <td>None</td>
+                    <td>1.64s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 61, in test_003_search
+    self.page.search_record(type=args[2]['type'], level=args[2]['level'], status=args[2]['status'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 106, in search_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_003_search_2 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>131</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_search_3</td>
+                    <td>None</td>
+                    <td>1.62s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 61, in test_003_search
+    self.page.search_record(type=args[2]['type'], level=args[2]['level'], status=args[2]['status'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 106, in search_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_003_search_3 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>132</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_search_4</td>
+                    <td>None</td>
+                    <td>1.6s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 61, in test_003_search
+    self.page.search_record(type=args[2]['type'], level=args[2]['level'], status=args[2]['status'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 106, in search_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_003_search_4 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>133</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_search_5</td>
+                    <td>None</td>
+                    <td>1.56s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 61, in test_003_search
+    self.page.search_record(type=args[2]['type'], level=args[2]['level'], status=args[2]['status'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 106, in search_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_003_search_5 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>134</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_003_search_6</td>
+                    <td>None</td>
+                    <td>1.54s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\ddt.py", line 191, in wrapper
+    return func(self, *args, **kwargs)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 61, in test_003_search
+    self.page.search_record(type=args[2]['type'], level=args[2]['level'], status=args[2]['status'],
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 106, in search_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_003_search_6 (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>135</td>
+                    <td class="TestHostManagement">TestHostManagement</td>
+                    <td>test_004_delete_record</td>
+                    <td>None</td>
+                    <td>1.59s</td>
+                    
+                        <td class="text-danger">错误</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>Traceback (most recent call last):
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 60, in testPartExecutor
+    yield
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 676, in run
+    self._callTestMethod(testMethod)
+</pre>
+                        
+
+                            <pre>  File "D:\Python3.8.9\lib\unittest\case.py", line 633, in _callTestMethod
+    method()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\testcases\test_011_brokenrecord.py", line 68, in test_004_delete_record
+    self.page.delete_record(all_delete=True)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\pages\workbench_page\broken_record\broken_record_page.py", line 91, in delete_record
+    self.click_navigation_bar("工作台")
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 261, in click_navigation_bar
+    self.click_elements(*main_menu, list_number=main_menu_navigation_bar[name])
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\common\keywords.py", line 155, in click_elements
+    elements[list_number].click()
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+</pre>
+                        
+
+                            <pre>  File "F:\auto-opstest\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+</pre>
+                        
+
+                            <pre>selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <span class="ant-menu-title-content">...</span> is not clickable at point (127, 190). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap" role="dialog">...</div>
+  (Session info: chrome=100.0.4896.60)
+
+</pre>
+                        
+
+                            <pre>test_004_delete_record (test_011_brokenrecord.TestHostManagement)执行——>【错误Error】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>136</td>
+                    <td class="TestPersonalInfo">TestPersonalInfo</td>
+                    <td>test_001_edit_personal_info</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>137</td>
+                    <td class="TestPersonalInfo">TestPersonalInfo</td>
+                    <td>test_002_search_approval_process</td>
+                    <td>None</td>
+                    <td>0.0s</td>
+                    
+                        <td class="text-info">跳过</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre></pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>138</td>
+                    <td class="TestPersonalInfo">TestPersonalInfo</td>
+                    <td>test_003_handle_process</td>
+                    <td>None</td>
+                    <td>12.3s</td>
+                    
+                        <td class="text-success">成功</td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-success btn_info">查看详情</button>
+                    </td>
+                </tr>
+
+                <tr class="test_log">
+
+                    <td colspan="7" class="small text-muted" style=" word-wrap:break-word; word-break:break-all">
+                        
+
+                            <pre>test_003_handle_process (test_012_personalinfo.TestPersonalInfo)执行——>【通过】
+</pre>
+                        
+                        
+                    </td>
+                </tr>
+            
+
+            </tbody>
+        </table>
+    </div>
+
+    <div style="height: 200px"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+<script>
+    var tbodyTr = $('tbody tr');
+    var testResult = $("#testResult");
+    var testClass = $("#testClass");
+    <!--    用例执行详细信息显示切换-->
+    $(".btn_info").click(function () {
+        $(this).parent().parent().next().toggle();
+
+    });
+    // 当选择用例类之后触发
+    testClass.change(function () {
+        var cls = $(this).val();
+        var res = testResult.val();
+        elementDisplay(cls, res);
+        sort()
+    });
+    testResult.change(function () {
+        var res = $(this).val();
+        var cls = testClass.val();
+        elementDisplay(cls, res);
+        sort()
+    });
+
+    function elementDisplay(cls, res) {
+        // 用例数据的显示
+        if (cls === "所有") {
+            if (res === "所有") {
+                tbodyTr.has('button').show();
+            } else if (res === '成功') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.text-success').show()
+
+            } else if (res === '失败') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.text-warning').show()
+
+            } else if (res === '错误') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.text-danger').show()
+
+            } else if (res === '跳过') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.text-info').show()
+            }
+        } else {
+            if (res === "所有") {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').show()
+            } else if (res === '成功') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').has('.text-success').show()
+            } else if (res === '失败') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').has('.text-warning').show()
+            } else if (res === '错误') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').has('.text-danger').show()
+            } else if (res === '跳过') {
+                tbodyTr.hide();
+                tbodyTr.has('button').has('.' + cls + '').has('.text-info').show()
+            }
+        }
+    }
+
+    function sort() {
+        //重新排列显示序号
+        // 选择所有可以见的tr
+        var visibleTr = tbodyTr.filter(":visible");
+
+        visibleTr.each(function (index, element) {
+            element.firstElementChild.innerHTML = index + 1;
+
+        })
+
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('char'));
+    var myChart2 = echarts.init(document.getElementById('char2'));
+    // 指定图表的配置项和数据
+    option = {
+        color: ['#00a10a', '#ddb518', 'rgba(204,46,41,0.73)', '#85898c'],
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 10,
+            data: ['通过', '失败', '错误', '跳过']
+        },
+        series: [
+            {
+                name: '测试结果',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: '30',
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [
+                    {value: 103, name: '通过'},
+                    {value: 0, name: '失败'},
+                    {value: 10, name: '错误'},
+                    {value: 25, name: '跳过'}
+                ]
+            }
+        ]
+    };
+    option2 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        toolbox: {
+            feature: {
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        series: [
+            {
+                name: '测试结果',
+                type: 'gauge',
+                detail: {formatter: '74.64%'},
+                data: [{value: '74.64', name: '用例通过率'}],
+                axisLine: {
+                    lineStyle: {
+                        color: [
+                            [0.2, '#c20000'],
+                            [0.8, '#ddb518'],
+                            [1, '#00a10a']]
+                    }
+                }
+            }
+        ]
+    };
+
+
+    myChart2.setOption(option2);
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+
+</body>
+</html>

@@ -1,3 +1,7 @@
 --数据库初始化sql语句
 --新建客户信息 先删除，确保该名称没有被使用过
-delete from t_client where name='test001' or name='test002' or name='测试客户名称二十个字符一二三四五六七八九' or name='test001-111'
+--delete from t_client where name='test001' or name='test002' or name='测试客户名称二十个字符一二三四五六七八九' or name='test001-111'
+DELETE t_client,t_miner FROM t_client LEFT JOIN t_miner ON (t_client.`id`=t_miner.client_id) WHERE t_client.`name`="test001-111"
+DELETE t_client,t_miner FROM t_client LEFT JOIN t_miner ON (t_client.`id`=t_miner.client_id) WHERE t_client.`name`="test001"
+DELETE t_client,t_miner FROM t_client LEFT JOIN t_miner ON (t_client.`id`=t_miner.client_id) WHERE t_client.`name`="test002"
+DELETE t_client,t_miner FROM t_client LEFT JOIN t_miner ON (t_client.`id`=t_miner.client_id) WHERE t_client.`name`="测试客户名称二十个字符一二三四五六七八九"

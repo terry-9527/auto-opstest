@@ -34,8 +34,8 @@ class RoleManagementPage(KeyWords):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("角色")
-        self.click_navigation_bar("用户管理")
-        self.click_navigation_bar("系统设置")
+        # self.click_navigation_bar("用户管理")
+        # self.click_navigation_bar("系统设置")
         self.click_span_button("新建角色")
         if name:
             self.input_text(*self.role_input, name)
@@ -46,6 +46,8 @@ class RoleManagementPage(KeyWords):
         if customer:
             self.div_selector(self.customer_input, name=customer)
             self.wait()
+        mylogger.info("点进确定按钮")
+        self.click_span_button("确 定")
 
     # 处理是否保存
     def handle_save(self, is_save=True):
@@ -62,8 +64,6 @@ class RoleManagementPage(KeyWords):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("角色")
-        self.click_navigation_bar("用户管理")
-        self.click_navigation_bar("系统设置")
         self.click_element(*self.edit_button)
         self.input_text(*self.role_input, name)
         self.wait(0.5)
@@ -72,6 +72,8 @@ class RoleManagementPage(KeyWords):
         if customer:
             self.div_selector(self.customer_input, name=customer)
             self.wait(0.5)
+        mylogger.info("点进确定按钮")
+        self.click_span_button("确 定")
 
 
 
@@ -79,8 +81,8 @@ class RoleManagementPage(KeyWords):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("角色")
-        self.click_navigation_bar("用户管理")
-        self.click_navigation_bar("系统设置")
+        # self.click_navigation_bar("用户管理")
+        # self.click_navigation_bar("系统设置")
         mylogger.info(f"点击{rolename}角色删除按钮")
         # 删除按钮 role003
         delete_button = ('xpath', f'//span[contains(text(),"{rolename}")]/../../td[6]//button[2]')
@@ -99,8 +101,8 @@ class RoleManagementPage(KeyWords):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("角色")
-        self.click_navigation_bar("用户管理")
-        self.click_navigation_bar("系统设置")
+        # self.click_navigation_bar("用户管理")
+        # self.click_navigation_bar("系统设置")
         mylogger.info(f"开始为角色{rolename}设置权限")
         role_setting_button = ('xpath', f'//span[contains(text(),"{rolename}")]/../../td[3]//a')
         self.click_element(*role_setting_button)

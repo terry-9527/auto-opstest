@@ -234,6 +234,9 @@ class HostManagementPage(KeyWords):
         detail_button = ('xpath', f'//span[text()="{sn}"]/../../../td[12]/button')
         self.click_element(*detail_button)
         self.wait()
+        self.click_element('xpath', '//button[@class="ant-modal-close"]/span/span')
+        self.click_navigation_bar("工作台")
+        self.click_navigation_bar("首页")
 
     def search_deviceinfo(self, minerid="f060975", sn=None, ip=None, role=None, machine_status=None, work_status=None):
         self.click_navigation_bar("工作台")
@@ -266,3 +269,4 @@ class HostManagementPage(KeyWords):
             self.click_element(*self.search_button)
         self.wait(2)
         self.click_navigation_bar("工作台")
+        self.click_navigation_bar("首页")

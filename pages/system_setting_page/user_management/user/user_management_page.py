@@ -90,22 +90,9 @@ class UserManagementPage(KeyWords):
         elif is_enable == "True":
             if not self.locators(*self.enable_checkbox)[2].is_selected():
                 self.click_elements(*self.enable_checkbox, list_number=2)
-
-    # 处理是否保存
-    def handle_save(self, is_save=True):
-        if is_save:
-            mylogger.info("点进保存按钮")
-            self.click_span_button("保 存")
-            self.wait(0.5)
-            self.click_navigation_bar("用户管理")
-            self.click_navigation_bar("系统设置")
-        else:
-            mylogger.info("点进取消按钮")
-            self.wait(0.5)
-            self.click_span_button("取 消")
-            self.click_navigation_bar("用户管理")
-            self.click_navigation_bar("系统设置")
-
+        mylogger.info("点进保存按钮")
+        self.click_span_button("保 存")
+        self.wait(0.5)
 
     # 点击查看用户信息详情
     def check_userinfo(self):
@@ -114,18 +101,13 @@ class UserManagementPage(KeyWords):
         self.click_navigation_bar("用户")
         # 点击用户terry001-autotest 的查看按钮
         self.click_element(*self.check_button)
-        self.wait(1)
-        self.click_navigation_bar("用户管理")
-        self.click_navigation_bar("系统设置")
-        self.click_navigation_bar("首页")
-
 
     # 编辑用户信息
     def edit_userinfo(self, username, chinesename, phone, email, is_leader="False", is_approve="False", is_enable="True"):
         self.click_navigation_bar("系统设置")
         self.click_navigation_bar("用户管理")
         self.click_navigation_bar("用户")
-        # 点击用户terry001-autotest 的查看按钮
+        # 点击用户terry0001-autotest的查看按钮
         self.click_element(*self.check_button)
         self.wait()
         self.click_element(*self.edit_button)
@@ -156,7 +138,9 @@ class UserManagementPage(KeyWords):
         elif is_enable == "True":
             if not self.locators(*self.enable_checkbox)[2].is_selected():
                 self.click_elements(*self.enable_checkbox, list_number=2)
-        self.wait()
+        mylogger.info("点进保存按钮")
+        self.click_span_button("保 存")
+        self.wait(0.5)
 
 
 
@@ -176,11 +160,7 @@ class UserManagementPage(KeyWords):
                 self.click_element(*one_role_checkbox)
         if is_save:
             self.wait()
-            # self.click_element(*self.confirm_button)
             self.click_span_button("确 定",type="button")
-            self.click_navigation_bar("用户管理")
-            self.click_navigation_bar("系统设置")
-            self.click_navigation_bar("首页")
         else:
             self.click_element(*self.cancel_button)
 
@@ -220,9 +200,6 @@ class UserManagementPage(KeyWords):
         if is_save:
             self.wait()
             self.click_element(*self.confirm_button)
-            self.wait(0.5)
-            self.click_navigation_bar("用户管理")
-            self.click_navigation_bar("系统设置")
         else:
             self.click_element(*self.cancel_button)
 
@@ -234,8 +211,8 @@ class UserManagementPage(KeyWords):
         if username:
             self.input_text(content=username, text="用户")
         self.click_element(*self.search_button)
-        self.click_navigation_bar("用户管理")
-        self.click_navigation_bar("系统设置")
+        # self.click_navigation_bar("用户管理")
+        # self.click_navigation_bar("系统设置")
 
 
     def _search_by_customer(self, customername=None):
@@ -244,27 +221,30 @@ class UserManagementPage(KeyWords):
         self.click_navigation_bar("用户")
         if customername:
             self.div_selector(self.search_customer, name=customername)
-            self.click_navigation_bar("用户管理")
-            self.click_navigation_bar("系统设置")
+            # self.click_navigation_bar("用户管理")
+            # self.click_navigation_bar("系统设置")
 
-
-    def clear_input(self):
-        self.driver.refresh()
-        self.click_navigation_bar("用户管理")
-        self.click_navigation_bar("系统设置")
-        self.wait()
 
     def search(self,username=None, customername=None, by_username=True, by_customer=True):
-        if by_username and not by_customer:
-            mylogger.info(f"输入{username}进行搜索")
-            self._search_by_username(username)
-            self.wait()
-        elif by_customer and not by_username:
-            mylogger.info(f"按所属客户{customername}进行搜索")
-            self._search_by_customer()
-            self.wait()
-        elif by_username and by_customer:
-            mylogger.info(f"输入{username}和按所属客户{customername}进行搜索")
-            self._search_by_username(username)
-            self._search_by_customer(customername)
-            self.wait()
+        self.click_navigation_bar("系统设置")
+        self.click_navigation_bar("用户管理")
+        self.click_navigation_bar("用户")
+        if username:
+            self.input_text(content=username, text="用户")
+        self.click_element(*self.search_button)
+        if customername:
+            self.div_selector(self.search_customer, name=customername)
+
+        # if by_username and not by_customer:
+        #     mylogger.info(f"输入{username}进行搜索")
+        #     self._search_by_username(username)
+        #     self.wait()
+        # elif by_customer and not by_username:
+        #     mylogger.info(f"按所属客户{customername}进行搜索")
+        #     self._search_by_customer()
+        #     self.wait()
+        # elif by_username and by_customer:
+        #     mylogger.info(f"输入{username}和按所属客户{customername}进行搜索")
+        #     self._search_by_username(username)
+        #     self._search_by_customer(customername)
+        #     self.wait()
