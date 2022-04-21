@@ -80,7 +80,7 @@ if __name__ == "__main__":
     # run.run_all_cases(filename=["test_004_rolemanagement.py","test_005_usermanagement.py","test_006_clusterinfo.py"])
     # run.run_all_cases(filename=["test_002_machineroominfo.py","test_003_customerinfo.py","test_004_rolemanagement.py","test_005_usermanagement.py"])
     # run.run_all_cases(filename=["test_011_brokenrecord.py"])
-    run.run_all_cases(filename=["test_010_hostmanagement.py"])
+    run.run_all_cases()
     # run.handle_report()
 
 
