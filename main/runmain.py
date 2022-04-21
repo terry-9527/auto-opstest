@@ -1,6 +1,7 @@
 """
 执行用例总入口
 """
+import shutil
 import sys
 import os
 curPath = os.path.abspath(os.path.dirname(__file__))
@@ -13,6 +14,9 @@ from datetime import datetime
 from utils.handle_path import report_dir,testdata_dir,testcase_dir
 
 class runTestCase:
+
+    def __init__(self):
+        self.handle_report()
 
     def load_all_case(self, filelist=None):
         """
@@ -62,12 +66,21 @@ class runTestCase:
                                 desc="运维系统项目web自动化测试报告")
             runner.run()
 
+    def handle_report(self):
+        dst_dir = os.path.join(report_dir, "history")
+        files = os.listdir(report_dir)
+        for file in files:
+            if file.endswith(".html"):
+                src_dir=os.path.join(report_dir, file)
+                shutil.move(src_dir, dst_dir)
+
 
 if __name__ == "__main__":
     run = runTestCase()
     # run.run_all_cases(filename=["test_004_rolemanagement.py","test_005_usermanagement.py","test_006_clusterinfo.py"])
     # run.run_all_cases(filename=["test_002_machineroominfo.py","test_003_customerinfo.py","test_004_rolemanagement.py","test_005_usermanagement.py"])
     # run.run_all_cases(filename=["test_011_brokenrecord.py"])
-    run.run_all_cases()
+    run.run_all_cases(filename=["test_010_hostmanagement.py"])
+    # run.handle_report()
 
 
