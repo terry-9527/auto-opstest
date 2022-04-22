@@ -24,7 +24,6 @@ from common.my_logger import mylogger
 #         driver = webdriver.Chrome()
 #         return driver
 
-
 class KeyWords():
 
     def __init__(self, driver):
@@ -198,7 +197,7 @@ class KeyWords():
                 self.locator(By.XPATH, xpath).send_keys(content)
             # 处理输入中有占位文字的
             elif type == "placeholder":
-                xpath = f"//input[@placeholder='{text}']"
+                xpath = f"//*[@placeholder='{text}']"
                 # self.clear(By.XPATH, xpath)
                 self.locator(By.XPATH, xpath).send_keys(content)
             mylogger.info("-----文本输入成功，文本内容为：{}".format(content))
@@ -236,10 +235,10 @@ class KeyWords():
             "公共算力": 4,
             "故障记录": 5,
             "作业管理": 6,
-            "命令执行": 7,
+            " 命令执行": 7,
             " 任务管理": 8,
             " 公共模板": 9,
-            "公共脚本": 10,
+            " 公共脚本": 10,
             "系统设置": 11,
             " 机房信息": 12,
             "集群信息": 13,
@@ -290,12 +289,22 @@ class KeyWords():
         mylogger.info(f"点击按钮为：{text} 按钮--->>")
         self.click_element(By.XPATH, self.xpath)
 
-    def input_host(self,select_device, host):
+
+    def input_host(self,select_device, host=None, choice=None,name=None):
         self.click_element(*select_device)
-        self.wait(1)
-        xpath = f"//*[text()=\'{host}\']/../../tr[2]/td/label/span"
-        mylogger.info(f"点击主机为：{host} 按钮--->>")
-        self.click_element(By.XPATH, xpath)
+        self.wait(2)
+        if host:
+            self.xpath = f"//*[text()=\'{host}\']/../td/label/span"
+            self.click_element(By.XPATH, self.xpath)
+            mylogger.info(f"点击主机为：{host} 按钮--->>")
+        elif choice:
+            self.xpath = f"//*[text()=\'{choice}\']/../../td/label/span"
+            self.click_element(By.XPATH,self.xpath)
+            mylogger.info(f"点击主机为：{choice} 按钮--->>")
+        elif name:
+            self.xpath = f"//*[text()=\'{name}\']/../td/label"
+            self.click_element(By.XPATH,self.xpath)
+
 
     # 打开浏览器
     def open_browser(self, url):

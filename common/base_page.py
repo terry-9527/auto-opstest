@@ -20,7 +20,7 @@ class BasePage(CheckPoint):
         cls.phone = readData().read_config("test_account", "phone2")
         cls.password = readData().read_config("test_account", "password2")
         cls.login.login(cls.phone, cls.password)
-        # cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2LCJ1c2VyX25hbWUiOiJ0ZXJyeSIsImJ1ZmZlcl90aW1lIjo4NjQwMCwiZXhwIjoxNjQ5MjExMTE4LCJpc3MiOiJhcnNQdWJsaWMiLCJuYmYiOjE2NDg2MDUzMTh9.eDFhGkdzOwmKK5AZLoW0fVBROQPMVhvUlPd1TtCxAQI"})
+        # cls.driver.add_cookie({"name":"public-jwt","value":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJ1c2VyX25hbWUiOiJGaWRlIiwiYnVmZmVyX3RpbWUiOjg2NDAwLCJleHAiOjE2NTA1MzIyNjMsImlzcyI6ImFyc1B1YmxpYyIsIm5iZiI6MTY0OTkyNjQ2M30.J0WZe4fzU14LZ1AiyfjuCwGpV_N_MeW-jWyAThRr3sc"})
         # cls.driver.get("https://opstest.arsyun.com")
 
 

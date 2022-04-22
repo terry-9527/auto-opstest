@@ -20,12 +20,12 @@ class TestRoleManagement(BasePage):
 
     cases1 = readData().read_excel("addrole", filename)
 
-<<<<<<< HEAD
+
     @unittest.skip("跳过")
     def test_004_delete_role(self):
         self.page = RoleManagementPage(self.driver)
         self.page.delete_role()
-=======
+
     @data(*cases1)
     # @unittest.skip
     def test_001_add_role(self, args):
@@ -43,7 +43,7 @@ class TestRoleManagement(BasePage):
             self.page.handle_save(is_save=False)
 
         mylogger.info("--------------------测试用例执行结束--------------------")
->>>>>>> 5c583b7efd4eb492406a99c94f854625f6f9dda8
+
 
     cases2 = readData().read_excel("editrole", filename)
     @data(*cases2)
@@ -63,20 +63,19 @@ class TestRoleManagement(BasePage):
         mylogger.info("--------------------测试用例执行结束--------------------")
 
 
-<<<<<<< HEAD
+
     @unittest.skip("跳过")
     def test_006_add_role(self, args):
         self.page = RoleManagementPage(self.driver)
         self.page.add_role(args[2]['name'], args[2]['comment'], args[2]['is_save'])
 
 
-=======
     # @unittest.skip("跳过")
     def test_003_setting_role(self):
         mylogger.info("--------------------测试用例开始执行--------------------")
         self.page.setting_role_privilege()
         mylogger.info("--------------------测试用例执行结束--------------------")
->>>>>>> 5c583b7efd4eb492406a99c94f854625f6f9dda8
+
 
     # @unittest.skip("跳过")
     def test_004_delete_role(self):
@@ -90,11 +89,10 @@ class TestRoleManagement(BasePage):
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
-<<<<<<< HEAD
+
     cases = unittest.TestLoader().loadTestsFromTestCase(TestRoleManagement)
     suite.addTest(cases)
     runner = unittest.TextTestRunner()
     runner.run(suite)
-=======
->>>>>>> 5c583b7efd4eb492406a99c94f854625f6f9dda8
+
 

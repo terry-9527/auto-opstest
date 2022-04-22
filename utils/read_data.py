@@ -135,7 +135,7 @@ if __name__ == '__main__':
     read = readData()
     # sqls = read.read_sqls('systemsetting.txt')
     # print(sqls)
-    datas = read.read_excel("管理模板类型", "commandinfo.xlsx")
+    datas = read.read_excel("添加模板类型", "commandinfo.xlsx")
     print(datas[0][0])
 
     # if datas[1][0] in ["edit-clusterinfo-002", "edit-clusterinfo-003"]:

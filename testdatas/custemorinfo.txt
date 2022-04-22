@@ -1,4 +1,5 @@
 --数据库初始化sql语句
 --新建公共模板 先删除，确保该名称没有被使用过
 delete from t_public_template where name='查看内存'
+delete from t_public_template where name='测试'
 delete from t_public_template_type where name='测试'
