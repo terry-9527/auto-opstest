@@ -31,9 +31,9 @@ class HostManagementPage(KeyWords):
     # 下拉选项
     div_option = ('css', 'div.ant-select-item-option-content')
     # 添加主机确定按钮
-    confirm_addhost_button = ('xpath', '//div[@class="ant-modal-footer"]//button[2]')
+    confirm_addhost_button = ('xpath', '//body/div[4]/div/div[2]/div/div[2]/div[3]/button[2]')
     # 添加主机取消按钮
-    cancel_addhost_button = ('xpath', '//div[@class="ant-modal-footer"]//button[1]')
+    cancel_addhost_button = ('xpath', '//body/div[4]/div/div[2]/div/div[2]/div[3]/button[1]')
     # 主机列表查询
     # 搜索输入框 //input[@placeholder="集群SN/IP"]
     search_input = ('xpath', '//input[@placeholder="集群SN/IP"]')
@@ -65,7 +65,7 @@ class HostManagementPage(KeyWords):
         self.click_elements(*xpath, int(name_list[button_name]))
 
     # 选择复选框 //tbody/tr
-    def choice_checkbox(self, times=1, sn=None, minerid="f01234"):
+    def chose_checkbox(self, times=1, sn=None, minerid="f01234"):
         """
         选择复选框，默认随机选择其中一台，也可以选择指定设备sn
         :param times: 默认勾选一台机器
@@ -89,7 +89,7 @@ class HostManagementPage(KeyWords):
                     self.locators(*xpath)[num].click()
                     self.wait()
         else:
-            checkbox_xpath = ('xpath', f'//span[text()="{sn}"]/../../..//input')
+            checkbox_xpath = ('xpath', f'//span[text()="{sn}"]/../../../td/label/span')
             self.click_element(*checkbox_xpath)
 
     # 审核弹窗操作
@@ -103,7 +103,6 @@ class HostManagementPage(KeyWords):
             self.input_text(*self.reason_input, comment)
             self.wait(0.5)
             if is_confirm:
-                # print(len(self.locators(*self.confirm_approve_button)))
                 self.click_element(*self.confirm_approve_button)
                 self.wait()
             else:
@@ -116,8 +115,7 @@ class HostManagementPage(KeyWords):
             else:
                 self.click_element(*self.refuse_approve_button)
                 self.wait()
-        self.click_navigation_bar("首页")
-        self.click_navigation_bar("工作台")
+
 
     def set_machine_fault_status(self, sn, state=False, minerid="f01234"):
         """
@@ -151,8 +149,13 @@ class HostManagementPage(KeyWords):
         # 判断设置的故障机状态，False设置为否，True设置为是
         if not state:
             self.click_elements(*status_option, 0)
+            self.wait()
         else:
             self.click_elements(*status_option, 1)
+            self.wait()
+        self.click_navigation_bar("工作台")
+        self.click_navigation_bar("首页")
+
 
     def select_cluster(self, minerid):
         xpath = ('xpath', f'//ul[@class="cluster-list"]//li[text()="内部 {minerid}"]')
@@ -185,10 +188,11 @@ class HostManagementPage(KeyWords):
             # 点击文件弹窗确定按钮
             self.click_element(*self.confirm_upload_button)
             self.click_navigation_bar("工作台")
-            self.driver.refresh()
+            self.click_navigation_bar("首页")
         if import_type == "添加主机":
             self.click_elements(*self.import_type, 0)
             self.add_host_alert(sn, module, customer, software_role)
+        self.wait()
 
     def add_host_alert(self, sn, module, customer, software_role):
         """
@@ -203,34 +207,13 @@ class HostManagementPage(KeyWords):
         self.input_text(content=module, text="产品型号")
         # 选择所属用户
         if customer:
-            self.click_element(*self.customer_input)
-            self.wait(0.5)
-            els1 = self.locators(*self.div_option)
-            for el in els1:
-                self.customer_list.append(el.text)
-            num = self.customer_list.index(customer)
-            self.click_elements(*self.div_option, num)
-        else:
-            self.click_element(*self.customer_input)
+            self.div_selector(self.customer_input,name=customer)
+        # 选择软件角色
         if software_role:
-            # 选择软件角色
-            self.click_element(*self.software_role_input)
-            self.wait(0.5)
-            els2 = self.locators(*self.div_option)
-            software_role_list = []
-            for el in els2:
-                software = el.text
-                if software not in self.customer_list:
-                    software_role_list.append(el.text)
-            num = software_role_list.index(software_role)
-            self.click_elements(*self.div_option, num)
-            self.wait(0.5)
-        if sn and module and customer and software_role:
-            self.click_element(*self.confirm_addhost_button)
-        else:
-            self.click_element(*self.confirm_addhost_button)
-            self.wait()
-            self.click_element(*self.cancel_addhost_button)
+            self.div_selector(self.software_role_input, name=software_role)
+        # 点击确定按钮
+        self.click_element(*self.confirm_addhost_button)
+        self.wait()
 
     def download_template(self):
         """
@@ -240,6 +223,7 @@ class HostManagementPage(KeyWords):
         self.click_navigation_bar("工作台")
         self.click_navigation_bar("主机管理")
         self.click_element(*self.download_button)
+        self.wait(2)
 
     # 查看设备详情
     def deviceinfo_detail(self, minerid=None, sn=None):
@@ -250,6 +234,9 @@ class HostManagementPage(KeyWords):
         detail_button = ('xpath', f'//span[text()="{sn}"]/../../../td[12]/button')
         self.click_element(*detail_button)
         self.wait()
+        self.click_element('xpath', '//button[@class="ant-modal-close"]/span/span')
+        self.click_navigation_bar("工作台")
+        self.click_navigation_bar("首页")
 
     def search_deviceinfo(self, minerid="f060975", sn=None, ip=None, role=None, machine_status=None, work_status=None):
         self.click_navigation_bar("工作台")
@@ -280,3 +267,6 @@ class HostManagementPage(KeyWords):
         if ip:
             self.input_text(*self.search_input, content=ip)
             self.click_element(*self.search_button)
+        self.wait(2)
+        self.click_navigation_bar("工作台")
+        self.click_navigation_bar("首页")

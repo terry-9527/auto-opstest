@@ -28,3 +28,4 @@ mylogger = MyLogger("ARS", file=r"F:\yunweixitong\outputs\log\my.log")
 if __name__ == '__main__':
     mylogger = MyLogger("ARS", file = r"F:\yunweixitong\outputs\log\my.log")
     mylogger.info("this is a test by fide")
+

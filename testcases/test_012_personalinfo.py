@@ -1,5 +1,5 @@
 from common.base_page import BasePage
-from pages.user_page.personal_info_page import PersonalInfoPage,MyApprovalPage
+from pages.user_page.user_page import PersonalInfoPage,MyApprovalPage
 import unittest
 from utils.read_data import readData
 from ddt import ddt, data
@@ -12,7 +12,7 @@ class TestPersonalInfo(BasePage):
     @unittest.skip
     def test_001_edit_personal_info(self):
         self.page = PersonalInfoPage(self.driver)
-        self.page.check_personal_info(name="terry", email="terry.wei@arsyun.com")
+        self.page.check_personal_info(name="terry1", email="terry.wei@arsyun.com")
 
     @unittest.skip
     def test_002_search_approval_process(self):

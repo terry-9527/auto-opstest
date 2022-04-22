@@ -14,6 +14,11 @@ class TestRoleManagement(BasePage):
 
     def setUp(self):
         self.page = RoleManagementPage(self.driver)
+    def tearDown(self):
+        self.page.wait()
+        self.page.click_navigation_bar("用户管理")
+        self.page.click_navigation_bar("系统设置")
+        self.page.click_navigation_bar("首页")
 
     # 初始化数据库
     MysqlDb().init_database("rolemanagement.txt")
@@ -32,16 +37,13 @@ class TestRoleManagement(BasePage):
         mylogger.info("--------------------测试用例开始执行--------------------")
         mylogger.info(f"用例{args[0]}:{args[1]}--->>测试数据：{args[2]}")
         self.page.handle_add_role_alert(args[2]['name'], args[2]['comment'], args[2]['customer'])
-        self.page.handle_save()
-
         if args[0] not in ["add-role-004","add-role-005"]:
             actual = self.page.get_text(args[4]['xpath'])
             self.checkAssertEqual(args[3]['msg'], actual)
         else:
             actual = self.page.get_text(args[4]['xpath'])
             self.checkAssertEqual(args[3]['msg'], actual)
-            self.page.handle_save(is_save=False)
-
+            self.page.click_span_button("取 消")
         mylogger.info("--------------------测试用例执行结束--------------------")
 
 
@@ -52,14 +54,13 @@ class TestRoleManagement(BasePage):
         mylogger.info("--------------------测试用例开始执行--------------------")
         mylogger.info(f"用例{args[0]}:{args[1]}--->>测试数据：{args[2]}")
         self.page.handle_edit_role_alert(args[2]['name'], args[2]['comment'], args[2]['customer'])
-        self.page.handle_save()
         if args[0] not in ["edit-role-005","edit-role-006"]:
             actual = self.page.get_text(args[4]['xpath'])
             self.checkAssertEqual(args[3]['msg'], actual)
         else:
             actual = self.page.get_text(args[4]['xpath'])
             self.checkAssertEqual(args[3]['msg'], actual)
-            self.page.handle_save(is_save=False)
+            self.page.click_span_button("取 消")
         mylogger.info("--------------------测试用例执行结束--------------------")
 
 

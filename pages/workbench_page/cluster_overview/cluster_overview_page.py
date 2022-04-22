@@ -1,4 +1,4 @@
-from selenium.webdriver import Keys
+from selenium.webdriver.common.keys import Keys
 
 from common.keywords import KeyWords
 
@@ -23,4 +23,13 @@ class ClusterOverviewPage(KeyWords):
         if liabel:
             self.input_text(*self.search_input,liabel)
         self.locator(*self.search_input).send_keys(Keys.ENTER)
+        self.wait()
+        self.click_navigation_bar("工作台")
 
+    def lookup_cluster(self, minerid):
+        # //span[contains(text(),"f060975")]/../..//button
+        self.click_navigation_bar("工作台")
+        self.click_navigation_bar("集群概览")
+        xpath = ('xpath', f'//span[contains(text(),"{minerid}")]/../..//button')
+        self.click_element(*xpath)
+        self.wait(2)

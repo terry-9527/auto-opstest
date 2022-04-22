@@ -204,6 +204,8 @@ class KeyWords():
         except Exception as e:
             mylogger.info("-----文本输入失败-----")
             raise e
+        finally:
+            self.wait(0.5)
 
     def move(self, locator_type, location):
         mylogger.info("移动鼠标到指定元素开始--->>")
@@ -276,9 +278,11 @@ class KeyWords():
             name_list.append(el.get_attribute('textContent'))
         if name:
             index = get_index(name_list, name, which_index)
+            mylogger.info(index)
             self.click_elements(*div_select, list_number=index)
         else:
             self.click_elements(*div_select, list_number=number)
+        mylogger.info(name_list)
         return name_list
 
     def click_span_button(self, text, type="button"):
@@ -286,6 +290,11 @@ class KeyWords():
             self.xpath = f"//span[text()=\'{text}\']"
         elif type == "button":
             self.xpath = f"//span[text()=\'{text}\']/.."
+        elif type == "alert":
+            if text == "确 定":
+                self.xpath = f"//div[@class='ant-modal-confirm-btns']/button[2]"
+            else:
+                self.xpath = f"//div[@class='ant-modal-confirm-btns']/button[1]"
         mylogger.info(f"点击按钮为：{text} 按钮--->>")
         self.click_element(By.XPATH, self.xpath)
 
